@@ -1,0 +1,19 @@
+.transactionsAddBtn {
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(
+    103deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  font-size: 20px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+}
