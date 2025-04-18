@@ -1,0 +1,92 @@
+.container {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  min-height: 100vh;
+  background: linear-gradient(to right, #eef2f3, #8e9eab);
+  padding: 2rem;
+}
+
+.logoContainer {
+  text-align: center;
+  margin-bottom: 2rem;
+}
+
+.logoCircle {
+  width: 60px;
+  height: 60px;
+}
+
+.checkmark {
+  color: white;
+  font-size: 24px;
+}
+
+.title {
+  font-size: 24px;
+  margin-top: 0.5rem;
+  font-weight: bold;
+  color: #333;
+}
+
+.form {
+  background-color: white;
+  padding: 2rem;
+  border-radius: 12px;
+  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
+  width: 100%;
+  max-width: 400px;
+}
+
+.inputGroup {
+  display: flex;
+  flex-direction: column;
+  margin-bottom: 1rem;
+}
+
+.input {
+  padding: 0.5rem;
+  border: 1px solid #ccc;
+  border-radius: 8px;
+  font-size: 1rem;
+}
+
+.buttonGroup {
+  display: flex;
+  justify-content: space-between;
+  gap: 1rem;
+}
+
+.loginButton {
+  flex: 1;
+  background-color: #4caf50;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.registerButton {
+  flex: 1;
+  background-color: #2196f3;
+  color: white;
+  padding: 0.75rem;
+  border: none;
+  border-radius: 8px;
+  font-weight: bold;
+  cursor: pointer;
+}
+
+.loginButton:hover,
+.registerButton:hover {
+  opacity: 0.9;
+}
+
+.error {
+  color: red;
+  font-size: 12px;
+  margin-top: 4px;
+}
