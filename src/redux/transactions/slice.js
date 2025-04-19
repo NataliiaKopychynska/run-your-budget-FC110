@@ -1,41 +1,49 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { fetchTransaction } from "./operations";
+import { deleteTransaction, fetchTransactions } from "./operations";
 
 const initialState = {
   transactions: [],
   isLoading: false,
   isError: false,
-  isEdit: false,
-  isDelete: false,
-  isAdding: false,
+  isEditTransaction: false,
+  isAddTransaction: false,
 };
 
 const transactionsSlice = createSlice({
   name: "transactions",
   initialState,
   reducers: {
-    setIsEdit: (state, action) => {
-      state.isEdit = action.payload;
+    setIsEditTransaction: (state, action) => {
+      state.isEditTransaction = action.payload;
     },
-    setIsAdding: (state, action) => {
-      state.isAdding = action.payload;
-    },
-    setIsDelete: (state, action) => {
-      state.isDelete = action.payload;
+    setIsAddTransaction: (state, action) => {
+      state.isAddTransaction = action.payload;
     },
   },
   extraReducers: (builder) => {
     builder
-      .addCase(fetchTransaction.fulfilled, (state, action) => {
+      .addCase(fetchTransactions.fulfilled, (state, action) => {
         state.transactions = action.payload;
         state.isLoading = false;
         state.isError = false;
       })
-      .addCase(fetchTransaction.pending, (state) => {
+      .addCase(fetchTransactions.pending, (state) => {
         state.isLoading = true;
         state.isError = false;
       })
-      .addCase(fetchTransaction.rejected, (state) => {
+
+      .addCase(deleteTransaction.fulfilled, (state, action) => {
+        state.transactions = state.transactions.filter(
+          (transaction) => transaction.id !== action.payload.id
+        );
+        state.isLoading = false;
+        state.isError = false;
+      })
+      .addCase(deleteTransaction.pending, (state) => {
+        state.isLoading = true;
+        state.isError = false;
+      })
+      .addCase(deleteTransaction.rejected, (state) => {
         state.isLoading = false;
         state.isError = true;
       });
@@ -43,3 +51,5 @@ const transactionsSlice = createSlice({
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
+export const { setIsAddTransaction, setIsEditTransaction } =
+  transactionsSlice.actions;

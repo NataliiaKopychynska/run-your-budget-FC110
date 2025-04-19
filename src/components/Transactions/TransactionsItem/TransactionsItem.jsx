@@ -1,6 +1,8 @@
-import s from "./TransactionsItem.module.css";
-import { LuPencil } from "react-icons/lu";
 import clsx from "clsx";
+
+import { LuPencil } from "react-icons/lu";
+
+import s from "./TransactionsItem.module.css";
 
 const TransactionsItem = ({
   id,

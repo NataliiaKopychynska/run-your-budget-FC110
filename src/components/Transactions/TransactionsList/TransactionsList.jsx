@@ -3,18 +3,24 @@ import { selectTransactions } from "../../../redux/transactions/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
 import s from "./TransactionsList.module.css";
 import { useEffect } from "react";
-import { fetchTransaction } from "../../../redux/transactions/operations";
+import {
+  deleteTransaction,
+  fetchTransactions,
+} from "../../../redux/transactions/operations";
+import { setIsEditTransaction } from "../../../redux/transactions/slice";
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
-
   const transactionsList = useSelector(selectTransactions);
 
-  const handleDelete = () => console.log("DELETE");
-  const handleEdit = () => console.log("EDIT");
+  const handleDeleteBtn = (id) => dispatch(deleteTransaction(id));
+  const handleEditBtn = (id) => {
+    dispatch(setIsEditTransaction(true));
+    console.log("Id for editing transaction", id);
+  };
 
   useEffect(() => {
-    dispatch(fetchTransaction());
+    dispatch(fetchTransactions());
   }, [dispatch]);
 
   return (
@@ -24,8 +30,8 @@ const TransactionsList = () => {
           <li key={transaction.id}>
             <TransactionsItem
               {...transaction}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
+              onDelete={handleDeleteBtn}
+              onEdit={handleEditBtn}
             />
           </li>
         );

@@ -8,7 +8,7 @@ import { transactionsReducer } from "./transactions/slice";
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "transactions"],
+  whitelist: ["auth"],
 };
 
 const rootReducer = combineReducers({
