@@ -4,8 +4,7 @@
   width: 280px;
   border-radius: 10px;
   border: 1px solid #000;
-
-  background: #101010;
+  background: rgba(82, 59, 126, 0.6);
   margin-bottom: 8px;
 }
 
