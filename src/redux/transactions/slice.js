@@ -31,6 +31,10 @@ const transactionsSlice = createSlice({
         state.isLoading = true;
         state.isError = false;
       })
+      .addCase(fetchTransactions.rejected, (state) => {
+        state.isLoading = false;
+        state.isError = true;
+      })
 
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
