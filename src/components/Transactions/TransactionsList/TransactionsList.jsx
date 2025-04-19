@@ -24,19 +24,32 @@ const TransactionsList = () => {
   }, [dispatch]);
 
   return (
-    <ul className={s.transactionsList}>
-      {transactionsList.map((transaction) => {
-        return (
-          <li key={transaction.id}>
-            <TransactionsItem
-              {...transaction}
-              onDelete={handleDeleteBtn}
-              onEdit={handleEditBtn}
-            />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      {transactionsList.length === 0 ? (
+        <div className={s.withoutTransaction}>
+          <p className={s.withoutTransactionMain}>
+            You don't have any transaction.
+          </p>
+          <p className={s.withoutTransactionSecondary}>
+            Let's start to use this awesome application.
+          </p>
+        </div>
+      ) : (
+        <ul className={s.transactionsList}>
+          {transactionsList.map((transaction) => {
+            return (
+              <li key={transaction.id}>
+                <TransactionsItem
+                  {...transaction}
+                  onDelete={handleDeleteBtn}
+                  onEdit={handleEditBtn}
+                />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
   );
 };
 export default TransactionsList;

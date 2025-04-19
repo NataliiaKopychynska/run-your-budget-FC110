@@ -1,13 +1,16 @@
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 
 import s from "./Transactions.module.css";
 
 import TransactionsList from "./TransactionsList/TransactionsList";
 
 import { setIsAddTransaction } from "../../redux/transactions/slice";
+import { selectIsError } from "../../redux/transactions/selectors";
+import SomethingWrong from "../SomethingWrong/SomethingWrong";
 
 const Transactions = () => {
   const dispatch = useDispatch();
+  const isError = useSelector(selectIsError);
 
   const handleAddBtn = () => {
     dispatch(setIsAddTransaction(true));
@@ -16,7 +19,7 @@ const Transactions = () => {
 
   return (
     <div className={s.transactions}>
-      <TransactionsList />
+      {!isError ? <TransactionsList /> : <SomethingWrong />}
       <button type="button" onClick={() => handleAddBtn()}>
         <span className={s.transactionsAddBtn}>+</span>
       </button>

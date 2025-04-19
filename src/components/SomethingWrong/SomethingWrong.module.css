@@ -1,0 +1,13 @@
+.somethingWrong {
+  display: flex;
+  flex-direction: column;
+  font-size: 16px;
+}
+
+.somethingWrongMain {
+  font-weight: 600;
+}
+
+.somethingWrongSecondary {
+  font-weight: 400;
+}
