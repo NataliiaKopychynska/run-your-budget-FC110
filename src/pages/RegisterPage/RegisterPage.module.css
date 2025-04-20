@@ -1,0 +1,9 @@
+.reg_page {
+  display: flex;
+  width: 1280px;
+  height: 720px;
+  padding: 48px;
+  background-repeat: no-repeat;
+  background-size: cover;
+  background-image: url(../../../public/img/registerPage/bg-register-desktop.webp);
+}
