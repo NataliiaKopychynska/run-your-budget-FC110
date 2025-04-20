@@ -7,6 +7,8 @@ const initialState = {
   isError: false,
   isEditTransaction: false,
   isAddTransaction: false,
+  deletingTransaction: {},
+  isDeleteModalOpen: false,
 };
 
 const transactionsSlice = createSlice({
@@ -18,6 +20,12 @@ const transactionsSlice = createSlice({
     },
     setIsAddTransaction: (state, action) => {
       state.isAddTransaction = action.payload;
+    },
+    setIsDeleteModalOpen: (state, action) => {
+      state.isDeleteModalOpen = action.payload;
+    },
+    setDeletingTransaction: (state, action) => {
+      state.deletingTransaction = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -55,5 +63,9 @@ const transactionsSlice = createSlice({
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
-export const { setIsAddTransaction, setIsEditTransaction } =
-  transactionsSlice.actions;
+export const {
+  setIsAddTransaction,
+  setIsEditTransaction,
+  setDeletingTransaction,
+  setIsDeleteModalOpen,
+} = transactionsSlice.actions;

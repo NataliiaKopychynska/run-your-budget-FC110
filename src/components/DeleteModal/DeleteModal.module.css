@@ -1,0 +1,55 @@
+.modal {
+  display: flex;
+  flex-direction: column;
+  gap: 30px;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  width: 540px;
+  height: 589px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: radial-gradient(
+    rgba(47, 21, 176, 0.73),
+    rgba(47, 21, 176, 0),
+    rgba(255, 255, 255, 0.1)
+  );
+}
+
+.modalQuestion {
+  display: flex;
+  flex-direction: column;
+}
+
+.modalQuestionText {
+  font-size: 24px;
+}
+
+.modalButtons {
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.modalYesBtn,
+.modalNoBtn {
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+}
+
+.modalNoBtn {
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    103deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+}
+
+.modalYesBtn {
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: #fff;
+  color: #623f8b;
+}
