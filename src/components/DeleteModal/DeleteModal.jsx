@@ -27,6 +27,16 @@ const DeleteModal = () => {
     };
   }, [dispatch]);
 
+  useEffect(() => {
+    if (modalRef.current?.open) {
+      document.body.style.overflow = "hidden";
+    }
+
+    return () => {
+      document.body.style.overflow = "auto";
+    };
+  }, [deletingTransaction]);
+
   return (
     <dialog
       ref={modalRef}
