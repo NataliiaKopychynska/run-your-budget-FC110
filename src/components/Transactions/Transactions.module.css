@@ -1,7 +1,6 @@
 .transactionsItem {
   display: flex;
   flex-direction: column;
-  width: 280px;
   border-radius: 10px;
   border: 1px solid #000;
   background: rgba(82, 59, 126, 0.6);
@@ -72,8 +71,16 @@
   color: #ff868d;
 }
 
-.transactionList {
+.transactionsList {
   background: #101010;
+  display: flex;
+  flex-wrap: wrap;
+  gap: 10px;
+  margin: 0 auto;
+}
+
+.transactionLi {
+  width: 280px;
 }
 
 .withoutTransaction {
@@ -112,7 +119,7 @@
     #9e40ba 61.46%,
     #7000ff 90.54%
   );
-  font-size: 20px;
+  font-size: 30px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
 }
 
@@ -140,6 +147,10 @@
     font-weight: 400;
     background: none;
     border-radius: 0;
+  }
+
+  .transactionLi {
+    width: 100%;
   }
 
   .transactionLi:not(:last-child) {
