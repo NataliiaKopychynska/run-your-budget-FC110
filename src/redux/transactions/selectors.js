@@ -4,3 +4,6 @@ export const selectIsEditTransaction = (state) =>
 export const selectIsAddTransaction = (state) =>
   state.transactions.isAddTransaction;
 export const selectIsError = (state) => state.transactions.isError;
+
+export const selectDeletingTransaction = (state) =>
+  state.transactions.deletingTransaction;

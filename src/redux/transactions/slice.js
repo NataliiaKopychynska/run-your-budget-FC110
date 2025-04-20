@@ -1,5 +1,18 @@
 import { createSlice } from "@reduxjs/toolkit";
 import { deleteTransaction, fetchTransactions } from "./operations";
+import toast from "react-hot-toast";
+
+const toastParams = {
+  position: "bottom-right",
+  duration: "500",
+  style: {
+    textAlign: "left",
+    background:
+      "linear-gradient(103deg,     #ffc727 0%,    #9e40ba 61.46%,    #7000ff 90.54%  )",
+
+    color: "white",
+  },
+};
 
 const initialState = {
   transactions: [],
@@ -7,6 +20,8 @@ const initialState = {
   isError: false,
   isEditTransaction: false,
   isAddTransaction: false,
+
+  deletingTransaction: {},
 };
 
 const transactionsSlice = createSlice({
@@ -18,6 +33,10 @@ const transactionsSlice = createSlice({
     },
     setIsAddTransaction: (state, action) => {
       state.isAddTransaction = action.payload;
+    },
+
+    setDeletingTransaction: (state, action) => {
+      state.deletingTransaction = action.payload;
     },
   },
   extraReducers: (builder) => {
@@ -42,6 +61,11 @@ const transactionsSlice = createSlice({
         );
         state.isLoading = false;
         state.isError = false;
+
+        toast.error(
+          `Transaction for ₴${action.payload.sum} \n has been deleted`,
+          toastParams
+        );
       })
       .addCase(deleteTransaction.pending, (state) => {
         state.isLoading = true;
@@ -55,5 +79,9 @@ const transactionsSlice = createSlice({
 });
 
 export const transactionsReducer = transactionsSlice.reducer;
-export const { setIsAddTransaction, setIsEditTransaction } =
-  transactionsSlice.actions;
+export const {
+  setIsAddTransaction,
+  setIsEditTransaction,
+
+  setDeletingTransaction,
+} = transactionsSlice.actions;

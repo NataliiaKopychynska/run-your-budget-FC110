@@ -3,17 +3,15 @@ import clsx from "clsx";
 import { LuPencil } from "react-icons/lu";
 
 import s from "../Transactions.module.css";
+import {
+  setDeletingTransaction,
+  setIsEditTransaction,
+} from "../../../redux/transactions/slice";
+import { useDispatch } from "react-redux";
 
-const TransactionsItem = ({
-  id,
-  date,
-  type,
-  category,
-  comment,
-  sum,
-  onDelete,
-  onEdit,
-}) => {
+const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       className={clsx(
@@ -53,13 +51,22 @@ const TransactionsItem = ({
       <div className={s.transactionsItemButtons}>
         <button
           className={s.transactionsItemDeleteBtn}
-          onClick={() => onDelete(id)}
+          onClick={() => {
+            dispatch(
+              setDeletingTransaction({ id, type, sum }),
+
+              document.getElementById("my_modal_3").showModal()
+            );
+          }}
         >
           Delete
         </button>
         <button
           className={s.transactionsItemEditBtn}
-          onClick={() => onEdit(id)}
+          onClick={() => {
+            dispatch(setIsEditTransaction(true));
+            console.log("Id for editing transaction", id);
+          }}
         >
           <LuPencil className={s.transactionsItemEditBtnImage} />
           <span className={s.transactionsItemEditBtnText}>Edit</span>
