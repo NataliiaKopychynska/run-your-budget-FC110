@@ -1,13 +1,14 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectTransactions } from "../../../redux/transactions/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
-import s from "./TransactionsList.module.css";
+import s from "../Transactions.module.css";
 import { useEffect } from "react";
 import {
   deleteTransaction,
   fetchTransactions,
 } from "../../../redux/transactions/operations";
 import { setIsEditTransaction } from "../../../redux/transactions/slice";
+import clsx from "clsx";
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -25,6 +26,15 @@ const TransactionsList = () => {
 
   return (
     <>
+      <div className={s.transactionListHeader}>
+        <p className={s.transactionsListHeaderItem}>Date</p>
+        <p className={s.transactionsListHeaderItem}>Type</p>
+        <p className={s.transactionsListHeaderItem}>Category</p>
+        <p className={s.transactionsListHeaderItem}>Comment</p>
+        <p className={s.transactionsListHeaderItem}>Sum</p>
+        <p className={s.transactionsListHeaderItem}></p>
+      </div>
+
       {transactionsList.length === 0 ? (
         <div className={s.withoutTransaction}>
           <p className={s.withoutTransactionMain}>
@@ -38,7 +48,7 @@ const TransactionsList = () => {
         <ul className={s.transactionsList}>
           {transactionsList.map((transaction) => {
             return (
-              <li key={transaction.id}>
+              <li key={transaction.id} className={s.transactionLi}>
                 <TransactionsItem
                   {...transaction}
                   onDelete={handleDeleteBtn}

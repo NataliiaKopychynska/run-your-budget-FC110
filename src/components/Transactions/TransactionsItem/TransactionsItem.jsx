@@ -2,7 +2,7 @@ import clsx from "clsx";
 
 import { LuPencil } from "react-icons/lu";
 
-import s from "./TransactionsItem.module.css";
+import s from "../Transactions.module.css";
 
 const TransactionsItem = ({
   id,
@@ -23,7 +23,7 @@ const TransactionsItem = ({
     >
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Date</p>
-        <p className={s.transactionsItemValue}>{date}</p>
+        <p className={s.transactionsItemValue}>{date.substring(0, 7)}</p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Type</p>
@@ -35,7 +35,9 @@ const TransactionsItem = ({
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Comment</p>
-        <p className={s.transactionsItemValue}>{comment}</p>
+        <p className={s.transactionsItemValue}>
+          {comment.length > 0 ? comment : "---"}
+        </p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Sum</p>
@@ -59,7 +61,8 @@ const TransactionsItem = ({
           className={s.transactionsItemEditBtn}
           onClick={() => onEdit(id)}
         >
-          <LuPencil /> Edit
+          <LuPencil className={s.transactionsItemEditBtnImage} />
+          <span className={s.transactionsItemEditBtnText}>Edit</span>
         </button>
       </div>
     </div>
