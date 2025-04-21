@@ -9,25 +9,23 @@ import {
   setIsEditTransaction,
 } from "../../../redux/transactions/slice";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
+
 import Button from "../../Buttons/Button";
 import ButtonGradient from "../../Buttons/ButtonGradient";
 
 const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
   const dispatch = useDispatch();
-  const [isHovered, setIsHovered] = useState(false);
 
   const handleDeleteBtn = () => {
     dispatch(setDeletingTransaction({ id, type, sum }));
-    document.getElementById("my_modal_3").showModal();
+    document.getElementById("deleteModal").showModal();
   };
 
   return (
     <div
       className={clsx(
         s.transactionsItem,
-        type === true ? s.transactionsItemIncome : s.transactionsItemExpense,
-        isHovered && s.hovered
+        type === true ? s.transactionsItemIncome : s.transactionsItemExpense
       )}
     >
       <div className={s.transactionsItemSpec}>
@@ -63,26 +61,13 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
         <ButtonGradient
           text={"Delete"}
           onClickFn={handleDeleteBtn}
-          newClass={styles.transactionsItemDeleteBtn}
+          newClass={clsx(
+            styles.transactionsItemDeleteBtn,
+            s.transactionsItemDeleteBtn
+          )}
         />
-        {/* <button
-          className={s.transactionsItemDeleteBtn}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
-          onClick={() => {
-            dispatch(
-              setDeletingTransaction({ id, type, sum }),
-
-              document.getElementById("my_modal_3").showModal()
-            );
-          }}
-        >
-          Delete
-        </button> */}
         <button
           className={s.transactionsItemEditBtn}
-          onMouseEnter={() => setIsHovered(true)}
-          onMouseLeave={() => setIsHovered(false)}
           onClick={() => {
             dispatch(setIsEditTransaction(true));
             console.log("Id for editing transaction", id);

@@ -12,7 +12,7 @@
   color: white;
   border: none;
   display: flex;
-  justify-content: center;
+  justify-content: start;
   align-items: center;
   margin: 0 auto;
   font-size: 16px;
@@ -62,6 +62,7 @@
 }
 
 .transactionsItemDeleteBtn {
+  justify-self: start;
   padding: 4px 12px;
   width: 69px;
   height: 29px;
