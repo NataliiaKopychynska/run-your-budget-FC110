@@ -1,5 +1,5 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { loginThunk } from "./operations";
+import { login } from "./operations";
 
 const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || { name: "", email: "" },
@@ -20,11 +20,11 @@ const authSlice = createSlice({
   },
   extraReducers: (builder) => {
     builder
-      .addCase(loginThunk.pending, (state) => {
+      .addCase(login.pending, (state) => {
         state.isLoading = true;
         state.error = null;
       })
-      .addCase(loginThunk.fulfilled, (state, action) => {
+      .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
         state.isLogin = true;
         state.token = action.payload.token;
@@ -32,7 +32,7 @@ const authSlice = createSlice({
         localStorage.setItem("user", JSON.stringify(action.payload.user));
         localStorage.setItem("token", action.payload.token);
       })
-      .addCase(loginThunk.rejected, (state, action) => {
+      .addCase(login.rejected, (state, action) => {
         state.error = action.payload;
         state.isLoading = false;
       });

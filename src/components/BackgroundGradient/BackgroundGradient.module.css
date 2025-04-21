@@ -3,7 +3,7 @@
   position: fixed;
   top: 0;
   left: 0;
-  width: 100%;
+  width: 100vh;
   height: 100%;
   z-index: -1;
   overflow: hidden;
@@ -82,7 +82,8 @@
 
   .gradientBackgroundTablet {
     display: inline;
-    position: absolute;
+    /* position: absolute; */
+    position: fixed;
     top: 0;
     left: 0;
     width: 100%;
@@ -165,11 +166,16 @@
   }
 
   .backgroundContainerDesktop {
+    /* background-attachment: scroll; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+
     display: inline;
-    position: absolute;
+    position: fixed;
+    /* position: absolute; */
     top: 0;
     left: 0;
-    width: 180%;
+    width: 100%;
     height: 100%;
     overflow: hidden;
     z-index: -1;
