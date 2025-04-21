@@ -57,11 +57,7 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
           onClick={() => {
-            dispatch(
-              setDeletingTransaction({ id, type, sum }),
-
-              document.getElementById("my_modal_3").showModal()
-            );
+            dispatch(dispatch(setDeletingTransaction({ id, type, sum })));
           }}
         >
           Delete

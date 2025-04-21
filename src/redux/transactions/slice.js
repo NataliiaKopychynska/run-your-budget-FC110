@@ -20,8 +20,7 @@ const initialState = {
   isError: false,
   isEditTransaction: false,
   isAddTransaction: false,
-
-  deletingTransaction: {},
+  deletingTransaction: null,
 };
 
 const transactionsSlice = createSlice({
