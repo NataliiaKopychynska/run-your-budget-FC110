@@ -1,0 +1,13 @@
+.nav {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 36px;
+  margin-bottom: 15px;
+}
+
+.link {
+}
+
+.icon {
+}
