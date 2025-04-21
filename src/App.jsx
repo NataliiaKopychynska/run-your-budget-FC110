@@ -12,12 +12,12 @@ import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
-import HeaderPage from "./components/Header/HeaderPage";
+import Header from "./components/Header/Header";
 
 const App = () => {
   return (
     <>
-      <HeaderPage />
+      <Header />
       <Navigation />
       <Loader />
       <BackgroundGradientTablet />

@@ -1,6 +1,6 @@
 import s from "./Header.module.css";
 
-const HeaderPage = () => {
+const Header = () => {
   return (
     <header>
       <div className={s.headerContainer}>
@@ -78,4 +78,4 @@ const HeaderPage = () => {
   );
 };
 
-export default HeaderPage;
+export default Header;
