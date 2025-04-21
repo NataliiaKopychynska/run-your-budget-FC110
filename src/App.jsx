@@ -8,21 +8,21 @@ import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
-
+import Loader from "./components/Loader/Loader";
 
 const App = () => {
   return (
     <>
-
+      <Loader />
       <DeleteModal />
       <Balance />
       <Transactions />
       <LoginPage />
-<ModalAddTransaction/>
+      <ModalAddTransaction />
 
       <Routes>
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
+        <Route path="/register" element={<RegisterPage />} />
+        <Route path="/login" element={<LoginPage />} />
       </Routes>
     </>
   );
