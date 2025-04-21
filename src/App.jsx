@@ -19,6 +19,7 @@ const App = () => {
     <>
       <Header />
       <Navigation />
+
       <Loader />
       <BackgroundGradientTablet />
       <DeleteModal />
