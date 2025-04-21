@@ -17,8 +17,8 @@ import HeaderComponent from "./components/Header/HeaderComponent";
 const App = () => {
   return (
     <>
-      <Navigation />
       <HeaderComponent />
+      <Navigation />
       <Loader />
       <BackgroundGradientTablet />
       <DeleteModal />

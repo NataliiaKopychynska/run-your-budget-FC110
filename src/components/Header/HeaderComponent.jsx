@@ -3,7 +3,6 @@ import s from "./Header.module.css";
 const HeaderComponent = () => {
   return (
     <header>
-      <p>Hello</p>
       <div className={s.headerContainer}>
         <div className={s.logoContainer}>
           <svg
