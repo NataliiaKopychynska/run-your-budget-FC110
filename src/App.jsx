@@ -5,6 +5,8 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
+import Currency from "./components/Currency/Currency";
+import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
 
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
@@ -23,6 +25,7 @@ const App = () => {
       <BackgroundGradientTablet />
       <DeleteModal />
       <Balance />
+      <Currency />
       <Transactions />
       <LoginPage />
 
@@ -32,6 +35,7 @@ const App = () => {
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
         <Route path="/" element={<HomePage />} />
+        <Route path="/currency" element={<CurrencyPage />} />
       </Routes>
     </>
   );
