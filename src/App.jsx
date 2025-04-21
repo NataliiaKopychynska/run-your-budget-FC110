@@ -7,7 +7,6 @@ import HomePage from "./pages/HomePage/HomePage";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
 
 import DeleteModal from "./components/DeleteModal/DeleteModal";
-
 import Navigation from "./components/Navigation/Navigation";
 import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
