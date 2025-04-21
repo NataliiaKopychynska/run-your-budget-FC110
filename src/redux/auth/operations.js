@@ -1,6 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 export const goitApi = axios.create({
   baseURL: "https://673c3b2f96b8dcd5f3f903c1.mockapi.io/",
 });
@@ -61,3 +62,4 @@ export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
     return thunkApi.rejectWithValue(error.message);
   }
 });
+
