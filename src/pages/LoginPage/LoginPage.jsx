@@ -1,7 +1,7 @@
 import React from "react";
 
 import styles from "./LoginPage.module.css";
-import FormLogin from "../../components/LoginForm2/LoginForm";
+import LoginForm from "../../components/loginForm/LoginForm";
 
 function LoginPage() {
   return (
@@ -13,8 +13,7 @@ function LoginPage() {
         </svg>
         <h1 className={styles.logoText}>Money Guard</h1>
       </div>
-      <FormLogin />
-      <FormLogin />
+      <LoginForm />
     </div>
   );
 }
