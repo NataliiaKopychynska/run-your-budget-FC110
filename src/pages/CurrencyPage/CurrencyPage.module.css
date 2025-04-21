@@ -1,0 +1,9 @@
+.pageWrapper {
+    padding: 20px;
+    background-color: #f5f5f5;
+    min-height: 100dvh;
+    display: flex;
+    justify-content: center;
+    align-items: flex-start;
+    box-sizing: border-box;
+}

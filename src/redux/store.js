@@ -6,6 +6,7 @@ import { combineReducers } from "redux";
 import { transactionsReducer } from "./transactions/slice";
 import { modalReducer } from "./modal/slice";
 import { globalReducer } from "./global/slice";
+import { currencyReducer } from "./currency/slice";
 
 const persistConfig = {
   key: "root",
@@ -18,6 +19,7 @@ const rootReducer = combineReducers({
   transactions: transactionsReducer,
   modal: modalReducer,
   global: globalReducer,
+  currency: currencyReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
