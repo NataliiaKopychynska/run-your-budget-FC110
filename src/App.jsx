@@ -10,19 +10,18 @@ import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
-
+import Loader from "./components/Loader/Loader";
 
 const App = () => {
   return (
     <>
+      <Loader />
       <BackgroundGradientTablet />
-
-
       <DeleteModal />
       <Balance />
       <Transactions />
       <LoginPage />
-<ModalAddTransaction/>
+      <ModalAddTransaction />
 
 
       <Routes>
