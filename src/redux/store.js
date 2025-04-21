@@ -4,16 +4,18 @@ import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { combineReducers } from "redux";
 import { transactionsReducer } from "./transactions/slice";
+import { modalReducer } from "./modal/slice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth", "transactions"],
+  whitelist: ["auth"],
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   transactions: transactionsReducer,
+  modal: modalReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

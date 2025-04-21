@@ -1,19 +1,30 @@
+import { useSelector } from "react-redux";
+
 import s from "./Transactions.module.css";
+
 import TransactionsList from "./TransactionsList/TransactionsList";
 
+// import { setIsAddTransaction } from "../../redux/transactions/slice";
+import { selectIsError } from "../../redux/transactions/selectors";
+import SomethingWrong from "../SomethingWrong/SomethingWrong";
+import ButtonAddTransactions from "../ButtonAddTransactions/ButtonAddTransactions";
+
 const Transactions = () => {
-  const handleAdd = () => {
-    console.log("Add");
-  };
+  // const dispatch = useDispatch();
+  const isError = useSelector(selectIsError);
+
+  // const handleAddBtn = () => {
+  //   dispatch(setIsAddTransaction(true));
+  //   console.log("You can add transaction");
+  // };
 
   return (
     <div className={s.transactions}>
-      <TransactionsList />
-      <button type="button">
-        <span className={s.transactionsAddBtn} onClick={() => handleAdd()}>
-          +
-        </span>
-      </button>
+      {!isError ? <TransactionsList /> : <SomethingWrong />}
+      {/* <button type="button" onClick={() => handleAddBtn()}>
+        <span className={s.transactionsAddBtn}>+</span>
+      </button> */}
+      <ButtonAddTransactions/>
     </div>
   );
 };

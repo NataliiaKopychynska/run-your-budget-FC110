@@ -1,19 +1,15 @@
 .form {
   max-width: 533px;
-  max-height: 570px;
+  max-height: 624px;
   display: flex;
   flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  padding: 20px;
-  border-radius: 5px;
+  padding: 40px 62px;
+  border-radius: 8px;
   margin: 0 auto;
-  flex-shrink: 0;
-  margin-top: 20px;
-  flex-shrink: 0;
   background: var(--Form-color, rgba(255, 255, 255, 0.1));
   box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
   backdrop-filter: blur(50px);
+  width: 100%;
 }
 
 .title {
@@ -22,14 +18,9 @@
 }
 
 .label {
+  position: relative;
   display: flex;
-  flex-direction: column;
-  margin-bottom: 10px;
-  width: 100%;
-}
-
-.link {
-  margin-top: 10px;
+  align-items: center;
 }
 
 .buttons {
@@ -56,6 +47,17 @@
   place-items: center;
   margin: 0 auto;
 }
+.button_reg:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #7000ff 0%,
+    #9e40ba 31%,
+    #ffc727 100%
+  );
+  background-size: 200%;
+  background-position: right center;
+}
 
 .button_log {
   color: #623f8b;
@@ -66,15 +68,52 @@
   background: #fcfcfc;
   border: none;
 }
+.button_log:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #7000ff 30%,
+    #9e40ba 31%,
+    white 80%
+  );
+  background-size: 200%;
+  background-position: right center;
+}
 
 .input {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 20px;
-  padding-left: 20px;
+  font-size: 18px;
   border: none;
   outline: none;
   background-color: transparent;
-  border-bottom: 1px solid #ccc;
-  color: rgba(255, 255, 255, 0.4);
+  border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+  color: white;
+  width: 100%;
+  padding: 0px 54px 8px;
+}
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.icon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+.logo {
+  margin: 0 auto;
+  width: 35.95px;
+  height: 35.97px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 0;
+}
+.errMsg {
+  display: flex;
+  font-size: 10px;
+  justify-content: flex-end;
 }

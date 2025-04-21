@@ -1,17 +1,17 @@
-import s from "./TransactionsItem.module.css";
-import { LuPencil } from "react-icons/lu";
 import clsx from "clsx";
 
-const TransactionsItem = ({
-  id,
-  date,
-  type,
-  category,
-  comment,
-  sum,
-  onDelete,
-  onEdit,
-}) => {
+import { LuPencil } from "react-icons/lu";
+
+import s from "../Transactions.module.css";
+import {
+  setDeletingTransaction,
+  setIsEditTransaction,
+} from "../../../redux/transactions/slice";
+import { useDispatch } from "react-redux";
+
+const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
+  const dispatch = useDispatch();
+
   return (
     <div
       className={clsx(
@@ -21,7 +21,7 @@ const TransactionsItem = ({
     >
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Date</p>
-        <p className={s.transactionsItemValue}>{date}</p>
+        <p className={s.transactionsItemValue}>{date.substring(0, 7)}</p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Type</p>
@@ -33,7 +33,9 @@ const TransactionsItem = ({
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Comment</p>
-        <p className={s.transactionsItemValue}>{comment}</p>
+        <p className={s.transactionsItemValue}>
+          {comment.length > 0 ? comment : "---"}
+        </p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Sum</p>
@@ -49,15 +51,25 @@ const TransactionsItem = ({
       <div className={s.transactionsItemButtons}>
         <button
           className={s.transactionsItemDeleteBtn}
-          onClick={() => onDelete(id)}
+          onClick={() => {
+            dispatch(
+              setDeletingTransaction({ id, type, sum }),
+
+              document.getElementById("my_modal_3").showModal()
+            );
+          }}
         >
           Delete
         </button>
         <button
           className={s.transactionsItemEditBtn}
-          onClick={() => onEdit(id)}
+          onClick={() => {
+            dispatch(setIsEditTransaction(true));
+            console.log("Id for editing transaction", id);
+          }}
         >
-          <LuPencil /> Edit
+          <LuPencil className={s.transactionsItemEditBtnImage} />
+          <span className={s.transactionsItemEditBtnText}>Edit</span>
         </button>
       </div>
     </div>

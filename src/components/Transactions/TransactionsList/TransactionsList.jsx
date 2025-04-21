@@ -1,36 +1,50 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectTransactions } from "../../../redux/transactions/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
-import s from "./TransactionsList.module.css";
+import s from "../Transactions.module.css";
 import { useEffect } from "react";
-import { fetchTransaction } from "../../../redux/transactions/operations";
+import { fetchTransactions } from "../../../redux/transactions/operations";
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
-
   const transactionsList = useSelector(selectTransactions);
 
-  const handleDelete = () => console.log("DELETE");
-  const handleEdit = () => console.log("EDIT");
-
   useEffect(() => {
-    dispatch(fetchTransaction());
+    dispatch(fetchTransactions());
   }, [dispatch]);
 
   return (
-    <ul className={s.transactionsList}>
-      {transactionsList.map((transaction) => {
-        return (
-          <li key={transaction.id}>
-            <TransactionsItem
-              {...transaction}
-              onDelete={handleDelete}
-              onEdit={handleEdit}
-            />
-          </li>
-        );
-      })}
-    </ul>
+    <>
+      <div className={s.transactionListHeader}>
+        <p className={s.transactionsListHeaderItem}>Date</p>
+        <p className={s.transactionsListHeaderItem}>Type</p>
+        <p className={s.transactionsListHeaderItem}>Category</p>
+        <p className={s.transactionsListHeaderItem}>Comment</p>
+        <p className={s.transactionsListHeaderItem}>Sum</p>
+        <p className={s.transactionsListHeaderItem}></p>
+      </div>
+
+      {transactionsList.length === 0 ? (
+        <div className={s.withoutTransaction}>
+          <p className={s.withoutTransactionMain}>
+            You don't have any transaction.
+          </p>
+          <p className={s.withoutTransactionSecondary}>
+            Let's start to use this awesome application.
+          </p>
+        </div>
+      ) : (
+        <ul className={s.transactionsList}>
+          {transactionsList.map((transaction) => {
+            return (
+              <li key={transaction.id} className={s.transactionLi}>
+                <TransactionsItem {...transaction} />
+              </li>
+            );
+          })}
+        </ul>
+      )}
+    </>
   );
 };
 export default TransactionsList;
