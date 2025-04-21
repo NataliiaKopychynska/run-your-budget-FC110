@@ -55,12 +55,28 @@
     #9e40ba 61.46%,
     #7000ff 90.54%
   );
+  transition: all 1000ms;
+}
+
+.transactionsItemDeleteBtn:hover {
+  background: linear-gradient(
+    283deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
 }
 
 .transactionsItemEditBtn {
   display: flex;
   align-items: center;
   gap: 4px;
+  transition: all 500ms;
+}
+
+.transactionsItemEditBtn:hover {
+  transform: scale(1.5);
+  color: #9e40ba;
 }
 
 .income {
@@ -121,6 +137,11 @@
   );
   font-size: 30px;
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  transition: all ease 2000ms;
+}
+
+.transactionsAddBtn:hover {
+  transform: rotate(360deg);
 }
 
 @media (min-width: 768px) {

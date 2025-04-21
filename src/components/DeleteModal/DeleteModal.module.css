@@ -62,12 +62,22 @@
     #9e40ba 61.46%,
     #7000ff 90.54%
   );
+  transition: all 500ms;
+}
+
+.modalNoBtn:hover {
+  transform: scale(1.07);
 }
 
 .modalYesBtn {
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: #fff;
   color: #623f8b;
+  transition: all 500ms;
+}
+
+.modalYesBtn:hover {
+  transform: scale(1.07);
 }
 
 .income {
@@ -84,6 +94,11 @@
   position: absolute;
   right: 10px;
   top: 10px;
+  transition: all 1500ms;
+}
+
+.modalXBtn:hover {
+  transform: rotate(360deg);
 }
 
 .modalBox {
