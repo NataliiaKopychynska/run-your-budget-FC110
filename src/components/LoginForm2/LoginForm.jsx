@@ -6,7 +6,7 @@ import { Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
 // import { loginThunk } from "../../redux/auth/operations";
 
-function LoginForm() {
+function FormLogin() {
   //   const dispatch = useDispatch();
   const navigate = useNavigate();
 
@@ -66,4 +66,4 @@ function LoginForm() {
   );
 }
 
-export default LoginForm;
+export default FormLogin;
