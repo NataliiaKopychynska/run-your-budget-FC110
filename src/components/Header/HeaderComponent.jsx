@@ -1,8 +1,9 @@
 import s from "./Header.module.css";
 
-const Header = () => {
+const HeaderComponent = () => {
   return (
     <header>
+      <p>Hello</p>
       <div className={s.headerContainer}>
         <div className={s.logoContainer}>
           <svg
@@ -78,4 +79,4 @@ const Header = () => {
   );
 };
 
-export default Header;
+export default HeaderComponent;

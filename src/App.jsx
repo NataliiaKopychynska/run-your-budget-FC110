@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Transactions from "./components/Transactions/Transactions";
-import LoginPage from "./pages/LoginPage/LoginPage.jsx";
+import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
@@ -12,20 +12,20 @@ import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
-import Header from "./components/Header/Header";
-
+import HeaderComponent from "./components/Header/HeaderComponent";
 
 const App = () => {
   return (
     <>
-      <Header />
       <Navigation />
+      <HeaderComponent />
       <Loader />
       <BackgroundGradientTablet />
       <DeleteModal />
       <Balance />
       <Transactions />
       <LoginPage />
+
       <ModalAddTransaction />
 
       <Routes>
