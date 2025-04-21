@@ -18,6 +18,9 @@ const App = () => {
   return (
     <>
       <HeaderPage />
+      <HeaderPage />
+      <HeaderPage />
+
       <Navigation />
       <Loader />
       <BackgroundGradientTablet />
