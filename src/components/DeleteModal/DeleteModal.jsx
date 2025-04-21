@@ -1,16 +1,31 @@
 import { useDispatch, useSelector } from "react-redux";
 import { selectDeletingTransaction } from "../../redux/transactions/selectors";
 import s from "./DeleteModal.module.css";
+import styles from "../Buttons/Button.module.css";
 import { setDeletingTransaction } from "../../redux/transactions/slice";
 import { deleteTransaction } from "../../redux/transactions/operations";
 import clsx from "clsx";
 
 import { useEffect, useRef } from "react";
+import ButtonGradient from "../Buttons/ButtonGradient";
+import Button from "../Buttons/Button";
 
 const DeleteModal = () => {
   const deletingTransaction = useSelector(selectDeletingTransaction);
   const dispatch = useDispatch();
   const modalRef = useRef(null);
+
+  const handleYesClick = () => {
+    dispatch(deleteTransaction(deletingTransaction.id));
+    dispatch(setDeletingTransaction({}));
+    modalRef.current?.close();
+  };
+
+  const handleNoClick = () => {
+    dispatch(setDeletingTransaction({}));
+
+    modalRef.current?.close();
+  };
 
   useEffect(() => {
     const handleKeyDown = (event) => {
@@ -83,28 +98,17 @@ const DeleteModal = () => {
             </p>
           </div>
           <div className={s.modalButtons}>
-            <button
-              className={s.modalNoBtn}
-              type="button"
-              onClick={() => {
-                dispatch(setDeletingTransaction({}));
+            <Button
+              text={"No, I don't want"}
+              onClickFn={handleNoClick}
+              newClass={styles.deleteModalBtns}
+            />
 
-                modalRef.current?.close();
-              }}
-            >
-              No, I don't want
-            </button>
-            <button
-              className={s.modalYesBtn}
-              type="button"
-              onClick={() => {
-                dispatch(deleteTransaction(deletingTransaction.id));
-                dispatch(setDeletingTransaction({}));
-                modalRef.current?.close();
-              }}
-            >
-              Yes, I want
-            </button>
+            <ButtonGradient
+              text={"Yes, I want"}
+              onClickFn={handleYesClick}
+              newClass={styles.deleteModalBtns}
+            />
           </div>
         </div>
       </div>

@@ -3,16 +3,24 @@ import clsx from "clsx";
 import { LuPencil } from "react-icons/lu";
 
 import s from "../Transactions.module.css";
+import styles from "../../Buttons/Button.module.css";
 import {
   setDeletingTransaction,
   setIsEditTransaction,
 } from "../../../redux/transactions/slice";
 import { useDispatch } from "react-redux";
 import { useState } from "react";
+import Button from "../../Buttons/Button";
+import ButtonGradient from "../../Buttons/ButtonGradient";
 
 const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
   const dispatch = useDispatch();
   const [isHovered, setIsHovered] = useState(false);
+
+  const handleDeleteBtn = () => {
+    dispatch(setDeletingTransaction({ id, type, sum }));
+    document.getElementById("my_modal_3").showModal();
+  };
 
   return (
     <div
@@ -52,7 +60,12 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
         </p>
       </div>
       <div className={s.transactionsItemButtons}>
-        <button
+        <ButtonGradient
+          text={"Delete"}
+          onClickFn={handleDeleteBtn}
+          newClass={styles.transactionsItemDeleteBtn}
+        />
+        {/* <button
           className={s.transactionsItemDeleteBtn}
           onMouseEnter={() => setIsHovered(true)}
           onMouseLeave={() => setIsHovered(false)}
@@ -65,7 +78,7 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
           }}
         >
           Delete
-        </button>
+        </button> */}
         <button
           className={s.transactionsItemEditBtn}
           onMouseEnter={() => setIsHovered(true)}
