@@ -2,11 +2,11 @@ import React from "react";
 import styles from "./Button.module.css";
 import clsx from "clsx";
 
-function BigButton({ type = "button", text, onClick, className }) {
+function ButtonGradient({ type = "button", text, onClick, className }) {
   return (
     <button
       type={type}
-      className={clsx(styles.button_big, className)}
+      className={clsx(styles.button_gradient, className)}
       onClick={onClick}
     >
       {text}
@@ -14,4 +14,4 @@ function BigButton({ type = "button", text, onClick, className }) {
   );
 }
 
-export default BigButton;
+export default ButtonGradient;

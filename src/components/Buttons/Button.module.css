@@ -1,7 +1,7 @@
-.button_gradient_big {
-  border-radius: 20px;
+.button_gradient {
+  /* border-radius: 20px;
   width: 300px;
-  height: 50px;
+  height: 50px; */
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: linear-gradient(
     97deg,
@@ -20,7 +20,7 @@
   transition: transform 0.3s ease, background-position 0.3s ease;
 }
 
-.button_gradient_big:hover {
+.button_gradient:hover {
   transform: scale(1.05);
   background-image: linear-gradient(
     to right,
@@ -32,17 +32,17 @@
   background-position: right center;
 }
 
-.button_big {
+.button {
   color: #623f8b;
-  border-radius: 20px;
+  /* border-radius: 20px;
   width: 300px;
-  height: 50px;
+  height: 50px; */
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: #fcfcfc;
   border: none;
 }
 
-.button_big:hover {
+.button:hover {
   transform: scale(1.05);
   background-image: linear-gradient(
     to right,
