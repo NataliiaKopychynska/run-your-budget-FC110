@@ -1,7 +1,7 @@
 import { Link, Route, Routes } from "react-router-dom";
 import "./App.css";
 import Transactions from "./components/Transactions/Transactions";
-import LoginPage from "./pages/LoginPage/LoginPage";
+import LoginPage from "./pages/LoginPage/LoginPage.jsx";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
@@ -13,6 +13,7 @@ import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransa
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
 import Header from "./components/Header/Header";
+
 
 const App = () => {
   return (

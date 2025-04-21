@@ -92,7 +92,7 @@
 }
 
 .transactionsList {
-  background: #101010;
+  /* background: #101010; */
   display: flex;
   flex-wrap: wrap;
   gap: 10px;
