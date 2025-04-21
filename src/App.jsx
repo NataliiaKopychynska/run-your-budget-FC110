@@ -9,7 +9,6 @@ import BackgroundGradientTablet from "./components/BackgroundGradient/Background
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 import Navigation from "./components/Navigation/Navigation";
-import Header from "./components/Header/Header";
 import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
@@ -17,7 +16,6 @@ import Loader from "./components/Loader/Loader";
 const App = () => {
   return (
     <>
-      <Header />
       <Navigation />
       <Loader />
       <BackgroundGradientTablet />
