@@ -15,7 +15,7 @@ const DeleteModal = () => {
   useEffect(() => {
     const handleKeyDown = (event) => {
       if (event.code === "Escape" && modalRef.current?.open) {
-        dispatch(setDeletingTransaction({}));
+        dispatch(setDeletingTransaction(null));
         modalRef.current?.close();
       }
     };
@@ -37,78 +37,86 @@ const DeleteModal = () => {
     };
   }, [deletingTransaction]);
 
+  useEffect(() => {
+    if (deletingTransaction && modalRef.current) {
+      modalRef.current.showModal();
+    }
+  }, [deletingTransaction]);
+
   return (
-    <dialog
-      ref={modalRef}
-      id="my_modal_3"
-      className={s.modalContainer}
-      onClick={() => {
-        dispatch(setDeletingTransaction({}));
-        modalRef.current?.close();
-      }}
-    >
-      <div className="modal-box" onClick={(e) => e.stopPropagation()}>
-        <div className={s.modal}>
-          <button
-            onClick={() => {
-              dispatch(setDeletingTransaction({}));
-              modalRef.current?.close();
-            }}
-            className={s.modalXBtn}
-          >
-            ✕
-          </button>
-          <div className={s.modalQuestion}>
-            <p className={s.modalQuestionText}>
-              Do you really want to delete this
-            </p>
-
-            <p className={s.modalQuestionText}>
-              <span
-                className={clsx(
-                  deletingTransaction.type === true ? s.income : s.expense
-                )}
-              >
-                {deletingTransaction.type === true ? "income" : "expense"}
-              </span>
-              &nbsp;transaction for&nbsp;
-              <span
-                className={clsx(
-                  deletingTransaction.type === true ? s.income : s.expense
-                )}
-              >
-                ₴{deletingTransaction.sum}
-              </span>
-              ?
-            </p>
-          </div>
-          <div className={s.modalButtons}>
+    deletingTransaction !== null && (
+      <dialog
+        ref={modalRef}
+        id="deleteModal"
+        className={s.modalContainer}
+        onClick={() => {
+          dispatch(setDeletingTransaction(null));
+          modalRef.current?.close();
+        }}
+      >
+        <div className="modal-box" onClick={(e) => e.stopPropagation()}>
+          <div className={s.modal}>
             <button
-              className={s.modalNoBtn}
-              type="button"
               onClick={() => {
-                dispatch(setDeletingTransaction({}));
-
+                dispatch(setDeletingTransaction(null));
                 modalRef.current?.close();
               }}
+              className={s.modalXBtn}
             >
-              No, I don't want
+              ✕
             </button>
-            <button
-              className={s.modalYesBtn}
-              type="button"
-              onClick={() => {
-                dispatch(deleteTransaction(deletingTransaction.id));
-                dispatch(setDeletingTransaction({}));
-                modalRef.current?.close();
-              }}
-            >
-              Yes, I want
-            </button>
+            <div className={s.modalQuestion}>
+              <p className={s.modalQuestionText}>
+                Do you really want to delete this
+              </p>
+
+              <p className={s.modalQuestionText}>
+                <span
+                  className={clsx(
+                    deletingTransaction.type === true ? s.income : s.expense
+                  )}
+                >
+                  {deletingTransaction.type === true ? "income" : "expense"}
+                </span>
+                &nbsp;transaction for&nbsp;
+                <span
+                  className={clsx(
+                    deletingTransaction.type === true ? s.income : s.expense
+                  )}
+                >
+                  ₴{deletingTransaction.sum}
+                </span>
+                ?
+              </p>
+            </div>
+            <div className={s.modalButtons}>
+              <button
+                className={s.modalNoBtn}
+                type="button"
+                onClick={() => {
+                  dispatch(setDeletingTransaction(null));
+
+                  modalRef.current?.close();
+                }}
+              >
+                No, I don't want
+              </button>
+              <button
+                className={s.modalYesBtn}
+                type="button"
+                onClick={() => {
+                  dispatch(deleteTransaction(deletingTransaction.id));
+                  dispatch(setDeletingTransaction(null));
+                  modalRef.current?.close();
+                }}
+              >
+                Yes, I want
+              </button>
+            </div>
           </div>
         </div>
-      </div>
-    </dialog>
+      </dialog>
+    )
   );
 };
 export default DeleteModal;
