@@ -1,6 +1,6 @@
 import s from "./Header.module.css";
 
-const Header_temp = () => {
+const Header = () => {
   return (
     <header>
       <div className={s.headerContainer}>
@@ -78,4 +78,4 @@ const Header_temp = () => {
   );
 };
 
-export default Header_temp;
+export default Header;
