@@ -8,15 +8,18 @@ import {
   setIsEditTransaction,
 } from "../../../redux/transactions/slice";
 import { useDispatch } from "react-redux";
+import { useState } from "react";
 
 const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
   const dispatch = useDispatch();
+  const [isHovered, setIsHovered] = useState(false);
 
   return (
     <div
       className={clsx(
         s.transactionsItem,
-        type === true ? s.transactionsItemIncome : s.transactionsItemExpense
+        type === true ? s.transactionsItemIncome : s.transactionsItemExpense,
+        isHovered && s.hovered
       )}
     >
       <div className={s.transactionsItemSpec}>
@@ -51,6 +54,8 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
       <div className={s.transactionsItemButtons}>
         <button
           className={s.transactionsItemDeleteBtn}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           onClick={() => {
             dispatch(
               setDeletingTransaction({ id, type, sum }),
@@ -63,6 +68,8 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
         </button>
         <button
           className={s.transactionsItemEditBtn}
+          onMouseEnter={() => setIsHovered(true)}
+          onMouseLeave={() => setIsHovered(false)}
           onClick={() => {
             dispatch(setIsEditTransaction(true));
             console.log("Id for editing transaction", id);
