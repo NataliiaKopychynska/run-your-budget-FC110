@@ -25,6 +25,7 @@ const App = () => {
       <Balance />
       <Transactions />
       <LoginPage />
+      <LoginPage />
       <ModalAddTransaction />
 
       <Routes>
