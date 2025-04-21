@@ -12,14 +12,13 @@ import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
-import Header from "./components/Header/Header";
-
+import HeaderComponent from "./components/Header/HeaderComponent.jsx";
 
 const App = () => {
   return (
     <>
-      <Header />
       <Navigation />
+      <HeaderComponent />
       <Loader />
       <BackgroundGradientTablet />
       <DeleteModal />
