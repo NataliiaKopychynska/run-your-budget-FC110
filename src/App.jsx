@@ -7,6 +7,7 @@ import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 import Balance from "./components/Balance/Balance";
+import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 
 
 const App = () => {
@@ -17,7 +18,7 @@ const App = () => {
       <Balance />
       <Transactions />
       <LoginPage />
-
+<ModalAddTransaction/>
 
       <Routes>
         <Route path="register" element={<RegisterPage />} />
