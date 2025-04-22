@@ -40,34 +40,6 @@
   font-size: 16px;
 }
 
-.transactionsItemDeleteBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 18px;
-  padding: 4px 12px;
-  width: 69px;
-  height: 29px;
-  color: #fff;
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    103deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
-  transition: all 1000ms;
-}
-
-.transactionsItemDeleteBtn:hover {
-  background: linear-gradient(
-    283deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
-}
-
 .hovered {
   box-shadow: 0px -10px 5px -7px rgba(255, 199, 39, 0.6) inset;
 }
