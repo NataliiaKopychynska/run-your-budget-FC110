@@ -2,28 +2,37 @@ import React from "react";
 import s from "./LoginForm.module.css";
 // import { useDispatch } from "react-redux";
 
-import { Field, Form, Formik } from "formik";
+import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
-// import { loginThunk } from "../../redux/auth/operations";
+import { Icon } from "../../Icon";
+import { toast, ToastContainer } from "react-toastify";
+import { login } from "../../redux/auth/operations";
+import { useDispatch } from "react-redux";
 
 function LoginForm() {
-  //   const dispatch = useDispatch();
+  const dispatch = useDispatch();
   const navigate = useNavigate();
 
-  //   const onSubmit = (values, { setSubmitting, resetForm }) => {
-  //     console.log(values);
-  //     dispatch(loginThunk(values))
-  //       .unwrap()
-  //       .then(() => navigate("/"));
-  //     setSubmitting(false);
-  //     resetForm();
-  //   };
-
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    () => navigate("/");
+    console.log(values);
+    dispatch(login(values))
+      .unwrap()
+      .then((res) => {
+        toast.success(`Welcome, ${res.name}!`);
+        navigate("/");
+      })
+      .catch(() => {
+        toast.error("Invalid credentials");
+      });
     setSubmitting(false);
     resetForm();
   };
+
+  //   const onSubmit = (values, { setSubmitting, resetForm }) => {
+  //     () => navigate("/");
+  //     setSubmitting(false);
+  //     resetForm();
+  //   };
 
   return (
     <>
@@ -35,21 +44,30 @@ function LoginForm() {
         onSubmit={onSubmit}
       >
         <Form className={s.form}>
+          <Icon id="#icon-Money-Guard" className={s.logo} />
           <p className={s.title}>Money Guard</p>
           <div className={s.label}>
+            <Icon id="#icon-email" className={s.icon} />
             <Field
               className={s.input}
               type="email"
               name="email"
               placeholder="E-mail"
             />
+            <ErrorMessage className={s.errMsg} name="email" component="div" />
           </div>
           <div className={s.label}>
+            <Icon id="#icon-lock" className={s.icon} />
             <Field
               className={s.input}
               type="password"
               name="password"
               placeholder="Password"
+            />
+            <ErrorMessage
+              className={s.errMsg}
+              name="password"
+              component="div"
             />
           </div>
           <div className={s.buttons}>

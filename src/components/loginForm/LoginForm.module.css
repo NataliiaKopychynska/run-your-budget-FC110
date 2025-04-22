@@ -78,3 +78,30 @@
   border-bottom: 1px solid #ccc;
   color: rgba(255, 255, 255, 0.4);
 }
+.input::placeholder {
+  color: rgba(255, 255, 255, 0.6);
+}
+.icon {
+  position: absolute;
+  left: 10px;
+  pointer-events: none;
+  width: 24px;
+  height: 24px;
+}
+.logo {
+  margin: 0 auto;
+  width: 35.95px;
+  height: 35.97px;
+}
+
+.fields {
+  display: flex;
+  flex-direction: column;
+  gap: 40px;
+  padding: 40px 0;
+}
+.errMsg {
+  display: flex;
+  font-size: 10px;
+  justify-content: flex-end;
+}
