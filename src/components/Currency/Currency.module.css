@@ -1,12 +1,12 @@
 .currencySection {
-    width: 100%;
+    width: 336px;
     min-height: 214px;
     background-color: rgba(74, 86, 226, 10%);
     box-sizing: border-box;
     color: white;
     font-family: "Poppins", sans-serif;
     font-size: 16px;
-    background-image: url(../../assets/chart.png);
+    background-image: url(../../assets/chartMobile.svg);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: contain;
@@ -51,7 +51,8 @@
 @media screen and (min-width: 1280px) {
     .currencySection {
         width: 480px;
-        height: 380px;
+        min-height: 380px;
+        background-image: url(../../assets/chart.svg);
     }
 
 }
