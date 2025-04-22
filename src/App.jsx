@@ -4,25 +4,27 @@ import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
-import Currency from "./components/Currency/Currency";
+// import Currency from "./components/Currency/Currency";
 import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
 
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
-import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
+// import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
-import Navigation from "./components/Navigation/Navigation";
-import HeaderComponent from "./components/Header/HeaderComponent";
+// import Navigation from "./components/Navigation/Navigation";
+// import HeaderComponent from "./components/Header/HeaderComponent";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 const App = () => {
   return (
     <>
       <BackgroundGradientTablet />
       <Loader />
+      <DeleteModal />
       {/* <HeaderComponent />
       <Navigation />
       
-      <DeleteModal />
+    
       <Balance />
       <Currency />
       <Transactions />
