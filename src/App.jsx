@@ -11,11 +11,14 @@ import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 // import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
+
+import { useMediaQuery } from "react-responsive";
 // import Navigation from "./components/Navigation/Navigation";
 // import HeaderComponent from "./components/Header/HeaderComponent";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 const App = () => {
+  const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <>
       <BackgroundGradientTablet />
@@ -26,7 +29,7 @@ const App = () => {
       
     
       <Balance />
-      <Currency />
+      {isDesktopOrTablet && <Currency />}
       <Transactions />
       <LoginPage />
 
