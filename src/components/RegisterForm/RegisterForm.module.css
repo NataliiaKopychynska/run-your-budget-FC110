@@ -93,6 +93,10 @@
 .input::placeholder {
   color: rgba(255, 255, 255, 0.6);
 }
+.input:disabled {
+  cursor: not-allowed;
+  opacity: 0.6;
+}
 .icon {
   position: absolute;
   left: 10px;
@@ -100,6 +104,7 @@
   width: 24px;
   height: 24px;
 }
+
 .logo {
   margin: 0 auto;
   width: 35.95px;
@@ -116,4 +121,7 @@
   display: flex;
   font-size: 10px;
   justify-content: flex-end;
+}
+.strength_bar {
+  position: relative;
 }

@@ -5,7 +5,8 @@ import { Link, useNavigate } from "react-router-dom";
 import { Icon } from "../../Icon";
 import { useDispatch } from "react-redux";
 import { register } from "../../redux/auth/operations";
-import { toast, ToastContainer } from "react-toastify";
+import PasswordStrengthBar from "react-password-strength-bar";
+import toast, { Toaster } from "react-hot-toast";
 
 const RegisterForm = () => {
   const dispatch = useDispatch();
@@ -13,8 +14,8 @@ const RegisterForm = () => {
   const onSubmit = ({ name, email, password }, { resetForm }) => {
     dispatch(register({ name, email, password }))
       .unwrap()
-      .then((res) => {
-        toast.success(`Welcome, ${res.name}!`);
+      .then((payload) => {
+        toast.success(`Welcome, ${payload.user.name}!`);
         navigate("/");
       })
       .catch(() => {
@@ -90,12 +91,17 @@ const RegisterForm = () => {
             </div>
             <div className={s.label}>
               <Icon id="#icon-lock" className={s.icon} />
-              <Field
-                className={s.input}
-                type="password"
-                name="confirmPassword"
-                placeholder="Confirm password"
-              />
+              <Field name="confirmPassword">
+                {({ field, form }) => (
+                  <input
+                    {...field}
+                    className={s.input}
+                    type="password"
+                    placeholder="Confirm password"
+                    disabled={!form.values.password}
+                  />
+                )}
+              </Field>
               <ErrorMessage
                 className={s.errMsg}
                 name="confirmPassword"
@@ -113,7 +119,7 @@ const RegisterForm = () => {
           </div>
         </Form>
       </Formik>
-      <ToastContainer />
+      <Toaster />
     </>
   );
 };
