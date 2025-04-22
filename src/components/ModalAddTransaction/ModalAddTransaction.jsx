@@ -3,7 +3,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
 import { closeModal } from "../../redux/modal/slice";
 import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
-import s from "./ModalAddTransaction.module.css"
+import s from "./ModalAddTransaction.module.css";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
@@ -22,12 +22,12 @@ const ModalAddTransaction = () => {
 
     if (isOpen) {
       window.addEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "hidden";
+      document.body.classList.add("no-scroll");
     }
 
     return () => {
       window.removeEventListener("keydown", handleKeyDown);
-      document.body.style.overflow = "auto";
+      document.body.classList.remove("no-scroll");
     };
   }, [isOpen, handleClose]);
 
