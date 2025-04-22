@@ -52,7 +52,7 @@
 }
 
 .exitIcon {
-  margin: 0;
+  fill: rgba(255, 255, 255, 0.6);
 }
 
 .exitText {
@@ -63,6 +63,13 @@
 }
 
 @media (min-width: 768px) {
+  .logoIcon {
+    width: 23px;
+    height: 22px;
+  }
+}
+
+@media (min-width: 1280px) {
   .exitText {
     display: block;
   }

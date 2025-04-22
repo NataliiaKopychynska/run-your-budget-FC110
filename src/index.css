@@ -164,3 +164,7 @@ p {
     margin-right: 16px;
   }
 }
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
+}
