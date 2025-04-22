@@ -1,92 +1,99 @@
-.container {
-  display: flex;
-  flex-direction: column;
-  align-items: center;
-  justify-content: center;
-  min-height: 100vh;
-  background: linear-gradient(to right, #eef2f3, #8e9eab);
-  padding: 2rem;
+/* .circle {
+  display: none;
+} */
+
+@media (min-width: 768px) {
+  .loginContainer {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    height: 100vh;
+    position: relative;
+    /* overflow: hidden; */
+  }
+
+  .first_bg_png {
+    position: absolute;
+    top: -100px;
+    left: -104px;
+    background-image: url("/bg/closeup-golden-usd-coins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 374px;
+    height: 720px;
+    z-index: -1;
+  }
+
+  .next_bg_png {
+    position: absolute;
+    top: 350px;
+    left: 400px;
+    background-image: url("/bg/closeup-golden-usd-coins2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 526px;
+    height: 720px;
+  }
+  .circle {
+    /* display: inline; */
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(90px);
+    transition: all 0.8s ease-in-out;
+  }
+
+  .accentPurple {
+    width: 300px;
+    height: 300px;
+    left: 50px;
+    top: 200px;
+    background: linear-gradient(135deg, #6d54eb 5.47%, #652392 90.06%);
+  }
+
+  .accentPurple2 {
+    width: 300px;
+    height: 300px;
+    left: 150px;
+    top: 100px;
+    background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+  }
+
+  .blue2 {
+    width: 454px;
+    height: 454px;
+    left: 244px;
+    top: 284px;
+    transform: translate(-50%, -50%);
+    background: #2f15b0;
+    opacity: 0.73;
+    filter: blur(100px);
+  }
 }
 
-.logoContainer {
-  text-align: center;
-  margin-bottom: 2rem;
-}
+@media (min-width: 1280px) {
+  .first_bg_png {
+    position: absolute;
+    top: 0;
+    left: -40px;
+    background-image: url("/bg/closeup-golden-usd-coins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 374px;
+    height: 720px;
+  }
 
-.logoCircle {
-  width: 60px;
-  height: 60px;
-}
-
-.checkmark {
-  color: white;
-  font-size: 24px;
-}
-
-.title {
-  font-size: 24px;
-  margin-top: 0.5rem;
-  font-weight: bold;
-  color: #333;
-}
-
-.form {
-  background-color: white;
-  padding: 2rem;
-  border-radius: 12px;
-  box-shadow: 0 4px 12px rgba(0, 0, 0, 0.1);
-  width: 100%;
-  max-width: 400px;
-}
-
-.inputGroup {
-  display: flex;
-  flex-direction: column;
-  margin-bottom: 1rem;
-}
-
-.input {
-  padding: 0.5rem;
-  border: 1px solid #ccc;
-  border-radius: 8px;
-  font-size: 1rem;
-}
-
-.buttonGroup {
-  display: flex;
-  justify-content: space-between;
-  gap: 1rem;
-}
-
-.loginButton {
-  flex: 1;
-  background-color: #4caf50;
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.registerButton {
-  flex: 1;
-  background-color: #2196f3;
-  color: white;
-  padding: 0.75rem;
-  border: none;
-  border-radius: 8px;
-  font-weight: bold;
-  cursor: pointer;
-}
-
-.loginButton:hover,
-.registerButton:hover {
-  opacity: 0.9;
-}
-
-.error {
-  color: red;
-  font-size: 12px;
-  margin-top: 4px;
+  .next_bg_png {
+    position: absolute;
+    top: 0;
+    left: 60%;
+    background-image: url("/bg/closeup-golden-usd-coins2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 526px;
+    height: 720px;
+  }
 }

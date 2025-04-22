@@ -17,10 +17,10 @@
 }
 
 .mobilePrimaryBlue {
-  width: 454px;
-  height: 454px;
-  left: 244px;
-  top: 284px;
+  width: 254px;
+  height: 254px;
+  left: 144px;
+  top: 384px;
   transform: translate(-50%, -50%);
   background: #2f15b0;
   opacity: 0.73;
@@ -28,28 +28,28 @@
 }
 
 .mobileAccentPurple {
-  width: 462px;
-  height: 462px;
-  left: 301;
-  top: 142;
+  width: 262px;
+  height: 262px;
+  left: 301px;
+  top: 342px;
   background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
 }
 
 .mobileFadedPurple {
-  width: 734px;
-  height: 734px;
-  left: -150;
-  top: -281;
-  background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+  width: 634px;
+  height: 634px;
+  left: -50px;
+  top: 81px;
+  background: linear-gradient(135deg, #6d54eb 6.47%, #652392 90.06%);
   opacity: 0.73;
   filter: blur(120px);
 }
 
 .mobileSoftPink {
-  width: 173px;
-  height: 173px;
-  left: -86;
-  top: -123;
+  width: 273px;
+  height: 273px;
+  left: -86px;
+  top: -23px;
   background: linear-gradient(135deg, #8e2e79 0%, #ab33ad 100%);
   opacity: 0.68;
   filter: blur(90px);
@@ -59,14 +59,14 @@
   width: 173px;
   height: 173px;
   left: 70%;
-  top: 50%;
+  top: 70%;
   background: #302e8e;
 }
 
 .mobileTinyPurple {
   width: 134px;
   height: 134px;
-  left: 470;
+  left: 270;
   top: 134;
   background: #6d1c77;
 }
@@ -104,8 +104,8 @@
   .purpleCircle1 {
     width: 893px;
     height: 901px;
-    left: -170;
-    top: -364;
+    left: -70px;
+    top: -64px;
     transform: translate(-50%, -50%);
     background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
     opacity: 0.6;
@@ -114,8 +114,8 @@
   .darkPurpleCircle {
     width: 220px;
     height: 223px;
-    left: 849;
-    top: 316;
+    left: 39px;
+    top: 316px;
     background: #6d1c77;
   }
 
@@ -131,8 +131,8 @@
   .purpleCircle3 {
     width: 819px;
     height: 825px;
-    left: 30%;
-    top: 50%;
+    left: -20%;
+    top: 60%;
     background: linear-gradient(135deg, #341fa0 44.63%, #652392 88.57%);
     opacity: 0.8;
   }
@@ -193,28 +193,28 @@
   }
 
   .largePurpleD {
-    width: 1250px;
-    height: 1250px;
-    left: 50%;
-    top: 50%;
+    width: 650px;
+    height: 650px;
+    left: 30%;
+    top: 40%;
     background: linear-gradient(135deg, #6d54eb 3.47%, #652392 60.06%);
     transform: translate(-50%, -50%);
   }
 
   .largeTransparentD {
-    width: 1000px;
-    height: 900px;
-    left: -100px;
-    top: -60px;
+    width: 600px;
+    height: 600px;
+    left: 60%;
+    top: 400px;
     background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
     opacity: 0.73;
   }
 
   .mediumPinkD {
-    width: 484px;
-    height: 484px;
-    left: 30%;
-    top: 50%;
+    width: 284px;
+    height: 284px;
+    left: 50%;
+    top: 90%;
     background: linear-gradient(135deg, #8e2e79 0%, #ab33ad 100%);
     opacity: 0.68;
     filter: blur(100px);
@@ -231,8 +231,8 @@
   .smallPurpleD {
     width: 420px;
     height: 420px;
-    left: -60px;
-    top: -60px;
+    left: -100px;
+    top: -100px;
     background: #6d1c77;
   }
   .bigPurpleD {
