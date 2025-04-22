@@ -1,7 +1,6 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 export const goitApi = axios.create({
   baseURL: "https://673c3b2f96b8dcd5f3f903c1.mockapi.io/",
 });
@@ -20,7 +19,11 @@ export const register = createAsyncThunk(
     try {
       const { data } = await goitApi.post("/register", credentials);
       setAuthHeader(data.token);
-      return data;
+      return {
+        user: { name: data.name, email: data.email },
+        token: data.token,
+      };
+      //   return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
@@ -62,4 +65,3 @@ export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
     return thunkApi.rejectWithValue(error.message);
   }
 });
-

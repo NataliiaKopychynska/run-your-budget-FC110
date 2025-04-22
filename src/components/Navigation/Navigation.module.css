@@ -7,6 +7,10 @@
   margin-bottom: 28px;
 }
 
+.icon {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
 .link {
   display: flex;
   align-items: center;
@@ -35,8 +39,8 @@
   }
 
   .icon {
-    width: 18px;
-    height: 18px;
+    width: 24px;
+    height: 24px;
   }
 
   .navText {

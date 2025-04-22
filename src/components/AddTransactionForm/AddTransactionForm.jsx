@@ -1,48 +1,43 @@
-import { useState } from "react";
+import { forwardRef, useRef, useState } from "react";
 import { useDispatch } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
-import * as yup from "yup";
 import DatePicker from "react-datepicker";
-import "react-datepicker/dist/react-datepicker.css";
+import Select from "react-select";
+
 import { addTransaction } from "../../redux/transactions/operations";
 import { expenseCategories } from "../../constants/transactionCategories";
+
+import Switcher from "./Switcher";
+import CalendarIcon from "./CalendarIcon";
+import DropdownIndicator from "./DropdownIndicator";
+
+import customStyles from "../../styles/reactSelect/customSelectStyles";
+import schema from "../../schemas/transactionValidation";
+
 import s from "./AddTransactionForm.module.css";
-
-const schema = yup.object({
-  type: yup
-    .string()
-    .oneOf(["income", "expense"], "Select valid type")
-    .required("Select type"),
-
-  sum: yup
-    .number()
-    .typeError("Must be a number")
-    .positive("Must be greater than zero")
-    .required("Enter sum"),
-
-  date: yup.date().typeError("Must be a valid date").required("Enter date"),
-
-  category: yup
-    .string()
-    .when("type", ([type], schema) =>
-      type === "expense" ? schema.required("Select category") : schema
-    ),
-
-  comment: yup
-    .string()
-    .max(100, "Max 100 characters")
-    .required("Comment required"),
-});
+import "react-datepicker/dist/react-datepicker.css";
 
 const AddTransactionForm = ({ onCancel }) => {
   const dispatch = useDispatch();
+  const datepickerRef = useRef(null);
   const [selectedDate, setSelectedDate] = useState(new Date());
+
+  const CustomInput = forwardRef(({ value, onClick }, ref) => (
+    <input
+      className={s.inputDate}
+      onClick={onClick}
+      ref={ref}
+      value={value}
+      readOnly
+    />
+  ));
 
   const handleSubmit = async (values, { resetForm }) => {
     const transformed = {
       ...values,
       type: values.type === "income",
       date: selectedDate.toISOString(),
+      category: values.type === "income" ? null : values.category,
     };
 
     try {
@@ -71,48 +66,80 @@ const AddTransactionForm = ({ onCancel }) => {
         <Form className={s.modalForm}>
           <h2 className={s.modalTitle}>Add transaction</h2>
 
-          <div className={s.switcher}>
-            <label className={values.type === "income" ? s.active : ""}>
-              <Field type="radio" name="type" value="income" />
-              Income
-            </label>
-            <label className={values.type === "expense" ? s.active : ""}>
-              <Field type="radio" name="type" value="expense" />
-              Expense
-            </label>
-          </div>
+          <Switcher type={values.type} setFieldValue={setFieldValue} />
 
           {values.type === "expense" && (
-            <div>
-              <Field name="category" as="select" className={s.select}>
-                <option value="">Select a category</option>
-                {expenseCategories.map(({ value, label }) => (
-                  <option key={value} value={value}>
-                    {label}
-                  </option>
-                ))}
-              </Field>
-              <ErrorMessage name="category" component="p" className={s.error} />
+            <div className={s.selectWrapper}>
+              <Select
+                name="category"
+                options={expenseCategories}
+                styles={customStyles}
+                placeholder="Select a category"
+                value={expenseCategories.find(
+                  (option) => option.value === values.category
+                )}
+                onChange={(option) =>
+                  setFieldValue("category", option ? option.value : "")
+                }
+                isSearchable={false}
+                components={{
+                  IndicatorSeparator: () => null,
+                  DropdownIndicator,
+                }}
+              />
+              <ErrorMessage
+                name="category"
+                component="p"
+                className={s.errorSum}
+              />
             </div>
           )}
-          <Field name="sum" type="number" className={s.input} />
-          <ErrorMessage name="sum" component="p" className={s.error} />
-          <DatePicker
-            selected={selectedDate}
-            onChange={(date) => {
-              setSelectedDate(date);
-              setFieldValue("date", date);
-            }}
-            dateFormat="dd.MM.yyyy"
-            className={s.input}
-          />
-          <ErrorMessage name="date" component="p" className={s.error} />
-          <Field name="comment" type="text" className={s.input} />
-          <ErrorMessage name="comment" component="p" className={s.error} />
+
+          <div className={s.selectContent}>
+            <div className={s.selectWrapperSum}>
+              <Field
+                name="sum"
+                type="number"
+                className={s.inputSum}
+                placeholder="0.00"
+              />
+              <ErrorMessage name="sum" component="p" className={s.error} />
+            </div>
+            <div className={s.wrapperPicker}>
+              <DatePicker
+                ref={datepickerRef}
+                selected={selectedDate}
+                onChange={(date) => {
+                  setSelectedDate(date);
+                  setFieldValue("date", date);
+                }}
+                dateFormat="dd.MM.yyyy"
+                className={s.inputDate}
+                customInput={<CustomInput />}
+              />
+              <div
+                className={s.calendarIcon}
+                onClick={() => datepickerRef.current.setOpen(true)}
+              >
+                <CalendarIcon />
+              </div>
+              <ErrorMessage name="date" component="p" className={s.error} />
+            </div>
+          </div>
+
+          <div className={s.selectWrapper}>
+            <Field
+              name="comment"
+              type="text"
+              className={s.inputComment}
+              placeholder="Comment"
+            />
+            <ErrorMessage name="comment" component="p" className={s.error} />
+          </div>
 
           <div className={s.modalActions}>
             <button type="submit" className={s.btnAdd}>
-              ADD
+              SAVE
             </button>
             <button type="button" onClick={onCancel} className={s.btnCancel}>
               CANCEL

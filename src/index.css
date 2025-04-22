@@ -55,11 +55,6 @@ main {
   flex-grow: 1;
 }
 
-body {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
 img,
 picture,
 video,
@@ -168,4 +163,8 @@ p {
     margin-left: 16px;
     margin-right: 16px;
   }
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }
