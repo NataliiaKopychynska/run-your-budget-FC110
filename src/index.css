@@ -45,6 +45,7 @@
 
 html {
   /* scroll-behavior: smooth; */
+  scrollbar-width: none;
   margin: 0;
   padding: 0;
   overflow-x: hidden;

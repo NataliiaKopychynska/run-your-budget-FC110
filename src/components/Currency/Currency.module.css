@@ -1,0 +1,57 @@
+.currencySection {
+    width: 100%;
+    min-height: 214px;
+    background-color: rgba(74, 86, 226, 10%);
+    box-sizing: border-box;
+    color: white;
+    font-family: "Poppins", sans-serif;
+    font-size: 16px;
+    background-image: url(../../assets/chart.png);
+    background-repeat: no-repeat;
+    background-position: center bottom;
+    background-size: contain;
+}
+
+/* Заголовки таблиці */
+.tableHeader {
+    display: flex;
+    height: 50px;
+    justify-content: space-around;
+    align-items: center;
+    font-weight: 600;
+    background-color: rgba(255, 255, 255, 20%);
+    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
+}
+
+.tableBody {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    gap: 12px;
+    padding: 8px 20px 0 20px;
+
+}
+
+.tableRow {
+    display: flex;
+    justify-content: space-between;
+    height: 24px;
+    font-size: 16px;
+}
+
+
+/*  Tablet */
+@media screen and (min-width: 768px) and (max-width: 1279px) {
+    .currencySection {
+        width: 336px;
+    }
+}
+
+/* Desktop */
+@media screen and (min-width: 1280px) {
+    .currencySection {
+        width: 480px;
+        height: 380px;
+    }
+
+}
