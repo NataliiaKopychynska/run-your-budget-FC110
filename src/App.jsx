@@ -15,8 +15,10 @@ import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransa
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
 import HeaderComponent from "./components/Header/HeaderComponent";
+import { useMediaQuery } from "react-responsive";
 
 const App = () => {
+  const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 768px)" });
   return (
     <>
       <Navigation />
@@ -25,7 +27,7 @@ const App = () => {
       <BackgroundGradientTablet />
       <DeleteModal />
       <Balance />
-      <Currency />
+      {isDesktopOrTablet && <Currency />}
       <Transactions />
       <LoginPage />
 
