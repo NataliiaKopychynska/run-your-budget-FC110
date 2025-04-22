@@ -59,10 +59,11 @@
   border-radius: 16px;
   width: 200px;
   height: 40px;
+  justify-content: center;
 }
 
 .transactionsItemDeleteBtn {
-  justify-self: start;
+  justify-self: center;
   padding: 4px 12px;
   width: 69px;
   height: 29px;
