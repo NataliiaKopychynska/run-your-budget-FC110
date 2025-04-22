@@ -55,11 +55,6 @@ main {
   flex-grow: 1;
 }
 
-body {
-  margin-left: 20px;
-  margin-right: 20px;
-}
-
 img,
 picture,
 video,
