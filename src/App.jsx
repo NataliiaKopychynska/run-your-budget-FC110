@@ -15,27 +15,21 @@ import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransa
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
 import HeaderComponent from "./components/Header/HeaderComponent";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 const App = () => {
   return (
     <>
-      <HeaderComponent />
-      <Navigation />
       <Loader />
-      <BackgroundGradientTablet />
-      <DeleteModal />
-      <Balance />
-      <Currency />
-      <Transactions />
-      <LoginPage />
-
-      <ModalAddTransaction />
-
       <Routes>
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
-        <Route path="/" element={<HomePage />} />
-        <Route path="/currency" element={<CurrencyPage />} />
+        <Route path="/dashboard" element={<DashboardPage />}>
+          <Route path="home" element={<HomePage />} />
+          {/* <Route path="statistics" element={<Statistic />} /> */}
+          <Route path="currency" element={<CurrencyPage />} />
+        </Route>
+        {/* <Route path="/currency" element={<CurrencyPage />} /> */}
       </Routes>
     </>
   );

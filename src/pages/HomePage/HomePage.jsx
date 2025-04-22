@@ -1,15 +1,14 @@
 import React from "react";
 import Transactions from "../../components/Transactions/Transactions";
-import { Link } from "react-router-dom";
+import { useMediaQuery } from "react-responsive";
+import Balance from "../../components/Balance/Balance";
 
 function HomePage() {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <div>
-      HomePage
-      {/* <Transactions />
-      <Link to="/login">
-        <button>Login</button>
-      </Link> */}
+      {isMobile && <Balance />}
+      <Transactions />
     </div>
   );
 }
