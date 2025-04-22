@@ -19,17 +19,18 @@ import HeaderComponent from "./components/Header/HeaderComponent";
 const App = () => {
   return (
     <>
-      <HeaderComponent />
-      <Navigation />
-      <Loader />
       <BackgroundGradientTablet />
+      <Loader />
+      {/* <HeaderComponent />
+      <Navigation />
+      
       <DeleteModal />
       <Balance />
       <Currency />
       <Transactions />
       <LoginPage />
 
-      <ModalAddTransaction />
+      <ModalAddTransaction /> */}
 
       <Routes>
         <Route path="register" element={<RegisterPage />} />
