@@ -5,7 +5,7 @@
 
   color-scheme: light dark;
   color: rgba(255, 255, 255, 0.87);
-  background-color: #242424;
+  background-color: #101010;
 
   font-synthesis: none;
   text-rendering: optimizeLegibility;
@@ -44,7 +44,11 @@
 }
 
 html {
-  scroll-behavior: smooth;
+  /* scroll-behavior: smooth; */
+  scrollbar-width: none;
+  margin: 0;
+  padding: 0;
+  overflow-x: hidden;
 }
 
 main {

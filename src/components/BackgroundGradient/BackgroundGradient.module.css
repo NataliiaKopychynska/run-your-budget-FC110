@@ -1,0 +1,242 @@
+/* mobile */
+.mobileBgContainer {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100vh;
+  height: 100%;
+  z-index: -1;
+  overflow: hidden;
+}
+
+.mobileCircle {
+  position: absolute;
+  border-radius: 50%;
+  filter: blur(90px);
+}
+
+.mobilePrimaryBlue {
+  width: 454px;
+  height: 454px;
+  left: 244px;
+  top: 284px;
+  transform: translate(-50%, -50%);
+  background: #2f15b0;
+  opacity: 0.73;
+  filter: blur(100px);
+}
+
+.mobileAccentPurple {
+  width: 462px;
+  height: 462px;
+  left: 301;
+  top: 142;
+  background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+}
+
+.mobileFadedPurple {
+  width: 734px;
+  height: 734px;
+  left: -150;
+  top: -281;
+  background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+  opacity: 0.73;
+  filter: blur(120px);
+}
+
+.mobileSoftPink {
+  width: 173px;
+  height: 173px;
+  left: -86;
+  top: -123;
+  background: linear-gradient(135deg, #8e2e79 0%, #ab33ad 100%);
+  opacity: 0.68;
+  filter: blur(90px);
+}
+
+.mobileDeepBlue {
+  width: 173px;
+  height: 173px;
+  left: 70%;
+  top: 50%;
+  background: #302e8e;
+}
+
+.mobileTinyPurple {
+  width: 134px;
+  height: 134px;
+  left: 470;
+  top: 134;
+  background: #6d1c77;
+}
+
+.backgroundContainerDesktop,
+.gradientBackgroundTablet {
+  display: none;
+}
+
+@media (min-width: 768px) {
+  .mobileBgContainer {
+    display: none;
+  }
+
+  .gradientBackgroundTablet {
+    display: inline;
+    /* position: absolute; */
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100vh;
+    overflow: hidden;
+    background: #000;
+  }
+
+  .blurCircle {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+  }
+
+  .purpleCircle1 {
+    width: 893px;
+    height: 901px;
+    left: -170;
+    top: -364;
+    transform: translate(-50%, -50%);
+    background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+    opacity: 0.6;
+  }
+
+  .darkPurpleCircle {
+    width: 220px;
+    height: 223px;
+    left: 849;
+    top: 316;
+    background: #6d1c77;
+  }
+
+  .purpleCircle2 {
+    width: 739px;
+    height: 745px;
+    left: 20%;
+    top: 30%;
+    background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+    opacity: 0.6;
+  }
+
+  .purpleCircle3 {
+    width: 819px;
+    height: 825px;
+    left: 30%;
+    top: 50%;
+    background: linear-gradient(135deg, #341fa0 44.63%, #652392 88.57%);
+    opacity: 0.8;
+  }
+
+  .blueCircle {
+    width: 363px;
+    height: 366px;
+    left: 60%;
+    top: 30%;
+    background: #302e8e;
+  }
+
+  .purpleCircle4 {
+    width: 549px;
+    height: 554px;
+    left: 50%;
+    top: 20%;
+    background: linear-gradient(135deg, #652392 48.96%, #341fa0 86.46%);
+  }
+
+  .bigPurple {
+    background: #302e8e;
+    width: 450px;
+    height: 450px;
+    left: 22%;
+    top: 10%;
+  }
+}
+
+@media (min-width: 1280px) {
+  .mobileBgContainer,
+  .gradientBackgroundTablet {
+    display: none;
+  }
+
+  .backgroundContainerDesktop {
+    /* background-attachment: scroll; */
+    /* background-repeat: no-repeat; */
+    /* background-size: cover; */
+
+    display: inline;
+    position: fixed;
+    /* position: absolute; */
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    overflow: hidden;
+    z-index: -1;
+
+    /* position: relative; */
+  }
+
+  .circleD {
+    position: absolute;
+    border-radius: 50%;
+    filter: blur(150px);
+  }
+
+  .largePurpleD {
+    width: 1250px;
+    height: 1250px;
+    left: 50%;
+    top: 50%;
+    background: linear-gradient(135deg, #6d54eb 3.47%, #652392 60.06%);
+    transform: translate(-50%, -50%);
+  }
+
+  .largeTransparentD {
+    width: 1000px;
+    height: 900px;
+    left: -100px;
+    top: -60px;
+    background: linear-gradient(135deg, #6d54eb 3.47%, #652392 90.06%);
+    opacity: 0.73;
+  }
+
+  .mediumPinkD {
+    width: 484px;
+    height: 484px;
+    left: 30%;
+    top: 50%;
+    background: linear-gradient(135deg, #8e2e79 0%, #ab33ad 100%);
+    opacity: 0.68;
+    filter: blur(100px);
+  }
+
+  .mediumBlueD {
+    width: 384px;
+    height: 384px;
+    left: 40%;
+    top: 20%;
+    background: #302e8e;
+  }
+
+  .smallPurpleD {
+    width: 420px;
+    height: 420px;
+    left: -60px;
+    top: -60px;
+    background: #6d1c77;
+  }
+  .bigPurpleD {
+    background: #302e8e;
+    width: 450px;
+    height: 450px;
+    left: 22%;
+    top: 10%;
+  }
+}

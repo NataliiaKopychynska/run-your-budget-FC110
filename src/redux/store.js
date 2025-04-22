@@ -1,10 +1,11 @@
 import { configureStore } from "@reduxjs/toolkit";
-import authReducer from "./slice/authSlice";
+import authReducer from "./auth/authSlice";
 import storage from "redux-persist/lib/storage";
 import { persistReducer, persistStore } from "redux-persist";
 import { combineReducers } from "redux";
 import { transactionsReducer } from "./transactions/slice";
 import { modalReducer } from "./modal/slice";
+import { globalReducer } from "./global/slice";
 
 const persistConfig = {
   key: "root",
@@ -16,6 +17,7 @@ const rootReducer = combineReducers({
   auth: authReducer,
   transactions: transactionsReducer,
   modal: modalReducer,
+  global: globalReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

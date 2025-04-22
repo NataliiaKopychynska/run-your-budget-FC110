@@ -6,6 +6,7 @@
   background: rgba(82, 59, 126, 0.6);
   margin-bottom: 8px;
   border: none;
+  transition: 500ms;
 }
 
 .transactionsItemIncome {
@@ -67,6 +68,10 @@
   );
 }
 
+.hovered {
+  box-shadow: 0px -10px 5px -7px rgba(255, 199, 39, 0.6) inset;
+}
+
 .transactionsItemEditBtn {
   display: flex;
   align-items: center;
@@ -75,7 +80,6 @@
 }
 
 .transactionsItemEditBtn:hover {
-  transform: scale(1.5);
   color: #9e40ba;
 }
 
@@ -97,6 +101,7 @@
 
 .transactionLi {
   width: 280px;
+  border-radius: 8px;
 }
 
 .withoutTransaction {
@@ -167,7 +172,8 @@
     font-size: 14px;
     font-weight: 400;
     background: none;
-    border-radius: 0;
+    border-radius: 8px;
+    margin-bottom: 0;
   }
 
   .transactionLi {
@@ -202,5 +208,10 @@
   .transactionsAddBtn {
     right: 40px;
     bottom: 40px;
+  }
+
+  .transactionsItemEditBtn:hover {
+    transform: scale(1.5);
+    color: #9e40ba;
   }
 }
