@@ -5,6 +5,7 @@ import s from "./Navigation.module.css";
 const Navigation = () => {
   return (
     <nav className={s.nav}>
+      <NavLink className={s.link} to={"/home"}>
         <svg
           className={s.icon}
           width="38"
@@ -23,6 +24,7 @@ const Navigation = () => {
         </svg>
         <p className={s.navText}>Home</p>
       </NavLink>
+      <NavLink className={s.link} to={"/statistics"}>
         <svg
           className={s.icon}
           width="38"
@@ -41,6 +43,7 @@ const Navigation = () => {
         </svg>
         <p className={s.navText}>Statistics</p>
       </NavLink>
+      <NavLink className={clsx(s.link, s.mobileOnly)} to={"/currency"}>
         <svg
           className={s.icon}
           width="38"
