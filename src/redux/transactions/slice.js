@@ -1,5 +1,9 @@
 import { createSlice } from "@reduxjs/toolkit";
-import { addTransaction, deleteTransaction, fetchTransactions } from "./operations";
+import {
+  addTransaction,
+  deleteTransaction,
+  fetchTransactions,
+} from "./operations";
 import toast from "react-hot-toast";
 
 const toastParams = {
@@ -20,8 +24,7 @@ const initialState = {
   isError: false,
   isEditTransaction: false,
   isAddTransaction: false,
-
-  deletingTransaction: {},
+  deletingTransaction: null,
 };
 
 const transactionsSlice = createSlice({
@@ -91,7 +94,10 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.rejected, (state, action) => {
         state.isLoading = false;
         state.isError = true;
-        toast.error(`Error: ${action.payload || 'Something went wrong'}`, toastParams);
+        toast.error(
+          `Error: ${action.payload || "Something went wrong"}`,
+          toastParams
+        );
       });
   },
 });

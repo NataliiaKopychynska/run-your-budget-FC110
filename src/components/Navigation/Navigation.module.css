@@ -3,11 +3,51 @@
   align-items: center;
   justify-content: center;
   gap: 36px;
-  margin-bottom: 15px;
-}
-
-.link {
+  margin-top: 40px;
+  margin-bottom: 28px;
 }
 
 .icon {
+  fill: rgba(255, 255, 255, 0.4);
+}
+
+.link {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 23px;
+}
+
+.navText {
+  display: none;
+  font-weight: 400;
+  font-size: 18px;
+  color: #fbfbfb;
+}
+
+.mobileOnly {
+  display: block;
+}
+
+@media (min-width: 768px) {
+  .nav {
+    flex-direction: column;
+    justify-content: flex-start;
+    align-items: flex-start;
+    gap: 24px;
+    margin-left: 19px;
+  }
+
+  .icon {
+    width: 24px;
+    height: 24px;
+  }
+
+  .navText {
+    display: block;
+  }
+
+  .mobileOnly {
+    display: none;
+  }
 }
