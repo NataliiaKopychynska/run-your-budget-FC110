@@ -24,7 +24,6 @@ const initialState = {
   isError: false,
   isEditTransaction: false,
   isAddTransaction: false,
-
   deletingTransaction: null,
 };
 

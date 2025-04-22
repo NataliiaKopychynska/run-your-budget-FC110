@@ -58,6 +58,7 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
         </p>
       </div>
       <div className={s.transactionsItemButtons}>
+
         <ButtonGradient
           text={"Delete"}
           onClickFn={handleDeleteBtn}
@@ -66,6 +67,8 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
             s.transactionsItemDeleteBtn
           )}
         />
+
+   
         <button
           className={s.transactionsItemEditBtn}
           onClick={() => {
