@@ -1,4 +1,5 @@
 import { NavLink } from "react-router-dom";
+import clsx from "clsx";
 import s from "./Navigation.module.css";
 
 const Navigation = () => {
@@ -21,6 +22,7 @@ const Navigation = () => {
             fill-opacity="0.4"
           />
         </svg>
+        <p className={s.navText}>Home</p>
       </NavLink>
       <NavLink className={s.link} to={"/statistics"}>
         <svg
@@ -39,8 +41,9 @@ const Navigation = () => {
             fill-opacity="0.4"
           />
         </svg>
+        <p className={s.navText}>Statistics</p>
       </NavLink>
-      <NavLink className={s.link} to={"/currency"}>
+      <NavLink className={clsx(s.link, s.mobileOnly)} to={"/currency"}>
         <svg
           className={s.icon}
           width="38"
