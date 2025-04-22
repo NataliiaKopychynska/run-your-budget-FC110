@@ -1,6 +1,5 @@
-import { Link, Route, Routes } from "react-router-dom";
+import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import Transactions from "./components/Transactions/Transactions";
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
@@ -10,7 +9,6 @@ import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
 
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
-import Balance from "./components/Balance/Balance";
 import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
@@ -22,7 +20,21 @@ const App = () => {
     <>
       <BackgroundGradientTablet />
       <Loader />
+
       <DeleteModal />
+
+      {/* <HeaderComponent />
+      <Navigation />
+      
+      <DeleteModal />
+      <Balance />
+      <Currency />
+      <Transactions />
+      <LoginPage />
+
+      <ModalAddTransaction /> */}
+
+
       <Routes>
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />

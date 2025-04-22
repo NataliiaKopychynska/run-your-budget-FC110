@@ -7,7 +7,9 @@ function HomePage() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
   return (
     <div>
+
       {isMobile && <Balance />}
+
       <Transactions />
     </div>
   );
