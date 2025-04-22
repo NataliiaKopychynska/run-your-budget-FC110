@@ -1,17 +1,28 @@
 .addBtn {
-    display: flex;
-    justify-content: center;
-    position: fixed;
+  display: flex;
+  justify-content: center;
+  position: fixed;
+  right: 20px;
+  bottom: 20px;
+  align-items: center;
+  width: 44px;
+  height: 44px;
+  border-radius: 50%;
+  background: linear-gradient(
+    103deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  font-size: 30px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+}
+.addBtn:hover {
+  filter: brightness(1.2);
+}
+@media (min-width: 768px) {
+  .addBtn {
     right: 40px;
     bottom: 41px;
-    align-items: center;
-    width: 44px;
-    height: 44px;
-    border-radius: 50%;
-    background: linear-gradient(103deg,
-            #ffc727 0%,
-            #9e40ba 61.46%,
-            #7000ff 90.54%);
-    font-size: 30px;
-    box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  }
 }

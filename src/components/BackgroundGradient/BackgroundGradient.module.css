@@ -74,6 +74,7 @@
 .backgroundContainerDesktop,
 .gradientBackgroundTablet {
   display: none;
+  z-index: -1;
 }
 
 @media (min-width: 768px) {

@@ -55,6 +55,7 @@ main {
   flex-grow: 1;
 }
 
+
 body {
   padding-left: 20px;
   padding-right: 20px;
@@ -169,4 +170,8 @@ p {
     padding-left: 16px;
     padding-right: 16px;
   }
+}
+.no-scroll {
+  overflow: hidden;
+  height: 100vh;
 }

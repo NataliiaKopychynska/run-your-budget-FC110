@@ -3,7 +3,7 @@
   flex-direction: column;
   border-radius: 10px;
   border: 1px solid #000;
-  background: rgba(82, 59, 126, 0.6);
+  background: rgba(255, 255, 255, 0.1);
   margin-bottom: 8px;
   border: none;
   transition: 500ms;
