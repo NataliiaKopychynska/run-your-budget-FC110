@@ -20,7 +20,9 @@ import DashboardPage from "./pages/DashboardPage/DashboardPage";
 const App = () => {
   return (
     <>
+      <BackgroundGradientTablet />
       <Loader />
+      <DeleteModal />
       <Routes>
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
