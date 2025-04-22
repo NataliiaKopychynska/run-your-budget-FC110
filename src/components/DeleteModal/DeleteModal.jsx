@@ -42,22 +42,21 @@ const DeleteModal = () => {
     };
   }, [dispatch]);
 
-  useEffect(() => {
-    if (modalRef.current?.open) {
-      document.body.style.overflow = "hidden";
-    } else {
-      document.body.style.overflow = "unset";
-    }
+  // useEffect(() => {
+  //   if (modalRef.current?.open) {
+  //     document.body.style.overflow = "hidden";
+  //   } else {
+  //     document.body.style.overflow = "unset";
+  //   }
 
-    return () => {
-      document.body.style.overflow = "auto";
-    };
-  }, [deletingTransaction]);
+  //   return () => {
+  //     document.body.style.overflow = "auto";
+  //   };
+  // }, [deletingTransaction]);
 
   useEffect(() => {
     if (deletingTransaction) {
       modalRef.current?.showModal();
-
     }
   }, [deletingTransaction]);
 
@@ -119,7 +118,6 @@ const DeleteModal = () => {
                 onClickFn={handleYesClick}
                 newClass={styles.deleteModalBtns}
               />
-
             </div>
           </div>
         </div>
