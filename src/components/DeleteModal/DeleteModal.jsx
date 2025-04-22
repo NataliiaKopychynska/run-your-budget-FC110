@@ -57,6 +57,7 @@ const DeleteModal = () => {
   useEffect(() => {
     if (deletingTransaction) {
       modalRef.current?.showModal();
+
     }
   }, [deletingTransaction]);
 
@@ -118,6 +119,7 @@ const DeleteModal = () => {
                 onClickFn={handleYesClick}
                 newClass={styles.deleteModalBtns}
               />
+
             </div>
           </div>
         </div>
