@@ -6,6 +6,7 @@ import HomePage from "./pages/HomePage/HomePage";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
 // import Currency from "./components/Currency/Currency";
 import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
+import StatisticsTab from "./pages/StatisticsPage/StatisticsTab";
 
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
@@ -42,6 +43,7 @@ const App = () => {
           <Route path="currency" element={<CurrencyPage />} />
         </Route>
         <Route path="/currency" element={<CurrencyPage />} />
+        <Route path="statistics" element={<StatisticsTab />} />
       </Routes>
     </>
   );
