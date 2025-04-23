@@ -5,7 +5,6 @@ const initialState = {
   user: JSON.parse(localStorage.getItem("user")) || { name: "", email: "" },
   token: localStorage.getItem("token") || "",
   isLoggedIn: false,
-  isLogin: Boolean(localStorage.getItem("token")),
   isRefreshing: false,
 };
 
@@ -42,7 +41,7 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.isLogin = true;
+        state.isLoggedIn = true;
         state.token = action.payload.token;
         //
         localStorage.setItem("user", JSON.stringify(action.payload.user));
