@@ -87,11 +87,7 @@ const AddTransactionForm = ({ onCancel }) => {
                   DropdownIndicator,
                 }}
               />
-              <ErrorMessage
-                name="category"
-                component="p"
-                className={s.errorSum}
-              />
+              <ErrorMessage name="category" component="p" className={s.error} />
             </div>
           )}
 
