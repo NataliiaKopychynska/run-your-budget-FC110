@@ -15,8 +15,8 @@ const RegisterForm = () => {
     dispatch(register({ name, email, password }))
       .unwrap()
       .then((data) => {
-        toast.success(`Welcome, ${data.name}!`);
-        navigate("/");
+        toast.success(`Welcome, ${data.name}! Please log in`);
+        navigate("/login");
       })
       .catch(() => {
         toast.error("Invalid credentials");
