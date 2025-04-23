@@ -7,16 +7,18 @@ import { transactionsReducer } from "./transactions/slice";
 import { modalReducer } from "./modal/slice";
 import { globalReducer } from "./global/slice";
 import { currencyReducer } from "./currency/slice";
+import { statisticsReducer } from "./statistics/slice";
 
 const persistConfig = {
   key: "root",
   storage,
-  whitelist: ["auth"],
+  whitelist: ["auth", "statistics"],
 };
 
 const rootReducer = combineReducers({
   auth: authReducer,
   transactions: transactionsReducer,
+  statistics: statisticsReducer,
   modal: modalReducer,
   global: globalReducer,
   currency: currencyReducer,
