@@ -35,9 +35,12 @@ export const addTransaction = createAsyncThunk(
   async (transaction, thunkApi) => {
     try {
       const { data } = await runBudgetApi.post("/transactions", transaction);
+      thunkApi.dispatch(fetchTransactions());
+
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
+

@@ -1,57 +1,153 @@
-.currencySection {
+.currencyWrapper {
+    font-family: 'Poppins', sans-serif;
+    position: relative;
+    background-color: rgba(74, 86, 226, 0.1);
     width: 100%;
-    min-height: 214px;
-    background-color: rgba(74, 86, 226, 10%);
-    box-sizing: border-box;
-    color: white;
-    font-family: "Poppins", sans-serif;
-    font-size: 16px;
-    background-image: url(../../assets/chart.png);
+    height: 220px;
+    margin-top: 20px;
+    margin-bottom: 27px;
+    background-image: url(../../assets/chartMobile.svg);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: contain;
 }
 
-/* Заголовки таблиці */
-.tableHeader {
-    display: flex;
-    height: 50px;
-    justify-content: space-around;
-    align-items: center;
-    font-weight: 600;
-    background-color: rgba(255, 255, 255, 20%);
-    /* text-shadow: 0px 4px 4px rgba(0, 0, 0, 0.25); */
-}
 
-.tableBody {
-    display: flex;
-    flex-direction: column;
-    justify-content: center;
-    gap: 12px;
-    padding: 8px 20px 0 20px;
 
-}
+/* @media (min-width: 1280px) {
+    .currencyWrapper {
+        width: 480px;
+        height: 380px;
+        background-image: url(../../assets/chart.svg);
+    }
 
-.tableRow {
-    display: flex;
-    justify-content: space-between;
-    height: 24px;
+    .usdChart {
+        font-size: 12px;
+        color: rgb(255, 134, 141);
+        position: absolute;
+        left: 50px;
+        bottom: 160px;
+        text-align: center;
+    }
+
+    .eurChart {
+        font-size: 12px;
+        color: rgb(255, 134, 141);
+        position: absolute;
+        right: 100px;
+        bottom: 195px;
+        text-align: center;
+    }
+} */
+
+.currencyTable {
+    width: 100%;
+    color: white;
     font-size: 16px;
+    line-height: normal;
+    border-collapse: collapse;
 }
 
+.tableHeader {
+    background: rgba(255, 255, 255, 0.2);
+    font-weight: 600;
+}
 
-/*  Tablet */
-@media screen and (min-width: 768px) and (max-width: 1279px) {
-    .currencySection {
+.tableName {
+    padding: 13px 0;
+    width: 33%;
+}
+
+.tableName:first-child {
+    /* padding-left: 20px;
+    padding-right: 5px; */
+}
+
+/* @media (min-width: 1280px) {
+    .tableName:first-child {
+        padding-left: 62px;
+    }
+
+    .tableName:last-child {
+        padding-right: 131px;
+    }
+} */
+
+.tableRow {}
+
+.tableData {
+    width: 33%;
+}
+
+/* .tableData:last-child {} */
+
+/* TABLET */
+@media (min-width: 768px) {
+    .currencyWrapper {
         width: 336px;
+        height: 214px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: absolute;
+        top: 80px;
+        right: 32px;
     }
 }
 
-/* Desktop */
-@media screen and (min-width: 1280px) {
-    .currencySection {
+/* DESKTOP */
+
+@media (min-width: 1280px) {
+
+    .currencyWrapper {
         width: 480px;
         height: 380px;
+        background-image: url(../../assets/chart.svg);
+    }
+
+    .usdChart {
+        font-size: 12px;
+        color: rgb(255, 134, 141);
+        position: absolute;
+        left: 50px;
+        bottom: 160px;
+        text-align: center;
+    }
+
+    .eurChart {
+        font-size: 12px;
+        color: rgb(255, 134, 141);
+        position: absolute;
+        right: 100px;
+        bottom: 195px;
+        text-align: center;
+    }
+
+    .tableName {
+        padding-top: 16px;
+        padding-bottom: 16px;
+    }
+
+    .tableName:first-child {
+        padding-left: 52px;
+        padding-right: 29px;
+    }
+
+
+    .tableData {
+        text-align: center;
+        padding-top: 24px;
+    }
+
+    .tableData:first-child {
+        padding-left: 80px;
+        padding-right: 48px;
+
+    }
+
+    .tableData:last-child,
+    .tableName:last-child {
+        padding-right: 120px;
+        padding-left: 15px;
     }
 
 }

@@ -11,9 +11,6 @@
   );
   color: white;
   border: none;
-  display: flex;
-  justify-content: start;
-  align-items: center;
   margin: 0 auto;
   font-size: 16px;
   cursor: pointer;
@@ -69,3 +66,8 @@
   height: 29px;
   border-radius: 18px;
 }
+
+/* .log {
+  width: 280px;
+  height: 50px;
+} */

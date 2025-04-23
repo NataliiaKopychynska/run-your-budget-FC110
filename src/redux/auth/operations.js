@@ -1,24 +1,21 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
-export const goitApi = axios.create({
-  baseURL: "https://673c3b2f96b8dcd5f3f903c1.mockapi.io/",
-});
+axios.defaults.baseURL = "https://moneyguard-group-06.onrender.com/";
 
 export const setAuthHeader = (token) => {
-  goitApi.defaults.headers.common.Authorization = `Bearer ${token}`;
+  axios.defaults.headers.common.Authorization = `Bearer ${token}`;
 };
 
 export const clearAuthHeader = () => {
-  goitApi.defaults.headers.common.Authorization = "";
+  axios.defaults.headers.common.Authorization = "";
 };
 
 export const register = createAsyncThunk(
   "register",
   async (credentials, thunkApi) => {
     try {
-      const { data } = await goitApi.post("/register", credentials);
+      const { data } = await axios.post("auth/register", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -31,7 +28,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (credentials, thunkApi) => {
     try {
-      const { data } = await goitApi.post("/users/login", credentials);
+      const { data } = await axios.post("/auth/login", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
@@ -42,7 +39,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
   try {
-    await goitApi.post("/users/logout");
+    await axios.post("/auth/logout");
     clearAuthHeader();
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
@@ -56,10 +53,9 @@ export const refresh = createAsyncThunk("auth/refresh", async (_, thunkApi) => {
   }
   setAuthHeader(savedToken);
   try {
-    const { data } = await goitApi.get("/users/current");
+    const { data } = await axios.get("/auth/current");
     return data;
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
   }
 });
-
