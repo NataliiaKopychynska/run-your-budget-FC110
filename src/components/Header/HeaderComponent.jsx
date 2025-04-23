@@ -2,9 +2,11 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
+import { selectUserEmail } from "../../redux/auth/selectors";
 import { closeModal, openModal } from "../../redux/modal/slice";
 import { logout } from "../../redux/auth/operations";
 import s from "./Header.module.css";
+import { toast } from "react-toastify";
 
 Modal.setAppElement("#root");
 
@@ -12,6 +14,9 @@ const HeaderComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isModalOpen = useSelector(selectIsModalOpen);
+  const email = useSelector(selectUserEmail);
+
+  const username = email ? email.split("@")[0] : "User";
 
   const handleLogoutClick = () => {
     dispatch(openModal("logoutConfirm"));
@@ -26,10 +31,18 @@ const HeaderComponent = () => {
       if (logout.fulfilled.match(resultAction)) {
         navigate("/login");
       } else {
-        alert("Помилка при виході: " + resultAction.payload);
+        toast.error("Logout Error: " + resultAction.payload, {
+          position: "top-center",
+          autoClose: 5000,
+          theme: "colored",
+        });
       }
     } catch (err) {
-      alert("Щось пішло не так: " + err.message);
+      toast.error("Something went wrong: " + err.message, {
+        position: "top-center",
+        autoClose: 5000,
+        theme: "colored",
+      });
     } finally {
       dispatch(closeModal());
     }
@@ -45,7 +58,7 @@ const HeaderComponent = () => {
           <p className={s.logoText}>Money Guard</p>
         </div>
         <div className={s.exitContainer}>
-          <p className={s.name}>Name</p>
+          <p className={s.name}>{username}</p>
           <button className={s.exitBtn} onClick={handleLogoutClick}>
             <svg className={s.exitIcon} width={18} height={18}>
               <use href="/public/img/icons.svg#icon-exit-1" />
@@ -62,7 +75,19 @@ const HeaderComponent = () => {
         onRequestClose={() => dispatch(closeModal())}
         contentLabel="Modal"
       >
-        <button onClick={confirmLogout}>Logout</button>
+        <div className={s.logoutContainer}>
+          <svg className={s.logoutIcon} width={36} height={36}>
+            <use href="/public/img/icons.svg#icon-Money-Guard" />
+          </svg>
+          <p className={s.logoutText}>Money Guard</p>
+        </div>
+        <p className={s.modalText}>Are you sure you want to log out?</p>
+        <button className={s.btnLogout} onClick={confirmLogout}>
+          Logout
+        </button>
+        <button className={s.btnCancel} onClick={() => dispatch(closeModal())}>
+          Cancel
+        </button>
       </Modal>
     </header>
   );
