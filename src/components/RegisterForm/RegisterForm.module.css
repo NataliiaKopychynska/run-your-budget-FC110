@@ -3,9 +3,7 @@
   flex-direction: column;
   padding: 23px 20px;
   margin: 0 auto;
-  background: var(--Form-color, rgba(255, 255, 255, 0.1));
-  box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
-  backdrop-filter: blur(50px);
+
   width: 100%;
   height: 100vh;
 }
@@ -129,6 +127,9 @@
     max-height: 624px;
     padding: 40px 62px;
     border-radius: 8px;
+    background: var(--Form-color, rgba(255, 255, 255, 0.1));
+    box-shadow: 0px 4px 60px 0px rgba(0, 0, 0, 0.25);
+    backdrop-filter: blur(50px);
   }
   .button_reg {
     width: 300px;
