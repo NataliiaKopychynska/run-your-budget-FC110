@@ -2,7 +2,8 @@ import { createSlice } from "@reduxjs/toolkit";
 import { login, logout, refresh, register } from "./operations";
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem("user")) || { name: "", email: "" },
+  user: { name: "", email: "" },
+  // user: JSON.parse(localStorage.getItem("user")) || { name: "", email: "" },
   token: localStorage.getItem("token") || "",
   isLoggedIn: false,
   isRefreshing: false,

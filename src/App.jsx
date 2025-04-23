@@ -17,6 +17,8 @@ import { useMediaQuery } from "react-responsive";
 // import Navigation from "./components/Navigation/Navigation";
 // import HeaderComponent from "./components/Header/HeaderComponent";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
+import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
+import { PrivateRoute } from "./components/Routes/PrivateRoute";
 
 const App = () => {
   const isDesktopOrTablet = useMediaQuery({ query: "(min-width: 768px)" });
@@ -25,25 +27,48 @@ const App = () => {
       <BackgroundGradientTablet />
       <Loader />
       <DeleteModal />
-      {/* <HeaderComponent />
-      <Navigation />
-      
-    
-      <Balance />
-      {isDesktopOrTablet && <Currency />}
-      <Transactions />
-      <LoginPage />
 
-      <ModalAddTransaction /> */}
       <Routes>
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />}>
-          <Route path="home" element={<HomePage />} />
-          <Route path="currency" element={<CurrencyPage />} />
-        </Route>
-        <Route path="/currency" element={<CurrencyPage />} />
-        <Route path="statistics" element={<StatisticsTab />} />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute component={<HomePage />} redirectTo="/login" />
+          }
+        ></Route>
+        <Route
+          path="/home"
+          element={
+            <PrivateRoute component={<HomePage />} redirectTo="/login" />
+          }
+        ></Route>
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute component={<RegisterPage />} redirectTo="/" />
+          }
+        />
+        <Route
+          path="login"
+          element={<RestrictedRoute component={<LoginPage />} redirectTo="/" />}
+        />
+        <Route
+          path="dashboard"
+          element={
+            <PrivateRoute component={<DashboardPage />} redirectTo="/login" />
+          }
+        />
+        <Route
+          path="currency"
+          element={
+            <PrivateRoute component={<CurrencyPage />} redirectTo="/login" />
+          }
+        />
+        <Route
+          path="statistics"
+          element={
+            <PrivateRoute component={<StatisticsTab />} redirectTo="/login" />
+          }
+        />
       </Routes>
     </>
   );
