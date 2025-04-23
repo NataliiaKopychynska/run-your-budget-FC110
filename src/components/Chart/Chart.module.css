@@ -1,0 +1,55 @@
+.donutContainer {
+  position: relative;
+  width: 280px;
+  height: 280px;
+  margin: auto;
+  margin-bottom: 32px;
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  border-radius: 50%;
+}
+
+.donutCenter {
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  font-weight: 600;
+  font-size: 18px;
+  text-align: center;
+  color: #fbfbfb;
+}
+
+.noTransactionsBox {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  padding: 20px;
+  height: 80%;
+}
+
+@media only screen and (min-width: 768px) {
+  .donutContainer {
+    width: 336px;
+    height: 336px;
+    margin: 0;
+    margin-right: 32px;
+    margin-bottom: 32px;
+  }
+}
+@media only screen and (min-width: 1280px) {
+  .donutContainer {
+    width: 288px;
+    height: 288px;
+  }
+  .noTransactionsImage {
+    max-width: 100%;
+    height: auto;
+    margin-bottom: 20px;
+  }
+  .noTransactionsBox {
+    max-width: 100%;
+    height: auto;
+  }
+}

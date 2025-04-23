@@ -1,0 +1,65 @@
+.header {
+  font-weight: 400;
+  font-size: 30px;
+  text-align: left;
+  color: white;
+  font-family: "Poppins", sans-serif;
+  margin-bottom: 8px;
+  max-width: 135px;
+  left: 0;
+}
+
+.statisticsWrapper {
+  padding-top: 20px;
+  width: 280px;
+  margin: 0 auto;
+}
+
+.donutWrapper {
+  position: relative;
+  width: 100%;
+  max-width: 280px;
+}
+
+.donutContainer {
+  margin-left: 0;
+  margin-right: 0;
+}
+
+@media only screen and (min-width: 768px) {
+  .header {
+    margin-bottom: 20px;
+  }
+
+  .statisticsWrapper {
+    display: flex;
+    gap: 32px;
+    width: 704px;
+  }
+
+  .donutWrapper {
+    margin: 0;
+    max-width: 336px;
+  }
+}
+
+@media only screen and (min-width: 1280px) {
+  .statisticsWrapper {
+    width: 715px;
+    margin-left: 69px;
+    margin-right: 16px;
+  }
+
+  .header {
+    margin-left: 15px;
+  }
+
+  .donutWrapper {
+    max-width: 288px;
+  }
+
+  .tableWrapper {
+    padding-top: 69px;
+    max-width: 395px;
+  }
+}
