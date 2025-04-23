@@ -2,7 +2,7 @@ import { useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
 import { fetchCurrencyRates } from "../../redux/currency/operations";
 import { selectCurrencyRates } from "../../redux/currency/selectors";
-// import { useMediaQuery } from "react-responsive";
+import { useMediaQuery } from "react-responsive";
 
 import styles from "./Currency.module.css";
 
@@ -26,10 +26,7 @@ const Currency = () => {
   const rateBuyEUR = eurRate?.rateBuy?.toFixed(2) || "-";
   const rateSellEUR = eurRate?.rateSell?.toFixed(2) || "-";
 
-  // const isMobile = useMediaQuery({ maxWidth: 767 });
-  // const isMinTablet = useMediaQuery({ minWidth: 768 });
-  // const isMaxTablet = useMediaQuery({ maxWidth: 1279 });
-  // const isDesktop = useMediaQuery({ minWidth: 1280 });
+  const isDesktop = useMediaQuery({ minWidth: 1280 });
 
   return (
     <div className={styles.currencyWrapper}>
@@ -54,6 +51,8 @@ const Currency = () => {
           </tr>
         </tbody>
       </table>
+      {isDesktop && <div className={styles.usdChart}>{rateBuyUSD}</div>}
+      {isDesktop && <div className={styles.eurChart}>{rateBuyEUR}</div>}
     </div>
   );
 };
