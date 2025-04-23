@@ -30,12 +30,15 @@ export const deleteTransaction = createAsyncThunk(
   }
 );
 
-export const addTransaction = createAsyncThunk('transactions/addTransaction', async (transaction, thunkApi) => {
-  try {
-    const { data } = await runBudgetApi.post('/transactions', transaction);
-    thunkApi.dispatch(fetchTransactions());
-    return data;
-  } catch (error) {
-    return thunkApi.rejectWithValue(error.message);
+export const addTransaction = createAsyncThunk(
+  "transactions/addTransaction",
+  async (transaction, thunkApi) => {
+    try {
+      const { data } = await runBudgetApi.post("/transactions", transaction);
+      thunkApi.dispatch(fetchTransactions());
+      return data;
+    } catch (error) {
+      return thunkApi.rejectWithValue(error.message);
+    }
   }
-});
+);
