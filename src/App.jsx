@@ -11,7 +11,6 @@ import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 
 import Balance from "./components/Balance/Balance";
-import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
 import HeaderComponent from "./components/Header/HeaderComponent";
@@ -30,8 +29,7 @@ const App = () => {
       <Transactions />
       <LoginPage />
 
-      <ModalAddTransaction /> */}
-
+       */}
       <Routes>
         <Route path="register" element={<RegisterPage />} />
         <Route path="login" element={<LoginPage />} />
