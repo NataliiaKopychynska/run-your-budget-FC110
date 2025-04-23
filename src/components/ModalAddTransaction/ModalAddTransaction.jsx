@@ -1,13 +1,14 @@
 import { useCallback, useEffect } from "react";
 import { useDispatch, useSelector } from "react-redux";
-import { selectIsModalOpen } from "../../redux/modal/selectors";
+import { selectModalType } from "../../redux/modal/selectors";
 import { closeModal } from "../../redux/modal/slice";
 import AddTransactionForm from "../AddTransactionForm/AddTransactionForm";
 import s from "./ModalAddTransaction.module.css";
 
 const ModalAddTransaction = () => {
   const dispatch = useDispatch();
-  const isOpen = useSelector(selectIsModalOpen);
+  const modalType = useSelector(selectModalType);
+  const isOpen = modalType === "addTransaction";
 
   const handleClose = useCallback(() => {
     dispatch(closeModal());

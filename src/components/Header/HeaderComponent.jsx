@@ -3,8 +3,10 @@ import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
 import { closeModal, openModal } from "../../redux/modal/slice";
-import s from "./Header.module.css";
 import { logout } from "../../redux/auth/operations";
+import s from "./Header.module.css";
+
+Modal.setAppElement("#root");
 
 const HeaderComponent = () => {
   const dispatch = useDispatch();
@@ -12,7 +14,7 @@ const HeaderComponent = () => {
   const isModalOpen = useSelector(selectIsModalOpen);
 
   const handleLogoutClick = () => {
-    dispatch(openModal());
+    dispatch(openModal("logoutConfirm"));
   };
 
   const confirmLogout = async () => {
