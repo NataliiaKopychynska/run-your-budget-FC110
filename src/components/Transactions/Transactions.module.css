@@ -3,7 +3,7 @@
   flex-direction: column;
   border-radius: 10px;
   border: 1px solid #000;
-  background: rgba(82, 59, 126, 0.6);
+  background: rgba(255, 255, 255, 0.1);
   margin-bottom: 8px;
   border: none;
   transition: 500ms;
@@ -38,34 +38,6 @@
   justify-content: space-between;
   padding: 12px 20px;
   font-size: 16px;
-}
-
-.transactionsItemDeleteBtn {
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  border-radius: 18px;
-  padding: 4px 12px;
-  width: 69px;
-  height: 29px;
-  color: #fff;
-  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
-  background: linear-gradient(
-    103deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
-  transition: all 1000ms;
-}
-
-.transactionsItemDeleteBtn:hover {
-  background: linear-gradient(
-    283deg,
-    #ffc727 0%,
-    #9e40ba 61.46%,
-    #7000ff 90.54%
-  );
 }
 
 .hovered {

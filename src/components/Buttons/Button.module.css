@@ -11,9 +11,6 @@
   );
   color: white;
   border: none;
-  display: flex;
-  justify-content: center;
-  align-items: center;
   margin: 0 auto;
   font-size: 16px;
   cursor: pointer;
@@ -40,6 +37,7 @@
   box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
   background: #fcfcfc;
   border: none;
+  transition: all 1000ms;
 }
 
 .button:hover {
@@ -53,3 +51,23 @@
   background-size: 200%;
   background-position: right center;
 }
+
+.deleteModalBtns {
+  border-radius: 16px;
+  width: 200px;
+  height: 40px;
+  justify-content: center;
+}
+
+.transactionsItemDeleteBtn {
+  justify-self: center;
+  padding: 4px 12px;
+  width: 69px;
+  height: 29px;
+  border-radius: 18px;
+}
+
+/* .log {
+  width: 280px;
+  height: 50px;
+} */
