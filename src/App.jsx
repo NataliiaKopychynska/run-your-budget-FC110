@@ -13,6 +13,7 @@ import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransa
 import Loader from "./components/Loader/Loader";
 import Navigation from "./components/Navigation/Navigation";
 import HeaderComponent from "./components/Header/HeaderComponent";
+import DashboardPage from "./pages/DashboardPage/DashboardPage";
 
 const App = () => {
   return (

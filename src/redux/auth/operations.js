@@ -2,7 +2,7 @@ import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
 export const goitApi = axios.create({
-  baseURL: "https://673c3b2f96b8dcd5f3f903c1.mockapi.io/",
+  baseURL: "https://moneyguard-group-06.onrender.com",
 });
 
 export const setAuthHeader = (token) => {
@@ -17,7 +17,7 @@ export const register = createAsyncThunk(
   "register",
   async (credentials, thunkApi) => {
     try {
-      const { data } = await goitApi.post("/register", credentials);
+      const { data } = await goitApi.post("auth/register", credentials);
       setAuthHeader(data.token);
       return {
         user: { name: data.name, email: data.email },
@@ -34,7 +34,7 @@ export const login = createAsyncThunk(
   "auth/login",
   async (credentials, thunkApi) => {
     try {
-      const { data } = await goitApi.post("/users/login", credentials);
+      const { data } = await goitApi.post("/auth/login", credentials);
       setAuthHeader(data.token);
       return data;
     } catch (error) {
