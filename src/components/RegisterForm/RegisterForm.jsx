@@ -14,8 +14,8 @@ const RegisterForm = () => {
   const onSubmit = ({ name, email, password }, { resetForm }) => {
     dispatch(register({ name, email, password }))
       .unwrap()
-      .then((payload) => {
-        toast.success(`Welcome, ${payload.user.name}!`);
+      .then((data) => {
+        toast.success(`Welcome, ${data.name}!`);
         navigate("/");
       })
       .catch(() => {
