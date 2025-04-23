@@ -55,6 +55,13 @@ main {
   flex-grow: 1;
 }
 
+
+body {
+  padding-left: 20px;
+  padding-right: 20px;
+  overflow: hidden;
+}
+
 img,
 picture,
 video,
@@ -153,15 +160,15 @@ p {
   }
 
   body {
-    margin-left: 32px;
-    margin-right: 32px;
+    padding-left: 32px;
+    padding-right: 32px;
   }
 }
 
 @media (min-width: 1280px) {
   body {
-    margin-left: 16px;
-    margin-right: 16px;
+    padding-left: 16px;
+    padding-right: 16px;
   }
 }
 .no-scroll {

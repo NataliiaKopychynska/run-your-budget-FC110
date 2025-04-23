@@ -58,17 +58,17 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
         </p>
       </div>
       <div className={s.transactionsItemButtons}>
+        <div>
+          <ButtonGradient
+            text={"Delete"}
+            onClickFn={handleDeleteBtn}
+            newClass={clsx(
+              styles.transactionsItemDeleteBtn,
+              s.transactionsItemDeleteBtn
+            )}
+          />
+        </div>
 
-        <ButtonGradient
-          text={"Delete"}
-          onClickFn={handleDeleteBtn}
-          newClass={clsx(
-            styles.transactionsItemDeleteBtn,
-            s.transactionsItemDeleteBtn
-          )}
-        />
-
-   
         <button
           className={s.transactionsItemEditBtn}
           onClick={() => {
