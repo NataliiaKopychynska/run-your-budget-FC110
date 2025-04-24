@@ -42,15 +42,6 @@ function LoginForm() {
     resetForm();
   };
 
-  // const onSubmit = (values, { setSubmitting, resetForm }) => {
-  //   () => navigate("/");
-  //   toast.success(`Welcome!`);
-  //   console.log({ values, setSubmitting, resetForm });
-
-  //   setSubmitting(false);
-  //   resetForm();
-  // };
-
   return (
     <>
       <Formik
