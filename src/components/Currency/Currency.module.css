@@ -55,6 +55,8 @@
         position: absolute;
         top: 80px;
         right: 32px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -66,6 +68,9 @@
         width: 480px;
         height: 380px;
         background-image: url(../../assets/chart.svg);
+        position: relative;
+        top: auto;
+        right: auto;
     }
 
     .usdChart {
@@ -104,14 +109,14 @@
 
     .tableData:first-child {
         padding-left: 80px;
-        padding-right: 48px;
+        padding-right: 58px;
 
     }
 
     .tableData:last-child,
     .tableName:last-child {
         padding-right: 120px;
-        padding-left: 15px;
+        padding-left: 20px;
     }
 
 }
