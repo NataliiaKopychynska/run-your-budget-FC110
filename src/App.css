@@ -22,3 +22,22 @@
     transform: translateX(-50%) translateY(100%) scale(1);
   }
 }
+
+/* .container {
+  padding-left: 20px;
+  padding-right: 20px;
+}
+
+@media (min-width: 769px) {
+  .container {
+    padding-left: 32px;
+    padding-right: 32px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .container {
+    padding-left: 16px;
+    padding-right: 16px;
+  }
+} */
