@@ -2,6 +2,7 @@ import { createSlice } from "@reduxjs/toolkit";
 import {
   addTransaction,
   deleteTransaction,
+  editTransaction,
   fetchTransactions,
 } from "./operations";
 import toast from "react-hot-toast";
@@ -98,6 +99,20 @@ const transactionsSlice = createSlice({
           `Error: ${action.payload || "Something went wrong"}`,
           toastParams
         );
+      })
+     .addCase(editTransaction.pending, state => {
+        state.isLoading = true; state.isError = false;
+      })
+      .addCase(editTransaction.fulfilled, (state, { payload }) => {
+        state.transactions = state.transactions.map(t =>
+          t.id === payload.id ? payload : t
+        );
+        state.isLoading = false; state.isError = false;
+        toast.success(`Transaction for ₴${payload.sum} has been updated`, toastParams);
+      })
+      .addCase(editTransaction.rejected, (state, { payload }) => {
+        state.isLoading = false; state.isError = true;
+        toast.error(`Error: ${payload}`, toastParams);
       });
   },
 });

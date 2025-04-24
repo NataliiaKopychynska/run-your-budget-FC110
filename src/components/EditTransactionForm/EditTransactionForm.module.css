@@ -1,0 +1,160 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 36px;
+    padding: 20px 20px 64px;
+    width: 100%;
+    max-width: 360px;
+    margin: 0 auto;
+}
+
+
+.title {
+    font-weight: 400;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    user-select: none;
+    font-size: 14px;
+    font-weight: 500;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+.active,
+.inactive {
+    font-size: 16px;
+    font-weight: 600;
+}
+
+.active {
+    color: #ffc727;
+}
+
+.inactive {
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #ffffff;
+}
+
+
+input,
+.react-datepicker__input-container input {
+    background: transparent;
+    border: none;
+    border-bottom: 2.5px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    width: 100%;
+}
+
+
+
+
+.inputDate {
+    padding: 8px 20px;
+    
+}
+
+.calendarIcon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.inputComment {
+    padding: 8px 16px 32px;
+    font-size: 16px;
+    color: #ffffff;
+    border: none;
+    border-bottom: 2.5px solid rgba(255, 255, 255, 0.2);
+    width: 100%;
+    background: transparent;
+    margin-bottom: 0;
+}
+
+
+.error {
+    font-size: 12px;
+    color: #ff6b6b;
+    margin-top: 4px;
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+
+.saveBtn,
+.cancelBtn {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-transform: uppercase;
+
+}
+
+
+.saveBtn {
+background: linear-gradient(167deg,
+#ffc727 0%,
+#9e40ba 61.46%,
+#7000ff 90.54%);
+color: #ffffff;
+border: none;
+}
+
+.saveBtn:hover {
+    opacity: 0.9;
+}
+
+
+.cancelBtn {
+    background: #ffffff;
+    color: #7000ff;
+    border: none;
+}
+
+.cancelBtn:hover {
+    opacity: 0.8;
+}
+
+.inputCategory {
+    background: transparent;
+    border: none;
+    border-bottom: 2.5px solid rgba(255, 255, 255, 0.2);
+    padding: 8px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    width: 100%;
+}
+
