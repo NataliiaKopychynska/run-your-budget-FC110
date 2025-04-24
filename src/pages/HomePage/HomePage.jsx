@@ -7,6 +7,7 @@ import Currency from "../../components/Currency/Currency";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import Navigation from "../../components/Navigation/Navigation";
 import HeaderComponent from "../../components/Header/HeaderComponent";
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 
 function HomePage() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -19,6 +20,7 @@ function HomePage() {
       <Currency /> */}
       {isMobile && <Balance />}
       <Transactions />
+      <ModalAddTransaction />
     </div>
   );
 }
