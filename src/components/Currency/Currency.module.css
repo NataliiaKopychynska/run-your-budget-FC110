@@ -13,33 +13,6 @@
 }
 
 
-
-/* @media (min-width: 1280px) {
-    .currencyWrapper {
-        width: 480px;
-        height: 380px;
-        background-image: url(../../assets/chart.svg);
-    }
-
-    .usdChart {
-        font-size: 12px;
-        color: rgb(255, 134, 141);
-        position: absolute;
-        left: 50px;
-        bottom: 160px;
-        text-align: center;
-    }
-
-    .eurChart {
-        font-size: 12px;
-        color: rgb(255, 134, 141);
-        position: absolute;
-        right: 100px;
-        bottom: 195px;
-        text-align: center;
-    }
-} */
-
 .currencyTable {
     width: 100%;
     color: white;
@@ -58,28 +31,19 @@
     width: 33%;
 }
 
-.tableName:first-child {
-    /* padding-left: 20px;
-    padding-right: 5px; */
+.tableName:last-child {
+    padding-left: 30px;
+
 }
-
-/* @media (min-width: 1280px) {
-    .tableName:first-child {
-        padding-left: 62px;
-    }
-
-    .tableName:last-child {
-        padding-right: 131px;
-    }
-} */
-
-.tableRow {}
 
 .tableData {
     width: 33%;
+    padding-top: 10px;
 }
 
-/* .tableData:last-child {} */
+.tableData:last-child {
+    padding-left: 30px;
+}
 
 /* TABLET */
 @media (min-width: 768px) {
@@ -91,6 +55,8 @@
         position: absolute;
         top: 80px;
         right: 32px;
+        margin-top: 0;
+        margin-bottom: 0;
     }
 }
 
@@ -102,6 +68,9 @@
         width: 480px;
         height: 380px;
         background-image: url(../../assets/chart.svg);
+        position: relative;
+        top: auto;
+        right: auto;
     }
 
     .usdChart {
@@ -140,14 +109,14 @@
 
     .tableData:first-child {
         padding-left: 80px;
-        padding-right: 48px;
+        padding-right: 58px;
 
     }
 
     .tableData:last-child,
     .tableName:last-child {
         padding-right: 120px;
-        padding-left: 15px;
+        padding-left: 20px;
     }
 
 }
