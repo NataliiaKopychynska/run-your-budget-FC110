@@ -1,20 +1,23 @@
 import React from "react";
-import Transactions from "../../components/Transactions/Transactions";
+import { useMediaQuery } from "react-responsive";
 
-import Currency from "../../components/Currency/Currency";
+import Transactions from "../../components/Transactions/Transactions";
 import Balance from "../../components/Balance/Balance";
+import Currency from "../../components/Currency/Currency";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import Navigation from "../../components/Navigation/Navigation";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 
 function HomePage() {
+  const isMobile = useMediaQuery({ maxWidth: 767 });
+
   return (
     <div>
-      <HeaderComponent />
+      {/* <HeaderComponent />
       <Navigation />
       <DeleteModal />
-      <Balance />
-      <Currency />
+      <Currency /> */}
+      {isMobile && <Balance />}
       <Transactions />
     </div>
   );
