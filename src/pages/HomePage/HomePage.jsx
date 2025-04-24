@@ -6,6 +6,7 @@ import Balance from "../../components/Balance/Balance";
 import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import Navigation from "../../components/Navigation/Navigation";
 import HeaderComponent from "../../components/Header/HeaderComponent";
+import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
 
 function HomePage() {
   return (
@@ -16,6 +17,7 @@ function HomePage() {
       <Balance />
       <Currency />
       <Transactions />
+      <ModalAddTransaction />
     </div>
   );
 }
