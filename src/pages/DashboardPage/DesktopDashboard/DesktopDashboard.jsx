@@ -8,9 +8,9 @@ export default function DesktopDashboard() {
   return (
     <div>
       <HeaderComponent />
+      <Navigation />
       <Balance />
       <Currency />
-      <Navigation />
       <Outlet />
     </div>
   );

@@ -8,9 +8,9 @@ export default function TabletDashboard() {
   return (
     <div>
       <HeaderComponent />
+      <Navigation />
       <Balance />
       <Currency />
-      <Navigation />
       <Outlet />
     </div>
   );

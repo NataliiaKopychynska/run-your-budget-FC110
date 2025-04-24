@@ -1,43 +1,51 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
+
 import LoginPage from "./pages/LoginPage/LoginPage";
 import RegisterPage from "./pages/RegisterPage/RegisterPage";
 import HomePage from "./pages/HomePage/HomePage";
-import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
-import Currency from "./components/Currency/Currency";
 import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
-
-import DeleteModal from "./components/DeleteModal/DeleteModal";
-
-import ModalAddTransaction from "./components/ModalAddTransaction/ModalAddTransaction";
-import Loader from "./components/Loader/Loader";
-import Navigation from "./components/Navigation/Navigation";
-import HeaderComponent from "./components/Header/HeaderComponent";
 import DashboardPage from "./pages/DashboardPage/DashboardPage";
+import StatisticsTab from "./pages/StatisticsPage/StatisticsTab";
+
+import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
+import DeleteModal from "./components/DeleteModal/DeleteModal";
+import Loader from "./components/Loader/Loader";
+
+import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
+import { PrivateRoute } from "./components/Routes/PrivateRoute";
+
 
 const App = () => {
   return (
     <>
       <BackgroundGradientTablet />
       <Loader />
-      {/* <HeaderComponent />
-      <Navigation />
-      
       <DeleteModal />
-      <Balance />
-      <Currency />
-      <Transactions />
-      <LoginPage />
 
-      <ModalAddTransaction /> */}
       <Routes>
-        <Route path="register" element={<RegisterPage />} />
-        <Route path="login" element={<LoginPage />} />
-        <Route path="/dashboard" element={<DashboardPage />}>
+        <Route
+          path="register"
+          element={
+            <RestrictedRoute component={<RegisterPage />} redirectTo="/home" />
+          }
+        />
+        <Route
+          path="login"
+          element={
+            <RestrictedRoute component={<LoginPage />} redirectTo="/home" />
+          }
+        />
+        <Route
+          path="/"
+          element={
+            <PrivateRoute component={<DashboardPage />} redirectTo="/login" />
+          }
+        >
           <Route path="home" element={<HomePage />} />
+          <Route path="statistics" element={<StatisticsTab />} />
           <Route path="currency" element={<CurrencyPage />} />
         </Route>
-        <Route path="/currency" element={<CurrencyPage />} />
       </Routes>
     </>
   );

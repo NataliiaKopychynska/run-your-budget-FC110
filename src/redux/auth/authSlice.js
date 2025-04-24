@@ -2,10 +2,10 @@ import { createSlice } from "@reduxjs/toolkit";
 import { login, logout, refresh, register } from "./operations";
 
 const initialState = {
-  user: JSON.parse(localStorage.getItem("user")) || { name: "", email: "" },
+  user: { name: "", email: "" },
+  // user: JSON.parse(localStorage.getItem("user")) || { name: "", email: "" },
   token: localStorage.getItem("token") || "",
   isLoggedIn: false,
-  isLogin: Boolean(localStorage.getItem("token")),
   isRefreshing: false,
 };
 
@@ -26,11 +26,8 @@ const authSlice = createSlice({
         state.error = null;
       })
       .addCase(register.fulfilled, (state, action) => {
-        console.log("state", state);
         console.log("action", action);
-        state.user = action.payload.user;
-        state.token = action.payload.token;
-        state.isLoggedIn = true;
+        state.user = action.payload;
       })
       .addCase(register.rejected, (state, action) => {
         state.error = action.payload;
@@ -42,9 +39,8 @@ const authSlice = createSlice({
       })
       .addCase(login.fulfilled, (state, action) => {
         state.user = action.payload.user;
-        state.isLogin = true;
+        state.isLoggedIn = true;
         state.token = action.payload.token;
-        //
         localStorage.setItem("user", JSON.stringify(action.payload.user));
         localStorage.setItem("token", action.payload.token);
       })
