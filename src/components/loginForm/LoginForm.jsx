@@ -20,7 +20,7 @@ function LoginForm() {
       .unwrap()
       .then((res) => {
         toast.success(`Welcome, ${res.name}!`);
-        navigate("/");
+        navigate("/home");
       })
       .catch((error) => {
         console.error("Login error:", error);
