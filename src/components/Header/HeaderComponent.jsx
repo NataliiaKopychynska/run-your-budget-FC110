@@ -5,8 +5,9 @@ import { selectIsModalOpen } from "../../redux/modal/selectors";
 import { selectUserEmail } from "../../redux/auth/selectors";
 import { closeModal, openModal } from "../../redux/modal/slice";
 import { logout } from "../../redux/auth/operations";
-import s from "./Header.module.css";
 import { toast } from "react-toastify";
+import { Icon } from "../../Icon";
+import s from "./Header.module.css";
 
 Modal.setAppElement("#root");
 
@@ -52,17 +53,13 @@ const HeaderComponent = () => {
     <header>
       <div className={s.headerContainer}>
         <div className={s.logoContainer}>
-          <svg className={s.logoIcon} width={17} height={17}>
-            <use href="/public/img/icons.svg#icon-Money-Guard" />
-          </svg>
+          <Icon id="#icon-Money-Guard" className={s.logoIcon} />
           <p className={s.logoText}>Money Guard</p>
         </div>
         <div className={s.exitContainer}>
           <p className={s.name}>{username}</p>
           <button className={s.exitBtn} onClick={handleLogoutClick}>
-            <svg className={s.exitIcon} width={18} height={18}>
-              <use href="/public/img/icons.svg#icon-exit-1" />
-            </svg>
+            <Icon id="#icon-exit-1" className={s.exitIcon} />
             <p className={s.exitText}>Exit</p>
           </button>
         </div>
@@ -76,9 +73,7 @@ const HeaderComponent = () => {
         contentLabel="Modal"
       >
         <div className={s.logoutContainer}>
-          <svg className={s.logoutIcon} width={36} height={36}>
-            <use href="/public/img/icons.svg#icon-Money-Guard" />
-          </svg>
+          <Icon id="#icon-Money-Guard" className={s.logoutIcon} />
           <p className={s.logoutText}>Money Guard</p>
         </div>
         <p className={s.modalText}>Are you sure you want to log out?</p>
