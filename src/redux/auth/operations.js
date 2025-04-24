@@ -1,7 +1,9 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
+
 axios.defaults.baseURL = "https://moneyguard-group-06.onrender.com/";
+
 
 export const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -31,7 +33,9 @@ export const login = createAsyncThunk(
       setAuthHeader(data.data.token);
       return data.data;
     } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
+      return thunkApi.rejectWithValue(
+        error.response?.data?.message || error.message
+      );
     }
   }
 );

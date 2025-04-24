@@ -11,8 +11,10 @@ import StatisticsTab from "./pages/StatisticsPage/StatisticsTab";
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
 import DeleteModal from "./components/DeleteModal/DeleteModal";
 import Loader from "./components/Loader/Loader";
+
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
 import { PrivateRoute } from "./components/Routes/PrivateRoute";
+
 
 const App = () => {
   return (

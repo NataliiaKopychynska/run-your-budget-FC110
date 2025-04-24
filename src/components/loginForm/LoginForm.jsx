@@ -16,16 +16,17 @@ function LoginForm() {
   const navigate = useNavigate();
 
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     dispatch(login(values))
       .unwrap()
       .then((res) => {
         toast.success(`Welcome, ${res.name}!`);
         navigate("/");
       })
-      .catch(() => {
-        toast.error("Invalid credentials");
+      .catch((error) => {
+        console.error("Login error:", error);
+        toast.error(error || "Login failed. Please try again.");
       });
+
     setSubmitting(false);
     resetForm();
   };
