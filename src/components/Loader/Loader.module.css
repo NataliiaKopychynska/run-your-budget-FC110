@@ -6,9 +6,9 @@
   height: 100%;
   background: linear-gradient(
     90deg,
-    rgba(212, 116, 210, 1) 0%,
-    rgba(136, 68, 166, 1) 50%,
-    rgba(118, 19, 161, 1) 100%
+    rgba(212, 116, 210, 0.6) 0%,
+    rgba(136, 68, 166, 0.6) 50%,
+    rgba(118, 19, 161, 0.6) 100%
   );
   display: flex;
   justify-content: center;
