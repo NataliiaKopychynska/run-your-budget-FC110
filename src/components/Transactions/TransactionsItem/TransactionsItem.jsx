@@ -18,6 +18,7 @@ const TransactionsItem = ({ _id, date, type, category, comments, summ }) => {
 
   const handleDeleteBtn = () => {
     dispatch(setDeletingTransaction({ _id, type, summ }));
+    document.body.classList.add("no-scroll");
   };
 
   const formatDate = (isoString) => {

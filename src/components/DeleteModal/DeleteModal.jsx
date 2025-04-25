@@ -19,10 +19,12 @@ const DeleteModal = () => {
     dispatch(deleteTransaction(deletingTransaction._id));
     dispatch(setDeletingTransaction(null));
     modalRef.current?.close();
+    document.body.classList.remove("no-scroll");
   };
 
   const handleNoClick = () => {
     dispatch(setDeletingTransaction(null));
+    document.body.classList.remove("no-scroll");
 
     modalRef.current?.close();
   };
@@ -69,6 +71,7 @@ const DeleteModal = () => {
         onClick={() => {
           dispatch(setDeletingTransaction(null));
           modalRef.current?.close();
+          document.body.classList.remove("no-scroll");
         }}
       >
         <div className="modal-box" onClick={(e) => e.stopPropagation()}>
@@ -77,6 +80,7 @@ const DeleteModal = () => {
               onClick={() => {
                 dispatch(setDeletingTransaction(null));
                 modalRef.current?.close();
+                document.body.classList.remove("no-scroll");
               }}
               className={s.modalXBtn}
             >
