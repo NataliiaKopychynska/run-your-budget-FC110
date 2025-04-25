@@ -13,28 +13,34 @@ import { useDispatch } from "react-redux";
 import Button from "../../Buttons/Button";
 import ButtonGradient from "../../Buttons/ButtonGradient";
 
-const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
+const TransactionsItem = ({ _id, date, type, category, comments, summ }) => {
   const dispatch = useDispatch();
 
   const handleDeleteBtn = () => {
-    dispatch(setDeletingTransaction({ id, type, sum }));
-    document.getElementById("deleteModal").showModal();
+    dispatch(setDeletingTransaction({ _id, type, summ }));
+  };
+
+  const formatDate = (isoString) => {
+    const year = isoString.slice(0, 4);
+    const month = isoString.slice(5, 7);
+    const day = isoString.slice(8, 10);
+    return `${day}.${month}.${year}`;
   };
 
   return (
     <div
       className={clsx(
         s.transactionsItem,
-        type === true ? s.transactionsItemIncome : s.transactionsItemExpense
+        type === "+" ? s.transactionsItemIncome : s.transactionsItemExpense
       )}
     >
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Date</p>
-        <p className={s.transactionsItemValue}>{date.substring(0, 7)}</p>
+        <p className={s.transactionsItemValue}>{formatDate(date)}</p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Type</p>
-        <p className={s.transactionsItemValue}>{type == true ? "+" : "-"}</p>
+        <p className={s.transactionsItemValue}>{type}</p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Category</p>
@@ -43,7 +49,7 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Comment</p>
         <p className={s.transactionsItemValue}>
-          {comment.length > 0 ? comment : "---"}
+          {comments.length > 0 ? comments : "---"}
         </p>
       </div>
       <div className={s.transactionsItemSpec}>
@@ -51,10 +57,10 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
         <p
           className={clsx(
             s.transactionsItemValue,
-            type === true ? s.income : s.expense
+            type === "+" ? s.income : s.expense
           )}
         >
-          {sum}
+          {summ}
         </p>
       </div>
       <div className={s.transactionsItemButtons}>
@@ -73,7 +79,7 @@ const TransactionsItem = ({ id, date, type, category, comment, sum }) => {
           className={s.transactionsItemEditBtn}
           onClick={() => {
             dispatch(setIsEditTransaction(true));
-            console.log("Id for editing transaction", id);
+            console.log("Id for editing transaction", _id);
           }}
         >
           <LuPencil className={s.transactionsItemEditBtnImage} />

@@ -16,7 +16,7 @@ const DeleteModal = () => {
   const modalRef = useRef(null);
 
   const handleYesClick = () => {
-    dispatch(deleteTransaction(deletingTransaction.id));
+    dispatch(deleteTransaction(deletingTransaction._id));
     dispatch(setDeletingTransaction(null));
     modalRef.current?.close();
   };
@@ -90,18 +90,18 @@ const DeleteModal = () => {
               <p className={s.modalQuestionText}>
                 <span
                   className={clsx(
-                    deletingTransaction.type === true ? s.income : s.expense
+                    deletingTransaction.type === "+" ? s.income : s.expense
                   )}
                 >
-                  {deletingTransaction.type === true ? "income" : "expense"}
+                  {deletingTransaction.type === "+" ? "income" : "expense"}
                 </span>
                 &nbsp;transaction for&nbsp;
                 <span
                   className={clsx(
-                    deletingTransaction.type === true ? s.income : s.expense
+                    deletingTransaction.type === "+" ? s.income : s.expense
                   )}
                 >
-                  ₴{deletingTransaction.sum}
+                  ₴{deletingTransaction.summ}
                 </span>
                 ?
               </p>
