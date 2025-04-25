@@ -22,7 +22,6 @@ export const fetchTransactions = createAsyncThunk(
   async (_, thunkApi) => {
     try {
       const { data } = await runBudgetApi.get("/transactions");
-      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
