@@ -4,7 +4,12 @@
   left: 0;
   width: 100%;
   height: 100%;
-  background-color: rgba(255, 255, 255, 0.6);
+  background: linear-gradient(
+    90deg,
+    rgba(212, 116, 210, 1) 0%,
+    rgba(136, 68, 166, 1) 50%,
+    rgba(118, 19, 161, 1) 100%
+  );
   display: flex;
   justify-content: center;
   align-items: center;
