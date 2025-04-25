@@ -1,6 +1,7 @@
 import React from "react";
 import s from "./LoginForm.module.css";
 // import { useDispatch } from "react-redux";
+import * as Yup from "yup";
 
 import { ErrorMessage, Field, Form, Formik } from "formik";
 import { Link, useNavigate } from "react-router-dom";
@@ -15,29 +16,31 @@ function LoginForm() {
   const dispatch = useDispatch();
   const navigate = useNavigate();
 
+  const validationSchema = Yup.object().shape({
+    email: Yup.string()
+      .email("Invalid email address")
+      .required("Email is required"),
+    password: Yup.string()
+      .min(6, "Password must be at least 6 characters")
+      .max(12, "Password must be at most 12 characters")
+      .required("Password is required"),
+  });
+
   const onSubmit = (values, { setSubmitting, resetForm }) => {
-    console.log(values);
     dispatch(login(values))
       .unwrap()
       .then((res) => {
         toast.success(`Welcome, ${res.name}!`);
-        navigate("/");
+        navigate("/home");
       })
-      .catch(() => {
-        toast.error("Invalid credentials");
+      .catch((error) => {
+        console.error("Login error:", error);
+        toast.error(error || "Login failed. Please try again.");
       });
+
     setSubmitting(false);
     resetForm();
   };
-
-  // const onSubmit = (values, { setSubmitting, resetForm }) => {
-  //   () => navigate("/");
-  //   toast.success(`Welcome!`);
-  //   console.log({ values, setSubmitting, resetForm });
-
-  //   setSubmitting(false);
-  //   resetForm();
-  // };
 
   return (
     <>
@@ -46,6 +49,7 @@ function LoginForm() {
           email: "",
           password: "",
         }}
+        validationSchema={validationSchema}
         onSubmit={onSubmit}
       >
         <Form className={s.form}>

@@ -1,29 +1,17 @@
 .currencyWrapper {
+    font-family: 'Poppins', sans-serif;
     position: relative;
     background-color: rgba(74, 86, 226, 0.1);
     width: 100%;
     height: 220px;
-    margin: 0 auto;
+    margin-top: 20px;
+    margin-bottom: 27px;
     background-image: url(../../assets/chartMobile.svg);
     background-repeat: no-repeat;
     background-position: center bottom;
     background-size: contain;
 }
 
-@media (min-width: 768px) {
-    .currencyWrapper {
-        min-width: 336px;
-        margin: 0;
-    }
-}
-
-@media (min-width: 1280px) {
-    .currencyWrapper {
-        width: 480px;
-        height: 380px;
-        background-image: url(../../assets/chart.svg);
-    }
-}
 
 .currencyTable {
     width: 100%;
@@ -43,45 +31,92 @@
     width: 33%;
 }
 
-.tableName:first-child {
-    padding-left: 20px;
-    padding-right: 5px;
-}
+.tableName:last-child {
+    padding-left: 30px;
 
-@media (min-width: 1280px) {
-    .tableName:first-child {
-        padding-left: 62px;
-    }
-
-    .tableName:last-child {
-        padding-right: 111px;
-    }
-}
-
-.tableRow {
-    /* blank */
 }
 
 .tableData {
-    padding: 8px 0;
-    width: 30%;
-    /* padding-left: 25px; */
+    width: 33%;
+    padding-top: 10px;
 }
 
 .tableData:last-child {
-    /* padding-left: 46px; */
+    padding-left: 30px;
 }
 
+/* TABLET */
+@media (min-width: 768px) {
+    .currencyWrapper {
+        width: 336px;
+        height: 214px;
+        border-bottom-left-radius: 10px;
+        border-bottom-right-radius: 10px;
+        position: absolute;
+        top: 80px;
+        right: 32px;
+        margin-top: 0;
+        margin-bottom: 0;
+    }
+}
+
+/* DESKTOP */
+
 @media (min-width: 1280px) {
-    .tableData {
+
+    .currencyWrapper {
+        width: 480px;
+        height: 380px;
+        background-image: url(../../assets/chart.svg);
+        position: relative;
+        top: auto;
+        right: auto;
+    }
+
+    .usdChart {
+        font-size: 12px;
+        color: rgb(255, 134, 141);
+        position: absolute;
+        left: 50px;
+        bottom: 160px;
         text-align: center;
     }
 
-    .tableData:first-child {
-        padding-left: 62px;
+    .eurChart {
+        font-size: 12px;
+        color: rgb(255, 134, 141);
+        position: absolute;
+        right: 100px;
+        bottom: 195px;
+        text-align: center;
     }
 
-    .tableData:last-child {
-        padding-right: 131px;
+    .tableName {
+        padding-top: 16px;
+        padding-bottom: 16px;
     }
+
+    .tableName:first-child {
+        padding-left: 52px;
+        padding-right: 29px;
+    }
+
+
+    .tableData {
+        text-align: center;
+        padding-top: 24px;
+    }
+
+    .tableData:first-child {
+        padding-left: 80px;
+        padding-right: 58px;
+
+    }
+
+    .tableData:last-child,
+    .tableName:last-child {
+        padding-right: 120px;
+        padding-left: 20px;
+    }
+
 }

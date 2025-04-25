@@ -62,6 +62,130 @@
   color: rgba(255, 255, 255, 0.6);
 }
 
+.modal {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  width: 533px;
+  height: 447px;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+  backdrop-filter: blur(100px);
+  box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+  background: rgba(255, 255, 255, 0.1);
+  padding: 60px;
+  display: flex;
+  flex-direction: column;
+  justify-content: space-between;
+  z-index: 1000;
+}
+
+.overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  backdrop-filter: blur(7px);
+  background: rgba(34, 13, 91, 0.23);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  z-index: 999;
+}
+
+.logoutContainer {
+  width: 182px;
+  height: 76px;
+  margin: 0 auto;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-wrap: wrap;
+  margin-bottom: 52px;
+}
+
+.logoutText {
+  font-weight: 400;
+  font-size: 26px;
+  color: #fbfbfb;
+}
+
+.modalText {
+  margin: 0 auto;
+  margin-bottom: 52px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+.btnLogout {
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: linear-gradient(
+    97deg,
+    #ffc727 16.42%,
+    #9e40ba 97.04%,
+    #7000ff 150.71%
+  );
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #fff;
+  border: none;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  margin: 0 auto;
+  margin-bottom: 20px;
+}
+
+.btnLogout:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #7000ff 0%,
+    #9e40ba 31%,
+    #ffc727 100%
+  );
+  background-size: 200%;
+  background-position: right center;
+}
+
+.btnCancel {
+  border-radius: 20px;
+  width: 300px;
+  height: 50px;
+  box-shadow: 1px 9px 15px 0 rgba(0, 0, 0, 0.2);
+  background: #fcfcfc;
+  border: none;
+  font-weight: 400;
+  font-size: 18px;
+  letter-spacing: 0.1em;
+  text-transform: uppercase;
+  text-align: center;
+  color: #623f8b;
+  display: flex;
+  justify-content: center;
+  place-items: center;
+  margin: 0 auto;
+}
+
+.btnCancel:hover {
+  transform: scale(1.05);
+  background-image: linear-gradient(
+    to right,
+    #7000ff 30%,
+    #9e40ba 31%,
+    white 80%
+  );
+  background-size: 200%;
+  background-position: right center;
+}
+
 @media (min-width: 768px) {
   .logoIcon {
     width: 23px;
