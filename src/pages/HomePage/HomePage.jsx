@@ -8,6 +8,7 @@ import DeleteModal from "../../components/DeleteModal/DeleteModal";
 import Navigation from "../../components/Navigation/Navigation";
 import HeaderComponent from "../../components/Header/HeaderComponent";
 import ModalAddTransaction from "../../components/ModalAddTransaction/ModalAddTransaction";
+import ButtonAddTransactions from "../../components/ButtonAddTransactions/ButtonAddTransactions";
 
 function HomePage() {
   const isMobile = useMediaQuery({ maxWidth: 767 });
@@ -21,6 +22,7 @@ function HomePage() {
       {isMobile && <Balance />}
       <Transactions />
       <ModalAddTransaction />
+      <ButtonAddTransactions />
     </div>
   );
 }

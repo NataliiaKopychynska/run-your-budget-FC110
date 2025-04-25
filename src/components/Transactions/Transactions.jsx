@@ -7,7 +7,6 @@ import TransactionsList from "./TransactionsList/TransactionsList";
 // import { setIsAddTransaction } from "../../redux/transactions/slice";
 import { selectIsError } from "../../redux/transactions/selectors";
 import SomethingWrong from "../SomethingWrong/SomethingWrong";
-import ButtonAddTransactions from "../ButtonAddTransactions/ButtonAddTransactions";
 
 const Transactions = () => {
   // const dispatch = useDispatch();
@@ -24,7 +23,6 @@ const Transactions = () => {
       {/* <button type="button" onClick={() => handleAddBtn()}>
         <span className={s.transactionsAddBtn}>+</span>
       </button> */}
-      <ButtonAddTransactions/>
     </div>
   );
 };

@@ -9,7 +9,7 @@ import toast from "react-hot-toast";
 
 const toastParams = {
   position: "bottom-right",
-  duration: "500",
+  duration: 2000,
   style: {
     textAlign: "left",
     background:
@@ -21,8 +21,8 @@ const toastParams = {
 
 const initialState = {
   transactions: [],
-  isLoading: false,
-  isError: false,
+  // isLoading: false,
+  // isError: false,
   isEditTransaction: false,
   isAddTransaction: false,
   deletingTransaction: null,
@@ -46,55 +46,40 @@ const transactionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
-        state.transactions = action.payload;
-        state.isLoading = false;
-        state.isError = false;
+        state.transactions = action.payload.data.data;
       })
-      .addCase(fetchTransactions.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
-      .addCase(fetchTransactions.rejected, (state) => {
-        state.isLoading = false;
-        state.isError = true;
+      .addCase(fetchTransactions.rejected, (state, action) => {
+        toast.error(
+          `Failed to fetch transactions: ${action.error?.message}`,
+          toastParams
+        );
       })
 
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
-          (transaction) => transaction.id !== action.payload.id
+          (transaction) => transaction._id !== action.payload._id
         );
-        state.isLoading = false;
-        state.isError = false;
+        // state.isLoading = false;
+        // state.isError = false;
 
-        toast.error(
-          `Transaction for ₴${action.payload.sum} \n has been deleted`,
-          toastParams
-        );
-      })
-      .addCase(deleteTransaction.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
-      .addCase(deleteTransaction.rejected, (state) => {
-        state.isLoading = false;
-        state.isError = true;
+        toast.error(`Transaction has been deleted`, toastParams);
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.transactions.push(action.payload);
-        state.isLoading = false;
-        state.isError = false;
+        // state.isLoading = false;
+        // state.isError = false;
         toast.success(
           `Transaction for ₴${action.payload.sum} \n has been added`,
           toastParams
         );
       })
-      .addCase(addTransaction.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
+      // .addCase(addTransaction.pending, (state) => {
+      //   state.isLoading = true;
+      //   state.isError = false;
+      // })
       .addCase(addTransaction.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = true;
+        // state.isLoading = false;
+        // state.isError = true;
         toast.error(
           `Error: ${action.payload || "Something went wrong"}`,
           toastParams
