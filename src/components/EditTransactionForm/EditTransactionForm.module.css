@@ -22,8 +22,8 @@
     justify-content: center;
     gap: 15px;
     user-select: none;
-    font-size: 14px;
-    font-weight: 500;
+    font-size: 16px;
+    font-weight: 600;
     color: rgba(255, 255, 255, 0.6);
 }
 
@@ -56,7 +56,7 @@ input,
 .react-datepicker__input-container input {
     background: transparent;
     border: none;
-    border-bottom: 2.5px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     padding: 8px 20px;
     font-size: 16px;
     color: #ffffff;
@@ -87,7 +87,7 @@ input,
     font-size: 16px;
     color: #ffffff;
     border: none;
-    border-bottom: 2.5px solid rgba(255, 255, 255, 0.2);
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
     width: 100%;
     background: transparent;
     margin-bottom: 0;
@@ -158,3 +158,69 @@ border: none;
     width: 100%;
 }
 
+
+
+@media (min-width: 768px) {
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 32px;
+    justify-content: center;
+    padding: 0;
+    max-width: none;
+    
+    }
+
+.form>label {
+    flex: none;
+    width: 100%;
+    }
+
+.form>label:nth-of-type(2),
+.form>label:nth-of-type(3) {
+    width: calc((100% - 32px) / 2);
+    }
+
+.buttons {
+    width: 100%;
+    gap: 20px;
+          }
+    
+.saveBtn,
+.cancelBtn {
+     max-width:  300px;
+        }
+
+        
+.title {
+    font-size: 30px;
+     
+        }
+
+.inputSum {
+    text-align: center;
+}
+    
+ 
+.inputCategory {
+    width: 100%;
+    padding-left: 8px;
+    padding-bottom: 8px;
+         }
+    
+.calendarIcon {
+    right: 8px;
+    top: 19px;
+         }
+    
+.inputComment {
+    width: 100%;
+    padding-left: 8px;
+    padding-top: 0;
+    padding-bottom: 8px;
+         }
+
+  
+             
+}

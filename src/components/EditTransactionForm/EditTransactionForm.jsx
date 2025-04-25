@@ -71,7 +71,7 @@ const EditTransactionForm = ({ transaction, onCancel }) => {
   )}
 </label>
       <label>
-        <input type="number" {...register("sum")} />
+        <input type="number" {...register("sum")} className={s.inputSum}/>
         {errors.sum && <p className={s.error}>{errors.sum.message}</p>}
       </label>
 
@@ -98,8 +98,7 @@ const EditTransactionForm = ({ transaction, onCancel }) => {
      >
        <CalendarIcon />
      </button>
-    </label>
-                
+      </label>
       <label>
         <input type="text" {...register("comment")} className={s.inputComment} />
         {errors.comment && <p className={s.error}>{errors.comment.message}</p>}
