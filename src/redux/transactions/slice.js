@@ -8,7 +8,7 @@ import toast from "react-hot-toast";
 
 const toastParams = {
   position: "bottom-right",
-  duration: "500",
+  duration: 500,
   style: {
     textAlign: "left",
     background:
@@ -45,22 +45,18 @@ const transactionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
-        state.transactions = action.payload;
-        state.isLoading = false;
-        state.isError = false;
+        state.transactions = action.payload.data.data;
       })
-      .addCase(fetchTransactions.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
-      .addCase(fetchTransactions.rejected, (state) => {
-        state.isLoading = false;
-        state.isError = true;
+      .addCase(fetchTransactions.rejected, (state, action) => {
+        toast.error(
+          `Failed to fetch transactions: ${action.error?.message}`,
+          toastParams
+        );
       })
 
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
-          (transaction) => transaction.id !== action.payload.id
+          (transaction) => transaction._id !== action.payload._id
         );
         state.isLoading = false;
         state.isError = false;

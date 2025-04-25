@@ -2,14 +2,27 @@ import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
 
 export const runBudgetApi = axios.create({
-  baseURL: "https://6802ad240a99cb7408ea3ab1.mockapi.io/budget",
+  baseURL: "https://moneyguard-group-06.onrender.com/",
 });
 
+runBudgetApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 export const fetchTransactions = createAsyncThunk(
   "transaction/fetchAll",
   async (_, thunkApi) => {
     try {
       const { data } = await runBudgetApi.get("/transactions");
+      console.log(data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -43,4 +56,3 @@ export const addTransaction = createAsyncThunk(
     }
   }
 );
-
