@@ -24,9 +24,9 @@ const DeleteModal = () => {
 
   const handleNoClick = () => {
     dispatch(setDeletingTransaction(null));
-    document.body.classList.remove("no-scroll");
 
     modalRef.current?.close();
+    document.body.classList.remove("no-scroll");
   };
 
   useEffect(() => {
@@ -34,6 +34,7 @@ const DeleteModal = () => {
       if (event.code === "Escape" && modalRef.current?.open) {
         dispatch(setDeletingTransaction(null));
         modalRef.current?.close();
+        document.body.classList.remove("no-scroll");
       }
     };
 
