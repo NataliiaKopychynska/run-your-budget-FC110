@@ -16,6 +16,7 @@ import schema from "../../schemas/transactionValidation";
 
 import s from "./AddTransactionForm.module.css";
 import "react-datepicker/dist/react-datepicker.css";
+import { closeModal } from "../../redux/modal/slice";
 
 const AddTransactionForm = ({ onCancel }) => {
   const dispatch = useDispatch();
@@ -33,20 +34,22 @@ const AddTransactionForm = ({ onCancel }) => {
   ));
 
   const handleSubmit = async (values, { resetForm }) => {
-    const transformed = {
-      ...values,
-      type: values.type === "income",
-      date: selectedDate.toISOString(),
-      category: values.type === "income" ? null : values.category,
+    const dataToSend = {
+      type: values.type === "expense" ? "expenses" : "income",
+      sum: Number(values.sum),
+      category: values.type === "expense" ? values.category : "income",
+      comment: values.comment.trim(),
+      date: values.date.toISOString(),
     };
 
+    // console.log(dataToSend);
+
     try {
-      await dispatch(addTransaction(transformed)).unwrap();
+      await dispatch(addTransaction(dataToSend)).unwrap();
       resetForm();
-      onCancel();
+      dispatch(closeModal());
     } catch (error) {
-      console.error("Error:", error);
-      alert("Error adding transaction. Please check the data and try again.");
+      console.error("Error adding transaction:", error);
     }
   };
 
@@ -98,9 +101,12 @@ const AddTransactionForm = ({ onCancel }) => {
                 type="number"
                 className={s.inputSum}
                 placeholder="0.00"
+                step="0.01"
+                min="0"
               />
               <ErrorMessage name="sum" component="p" className={s.error} />
             </div>
+
             <div className={s.wrapperPicker}>
               <DatePicker
                 ref={datepickerRef}
@@ -129,6 +135,7 @@ const AddTransactionForm = ({ onCancel }) => {
               type="text"
               className={s.inputComment}
               placeholder="Comment"
+              maxLength="100"
             />
             <ErrorMessage name="comment" component="p" className={s.error} />
           </div>

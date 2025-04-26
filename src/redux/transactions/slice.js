@@ -54,7 +54,7 @@ const transactionsSlice = createSlice({
       .addCase(addTransaction.fulfilled, (state, action) => {
         state.transactions.push(action.payload);
         toast.success(
-          `Transaction for ₴${action.payload.sum} \n has been added`,
+          `Transaction for ₴${action.payload.sum} has been added`,
           toastParams
         );
       })
