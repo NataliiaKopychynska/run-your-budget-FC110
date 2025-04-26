@@ -13,7 +13,8 @@ const editSchema = schema.pick(["sum", "date", "comment","category"]);
 
 const EditTransactionForm = ({ transaction, onCancel }) => {
   const [selectedDate, setSelectedDate] = useState(new Date(transaction.date));
- const type = transaction.type ? "income" : "expense";
+  const type = transaction.type ? "income" : "expense";
+  console.log("transaction.type:", transaction.type);
     const datepickerRef = useRef(null);
     const [isCalOpen, setIsCalOpen] = useState(false);
   const {
