@@ -24,7 +24,6 @@ const DeleteModal = () => {
 
   const handleNoClick = () => {
     dispatch(setDeletingTransaction(null));
-
     modalRef.current?.close();
     document.body.classList.remove("no-scroll");
   };
@@ -44,18 +43,6 @@ const DeleteModal = () => {
       window.removeEventListener("keydown", handleKeyDown);
     };
   }, [dispatch]);
-
-  // useEffect(() => {
-  //   if (modalRef.current?.open) {
-  //     document.body.style.overflow = "hidden";
-  //   } else {
-  //     document.body.style.overflow = "unset";
-  //   }
-
-  //   return () => {
-  //     document.body.style.overflow = "auto";
-  //   };
-  // }, [deletingTransaction]);
 
   useEffect(() => {
     if (deletingTransaction) {
@@ -95,18 +82,18 @@ const DeleteModal = () => {
               <p className={s.modalQuestionText}>
                 <span
                   className={clsx(
-                    deletingTransaction.type === "+" ? s.income : s.expense
+                    deletingTransaction.type === "income" ? s.income : s.expense
                   )}
                 >
-                  {deletingTransaction.type === "+" ? "income" : "expense"}
+                  {deletingTransaction.type === "income" ? "income" : "expense"}
                 </span>
                 &nbsp;transaction for&nbsp;
                 <span
                   className={clsx(
-                    deletingTransaction.type === "+" ? s.income : s.expense
+                    deletingTransaction.type === "income" ? s.income : s.expense
                   )}
                 >
-                  ₴{deletingTransaction.summ}
+                  ₴{deletingTransaction.sum}
                 </span>
                 ?
               </p>
