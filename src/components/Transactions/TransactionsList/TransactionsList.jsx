@@ -15,6 +15,10 @@ const TransactionsList = () => {
     dispatch(fetchTransactions());
   }, [dispatch]);
 
+  const filteredTransactions = transactionsList.filter(
+    (transaction) => transaction && transaction._id
+  );
+
   return (
     <>
       <div className={s.transactionListHeader}>
@@ -28,7 +32,7 @@ const TransactionsList = () => {
 
       {!isLoading && (
         <>
-          {transactionsList.length === 0 ? (
+          {filteredTransactions.length === 0 ? (
             <div className={s.withoutTransaction}>
               <p className={s.withoutTransactionMain}>
                 You don't have any transaction.
@@ -39,7 +43,7 @@ const TransactionsList = () => {
             </div>
           ) : (
             <ul className={s.transactionsList}>
-              {transactionsList.map((transaction) => (
+              {filteredTransactions.map((transaction) => (
                 <li key={transaction._id} className={s.transactionLi}>
                   <TransactionsItem {...transaction} />
                 </li>

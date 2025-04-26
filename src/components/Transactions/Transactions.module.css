@@ -67,8 +67,12 @@
   /* background: #101010; */
   display: flex;
   flex-wrap: wrap;
-  gap: 10px;
-  margin: 0 auto;
+  justify-content: center;
+  gap: 8px;
+}
+
+.transactions {
+  margin: 32px 20px 0 20px;
 }
 
 .transactionLi {
@@ -148,6 +152,10 @@
     margin-bottom: 0;
   }
 
+  .transactions {
+    margin: 20px 32px 0 32px;
+  }
+
   .transactionLi {
     width: 100%;
   }
@@ -185,5 +193,10 @@
   .transactionsItemEditBtn:hover {
     transform: scale(1.5);
     color: #9e40ba;
+  }
+}
+@media (min-width: 768px) {
+  .transactions {
+    margin: 20px 32px 0 32px;
   }
 }
