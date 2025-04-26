@@ -6,7 +6,7 @@ import { selectTransactions } from "../../redux/transactions/selectors";
 export default function Balance() {
   const transactionList = useSelector(selectTransactions);
   const total = transactionList.reduce((acc, transaction) => {
-    const sign = transaction.type === true ? 1 : -1;
+    const sign = transaction.income === true ? 1 : -1;
     return acc + sign * Number(transaction.sum);
   }, 0);
   return (
