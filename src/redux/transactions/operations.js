@@ -19,9 +19,11 @@ runBudgetApi.interceptors.request.use(
 );
 export const fetchTransactions = createAsyncThunk(
   "transaction/fetchAll",
-  async (_, thunkApi) => {
+  async (body, thunkApi) => {
     try {
-      const { data } = await runBudgetApi.get("/transactions");
+      const { data } = await runBudgetApi.get(
+        `/transactions?sortBy=${body.sortBy}&sortOrder=${body.sortOrder}`
+      );
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

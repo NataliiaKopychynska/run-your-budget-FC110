@@ -125,10 +125,14 @@
   transform: rotate(360deg);
 }
 
+.sorting {
+  color: #ff868d;
+}
+
 @media (min-width: 768px) {
   .transactionListHeader {
     display: grid;
-    grid-template-columns: 0.7fr 0.3fr 1fr 1.5fr 0.5fr 0.8fr;
+    grid-template-columns: 0.7fr 0.4fr 1fr 1.5fr 0.5fr 0.8fr;
     justify-items: center;
     padding: 16px 20px;
     font-weight: 600;
@@ -140,7 +144,7 @@
 
   .transactionsItem {
     display: grid;
-    grid-template-columns: 0.7fr 0.3fr 1fr 1.5fr 0.5fr 0.8fr;
+    grid-template-columns: 0.7fr 0.4fr 1fr 1.5fr 0.5fr 0.8fr;
     justify-items: center;
     align-items: center;
     width: 100%;
