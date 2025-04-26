@@ -1,0 +1,10 @@
+.container {
+  display: grid;
+}
+
+.balanceAndCurrency {
+  display: grid;
+  grid-template-columns: 336px 336px;
+  grid-auto-rows: 214px;
+  margin-bottom: 20px;
+}

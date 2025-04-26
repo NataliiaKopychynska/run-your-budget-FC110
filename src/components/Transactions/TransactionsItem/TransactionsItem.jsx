@@ -13,11 +13,12 @@ import { useDispatch } from "react-redux";
 import Button from "../../Buttons/Button";
 import ButtonGradient from "../../Buttons/ButtonGradient";
 
-const TransactionsItem = ({ _id, date, type, category, comments, summ }) => {
+const TransactionsItem = ({ _id, date, type, category, comment, sum }) => {
   const dispatch = useDispatch();
 
   const handleDeleteBtn = () => {
-    dispatch(setDeletingTransaction({ _id, type, summ }));
+    dispatch(setDeletingTransaction({ _id, type, sum }));
+    document.body.classList.add("no-scroll");
   };
 
   const formatDate = (isoString) => {
@@ -31,7 +32,7 @@ const TransactionsItem = ({ _id, date, type, category, comments, summ }) => {
     <div
       className={clsx(
         s.transactionsItem,
-        type === "+" ? s.transactionsItemIncome : s.transactionsItemExpense
+        type === "income" ? s.transactionsItemIncome : s.transactionsItemExpense
       )}
     >
       <div className={s.transactionsItemSpec}>
@@ -49,7 +50,7 @@ const TransactionsItem = ({ _id, date, type, category, comments, summ }) => {
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Comment</p>
         <p className={s.transactionsItemValue}>
-          {comments.length > 0 ? comments : "---"}
+          {comment.length > 0 ? comment : "---"}
         </p>
       </div>
       <div className={s.transactionsItemSpec}>
@@ -57,10 +58,10 @@ const TransactionsItem = ({ _id, date, type, category, comments, summ }) => {
         <p
           className={clsx(
             s.transactionsItemValue,
-            type === "+" ? s.income : s.expense
+            type === "income" ? s.income : s.expense
           )}
         >
-          {summ}
+          {sum}
         </p>
       </div>
       <div className={s.transactionsItemButtons}>
