@@ -18,7 +18,7 @@ import Loader from "./components/Loader/Loader";
 import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
 import { PrivateRoute } from "./components/Routes/PrivateRoute";
 import { fetchTransactions } from "./redux/transactions/operations";
-import ErrorPage from "./pages/ErrorPage/ErrorPage";
+import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -64,7 +64,8 @@ const App = () => {
           <Route path="statistics" element={<StatisticsTab />} />
           <Route path="currency" element={<CurrencyPage />} />
         </Route>
-        <Route path="error" element={<ErrorPage />} />
+        <Route path="*" element={<NotFoundPage />} />
+
       </Routes>
     </>
   );

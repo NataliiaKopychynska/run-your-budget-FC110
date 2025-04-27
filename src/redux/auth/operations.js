@@ -1,9 +1,7 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-
 axios.defaults.baseURL = "https://moneyguard-group-06.onrender.com/";
-
 
 export const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
@@ -42,7 +40,7 @@ export const login = createAsyncThunk(
 
 export const logout = createAsyncThunk("auth/logout", async (_, thunkApi) => {
   try {
-    await axios.post("/auth/logout");
+    await axios.post("/auth/logout", {}, { withCredentials: true });
     clearAuthHeader();
   } catch (error) {
     return thunkApi.rejectWithValue(error.message);
