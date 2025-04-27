@@ -1,10 +1,23 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
-import { fetchTransactions } from "../transactions/operations";
+// import { fetchTransactions } from "../transactions/operations";
 
 export const runBudgetApi = axios.create({
-  baseURL: "https://6802ad240a99cb7408ea3ab1.mockapi.io/budget",
+  baseURL: "https://moneyguard-group-06.onrender.com/",
 });
+
+runBudgetApi.interceptors.request.use(
+  (config) => {
+    const token = localStorage.getItem("token");
+    if (token) {
+      config.headers.Authorization = `Bearer ${token}`;
+    }
+    return config;
+  },
+  (error) => {
+    return Promise.reject(error);
+  }
+);
 
 export const getPeriodTransactions = createAsyncThunk(
   "transactions/getPeriodTransactions",
@@ -14,13 +27,15 @@ export const getPeriodTransactions = createAsyncThunk(
 
       const { data } = await runBudgetApi.get("/transactions");
 
-      const filteredData = data.filter((transaction) => {
+      const filteredData = data.data.data.filter((transaction) => {
         const transactionDate = new Date(transaction.date);
         const transactionMonth = transactionDate.getMonth() + 1;
         const transactionYear = transactionDate.getFullYear();
 
         return transactionMonth === month && transactionYear === year;
       });
+
+      console.log(filteredData);
 
       const categoriesSummary = [];
       let incomeSummary = 0;
@@ -30,13 +45,13 @@ export const getPeriodTransactions = createAsyncThunk(
         const { sum, type, category } = transaction;
         const amount = Number(sum);
 
-        if (type === true) {
+        if (type === "income") {
           incomeSummary += amount;
-        } else {
+        } else if (type === "expenses") {
           expenseSummary += amount;
         }
 
-        const transactionType = type === true ? "INCOME" : "EXPENSE";
+        const transactionType = type === "income" ? "INCOME" : "EXPENSE";
         const existingCategory = categoriesSummary.find(
           (cat) => cat.name === category && cat.type === transactionType
         );
@@ -53,7 +68,6 @@ export const getPeriodTransactions = createAsyncThunk(
       });
 
       const periodTotal = incomeSummary - expenseSummary;
-      thunkAPI.dispatch(fetchTransactions());
 
       return {
         categoriesSummary,
@@ -66,3 +80,68 @@ export const getPeriodTransactions = createAsyncThunk(
     }
   }
 );
+
+// export const runBudgetApi = axios.create({
+//   baseURL: "https://6802ad240a99cb7408ea3ab1.mockapi.io/budget",
+// });
+
+// export const getPeriodTransactions = createAsyncThunk(
+//   "transactions/getPeriodTransactions",
+//   async (period, thunkAPI) => {
+//     try {
+//       const { month, year } = period;
+
+//       const { data } = await runBudgetApi.get("/transactions");
+
+//       const filteredData = data.filter((transaction) => {
+//         const transactionDate = new Date(transaction.date);
+//         const transactionMonth = transactionDate.getMonth() + 1;
+//         const transactionYear = transactionDate.getFullYear();
+
+//         return transactionMonth === month && transactionYear === year;
+//       });
+
+//       const categoriesSummary = [];
+//       let incomeSummary = 0;
+//       let expenseSummary = 0;
+
+//       filteredData.forEach((transaction) => {
+//         const { sum, type, category } = transaction;
+//         const amount = Number(sum);
+
+//         if (type === true) {
+//           incomeSummary += amount;
+//         } else {
+//           expenseSummary += amount;
+//         }
+
+//         const transactionType = type === true ? "INCOME" : "EXPENSE";
+//         const existingCategory = categoriesSummary.find(
+//           (cat) => cat.name === category && cat.type === transactionType
+//         );
+
+//         if (existingCategory) {
+//           existingCategory.total += amount;
+//         } else {
+//           categoriesSummary.push({
+//             name: category,
+//             type: transactionType,
+//             total: amount,
+//           });
+//         }
+//       });
+
+//       const periodTotal = incomeSummary - expenseSummary;
+//       thunkAPI.dispatch(fetchTransactions());
+
+//       return {
+//         categoriesSummary,
+//         incomeSummary,
+//         expenseSummary,
+//         periodTotal,
+//       };
+//     } catch (error) {
+//       return thunkAPI.rejectWithValue(error.message);
+//     }
+//   }
+// );
