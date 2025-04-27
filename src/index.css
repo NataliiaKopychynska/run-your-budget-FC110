@@ -158,7 +158,7 @@ p {
   padding-right: 20px;
 }
 
-@media (min-width: 769px) {
+@media (min-width: 768px) {
   h1 {
     font-size: 30px;
   }
