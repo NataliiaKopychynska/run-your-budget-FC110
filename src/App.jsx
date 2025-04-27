@@ -65,6 +65,7 @@ const App = () => {
           <Route path="currency" element={<CurrencyPage />} />
         </Route>
         <Route path="*" element={<NotFoundPage />} />
+
       </Routes>
     </>
   );
