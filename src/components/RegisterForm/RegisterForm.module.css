@@ -44,14 +44,18 @@
   color: white;
   width: 100%;
   padding: 0px 54px 8px;
+  &::placeholder {
+    color: rgba(255, 255, 255, 0.6);
+  }
+  &:disabled {
+    cursor: not-allowed;
+    opacity: 0.6;
+  }
+  &:hover {
+    border-bottom: 1px solid orange;
+  }
 }
-.input::placeholder {
-  color: rgba(255, 255, 255, 0.6);
-}
-.input:disabled {
-  cursor: not-allowed;
-  opacity: 0.6;
-}
+
 .icon {
   position: absolute;
   left: 10px;
