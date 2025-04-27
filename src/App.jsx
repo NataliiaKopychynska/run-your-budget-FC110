@@ -64,8 +64,7 @@ const App = () => {
           <Route path="statistics" element={<StatisticsTab />} />
           <Route path="currency" element={<CurrencyPage />} />
         </Route>
-        <Route path="*" element={<NotFoundPage />} />
-
+        <Route path="*" element={<NotFoundPage codError="404" />} />
       </Routes>
     </>
   );
