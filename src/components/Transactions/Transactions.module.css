@@ -72,7 +72,7 @@
 }
 
 .transactions {
-  margin: 32px 20px 0 20px;
+  padding: 32px 20px 0 20px;
 }
 
 .transactionLi {
@@ -127,6 +127,73 @@
 
 .sorting {
   color: #ff868d;
+}
+
+.filterForm {
+  display: flex;
+  flex-direction: column;
+  margin: 0 auto;
+  width: 280px;
+  gap: 8px;
+  justify-content: center;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.filterFormModule {
+  display: flex;
+  flex-direction: column;
+  gap: 12px;
+  width: 100%;
+  justify-content: start;
+}
+
+.input,
+.select {
+  border-radius: 10px;
+  border: 1px, rgba(255, 255, 255, 0.4), solid;
+  color: white;
+  background: rgb(158, 64, 186, 0.2);
+  padding: 8px;
+  width: 100%;
+}
+
+.input::placeholder {
+  color: white;
+}
+
+.select:focus {
+  background: rgb(158, 64, 186, 0.2);
+  padding: 8px;
+  outline: none;
+  color: white;
+}
+
+.filterFormModule {
+  display: flex;
+  flex-direction: column;
+  justify-content: center;
+  align-items: center;
+}
+
+.filterToggleButton {
+  margin-bottom: 10px;
+  padding: 8px 16px;
+  background-color: #7b2cbf;
+  color: white;
+  border: none;
+  border-radius: 8px;
+  cursor: pointer;
+  font-weight: 600;
+  transition: background-color 0.5s;
+}
+
+.filterToggleButton:hover {
+  background: #9e40ba;
+}
+
+.filterSection {
+  margin-bottom: 20px;
 }
 
 @media (min-width: 768px) {
@@ -197,6 +264,15 @@
   .transactionsItemEditBtn:hover {
     transform: scale(1.5);
     color: #9e40ba;
+  }
+
+  .filterForm {
+    display: grid;
+    grid-template-columns: 1fr 1fr 1fr;
+    width: 100%;
+    gap: 8px;
+    justify-content: space-between;
+    margin-bottom: 20px;
   }
 }
 @media (min-width: 768px) {

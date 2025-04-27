@@ -12,10 +12,12 @@
   "dependencies": {
     "@hookform/resolvers": "^5.0.1",
     "@reduxjs/toolkit": "^2.7.0",
+    "accordion-js": "^3.4.0",
     "axios": "^1.8.4",
     "chart.js": "^4.4.9",
     "clsx": "^2.1.1",
     "formik": "^2.4.6",
+    "framer-motion": "^12.9.2",
     "react": "^19.0.0",
     "react-chartjs-2": "^5.3.0",
     "react-datepicker": "^8.3.0",

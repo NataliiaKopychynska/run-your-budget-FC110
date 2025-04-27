@@ -22,7 +22,7 @@ export const fetchTransactions = createAsyncThunk(
   async (body, thunkApi) => {
     try {
       const { data } = await runBudgetApi.get(
-        `/transactions?sortBy=${body.sortBy}&sortOrder=${body.sortOrder}`
+        `/transactions?sortBy=${body.sortBy}&sortOrder=${body.sortOrder}&type=${body.type}&category=${body.category}&minSum=${body.minSum}&maxSum=${body.maxSum}`
       );
       return data;
     } catch (error) {
