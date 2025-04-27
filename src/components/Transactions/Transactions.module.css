@@ -153,20 +153,27 @@
   border-radius: 10px;
   border: 1px, rgba(255, 255, 255, 0.4), solid;
   color: white;
-  background: rgb(158, 64, 186, 0.2);
+  background: rgb(112, 0, 255, 0.1);
   padding: 8px;
   width: 100%;
+  transition: all 500ms;
 }
 
 .input::placeholder {
   color: white;
 }
 
-.select:focus {
-  background: rgb(158, 64, 186, 0.2);
+.select:focus,
+.input:focus {
+  background: #7000ff;
   padding: 8px;
   outline: none;
   color: white;
+}
+
+.select:hover,
+.input:hover {
+  background: #7000ff;
 }
 
 .filterFormModule {
