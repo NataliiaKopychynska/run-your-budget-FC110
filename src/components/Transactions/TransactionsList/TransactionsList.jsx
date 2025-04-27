@@ -4,8 +4,13 @@ import { Formik, Form, Field } from "formik";
 import { motion, AnimatePresence } from "framer-motion";
 import clsx from "clsx";
 
+import { RxThickArrowRight, RxThickArrowLeft } from "react-icons/rx";
+
 import { fetchTransactions } from "../../../redux/transactions/operations";
-import { selectTransactions } from "../../../redux/transactions/selectors";
+import {
+  selectPaginationData,
+  selectTransactions,
+} from "../../../redux/transactions/selectors";
 import { selectIsLoading } from "../../../redux/global/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
 
@@ -30,6 +35,9 @@ const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactionsList = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
+  const paginationData = useSelector(selectPaginationData);
+
+  console.log(paginationData);
 
   const [sortBy, setSortBy] = useState("_id");
   const [sortOrder, setSortOrder] = useState("asc");
@@ -248,6 +256,42 @@ const TransactionsList = () => {
                 </li>
               ))}
             </ul>
+          )}
+
+          {paginationData.totalPages > 1 && (
+            <div className={s.pagination}>
+              <div className={s.paginationButtons}>
+                {paginationData.hasPreviousPage && (
+                  <button type="button" className={s.prevBtn}>
+                    <RxThickArrowLeft />
+                  </button>
+                )}
+
+                {paginationData.totalPages > 1 && (
+                  <div>
+                    Page {paginationData.page} / {paginationData.totalPages}
+                  </div>
+                )}
+
+                {paginationData.hasNextPage && (
+                  <button type="button" className={s.nextBtn}>
+                    <RxThickArrowRight />
+                  </button>
+                )}
+              </div>
+
+              <select
+                name="perPage"
+                className={clsx(s.select, s.selectPerPage)}
+              >
+                <option>Items per page</option>
+                <option value="10">10</option>
+                <option value="20">20</option>
+                <option value="30">30</option>
+                <option value="40">40</option>
+                <option value="50">50</option>
+              </select>
+            </div>
           )}
         </>
       )}

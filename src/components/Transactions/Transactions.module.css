@@ -203,6 +203,57 @@
   margin-bottom: 20px;
 }
 
+.pagination {
+  display: flex;
+  position: relative;
+  align-items: center;
+  margin-bottom: 20px;
+}
+
+.paginationButtons {
+  display: flex;
+  justify-content: center;
+  gap: 12px;
+  margin-top: 12px;
+  flex-grow: 1;
+  align-items: right;
+}
+
+.prevBtn,
+.nextBtn {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  font-size: 24px;
+  font-weight: 900;
+  width: 30px;
+  height: 30px;
+  border-radius: 50%;
+  background: linear-gradient(
+    103deg,
+    #ffc727 0%,
+    #9e40ba 61.46%,
+    #7000ff 90.54%
+  );
+  transition: all 500ms;
+}
+
+.prevBtn:hover {
+  transform: translate(-5px) scale(1.1);
+}
+
+.nextBtn:hover {
+  transform: translate(5px) scale(1.1);
+}
+
+.selectPerPage {
+  width: auto;
+  height: 40px;
+  position: absolute;
+  right: 0;
+  margin-left: 10px;
+}
+
 @media (min-width: 768px) {
   .transactionListHeader {
     display: grid;

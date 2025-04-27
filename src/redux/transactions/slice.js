@@ -23,6 +23,7 @@ const initialState = {
   isEditTransaction: false,
   isAddTransaction: false,
   deletingTransaction: null,
+  paginationData: {},
 };
 
 const transactionsSlice = createSlice({
@@ -43,7 +44,9 @@ const transactionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
-        state.transactions = action.payload.data.data;
+        const { data, ...paginationData } = action.payload.data;
+        state.transactions = data;
+        state.paginationData = paginationData;
       })
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
