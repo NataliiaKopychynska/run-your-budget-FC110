@@ -14,7 +14,6 @@ const editSchema = schema.pick(["sum", "date", "comment","category"]);
 const EditTransactionForm = ({ transaction, onCancel }) => {
   const [selectedDate, setSelectedDate] = useState(new Date(transaction.date));
   const type = transaction.type ? "income" : "expense";
-  console.log("transaction.type:", transaction.type);
     const datepickerRef = useRef(null);
     const [isCalOpen, setIsCalOpen] = useState(false);
   const {
@@ -26,7 +25,7 @@ const EditTransactionForm = ({ transaction, onCancel }) => {
     resolver: yupResolver(editSchema),
     defaultValues: {
       sum: transaction.sum,
-      date: selectedDate,
+      date: selectedDate.toISOString().slice(0, 10),
       comment: transaction.comment,
       category: transaction.category, 
     },
@@ -34,13 +33,13 @@ const EditTransactionForm = ({ transaction, onCancel }) => {
 
  useEffect(() => {
     setValue("date", selectedDate);
-  }, [selectedDate, setValue]);
+  }, [selectedDate , setValue]);
 
   const dispatch = useDispatch();
   const onSubmit = (data) => {
   dispatch(
     editTransaction({
-      id: transaction.id,
+      _id: transaction._id,
       ...data,
       type,
     })

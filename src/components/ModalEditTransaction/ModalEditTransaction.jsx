@@ -9,7 +9,7 @@ const ModalEditTransaction = () => {
   const dispatch = useDispatch();
   const editId = useSelector(selectIsEditTransaction);       
   const allTx = useSelector(selectTransactions);             
-  const tx = allTx.find(t => t.id === editId);               
+  const tx = allTx.find(t => t._id === editId);               
 
   const isOpen = Boolean(editId) && Boolean(tx);
 

@@ -60,9 +60,9 @@ export const editTransaction = createAsyncThunk(
   "transactions/editTransaction",
   async (transaction, thunkAPI) => {
     try {
-      const { id, ...body } = transaction;    
+      const { _id, ...body } = transaction; 
       const { data } = await runBudgetApi.patch(
-        `/transactions/${id}`,body                                  
+        `/transactions/${_id}`,body                                  
       );
       thunkAPI.dispatch(fetchTransactions());
       return data;

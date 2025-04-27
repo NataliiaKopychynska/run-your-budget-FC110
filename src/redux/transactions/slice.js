@@ -65,18 +65,13 @@ const transactionsSlice = createSlice({
           toastParams
         );
       })
-     .addCase(editTransaction.pending, state => {
-        state.isLoading = true; state.isError = false;
-      })
       .addCase(editTransaction.fulfilled, (state, { payload }) => {
         state.transactions = state.transactions.map(t =>
-          t.id === payload.id ? payload : t
+          t._id === payload._id ? payload : t
         );
-        state.isLoading = false; state.isError = false;
         toast.success(`Transaction for ₴${payload.sum} has been updated`, toastParams);
       })
       .addCase(editTransaction.rejected, (state, { payload }) => {
-        state.isLoading = false; state.isError = true;
         toast.error(`Error: ${payload}`, toastParams);
       });
   },
