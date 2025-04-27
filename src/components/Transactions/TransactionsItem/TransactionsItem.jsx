@@ -21,10 +21,10 @@ const TransactionsItem = ({ _id, date, type, category, comment, sum }) => {
     document.body.classList.add("no-scroll");
   };
 
-  const formatDate = (isoString) => {
-    const year = isoString.slice(0, 4);
-    const month = isoString.slice(5, 7);
-    const day = isoString.slice(8, 10);
+  const formatDate = (date) => {
+    const year = date.slice(0, 4);
+    const month = date.slice(5, 7);
+    const day = date.slice(8, 10);
     return `${day}.${month}.${year}`;
   };
 
@@ -41,7 +41,9 @@ const TransactionsItem = ({ _id, date, type, category, comment, sum }) => {
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Type</p>
-        <p className={s.transactionsItemValue}>{type}</p>
+        <p className={s.transactionsItemValue}>
+          {type === "income" ? "+" : "-"}
+        </p>
       </div>
       <div className={s.transactionsItemSpec}>
         <p className={s.transactionsItemDesc}>Category</p>
