@@ -81,7 +81,7 @@ const TransactionsItem = ({ _id, date, type, category, comment, sum }) => {
         <button
           className={s.transactionsItemEditBtn}
           onClick={() => {
-            dispatch(setIsEditTransaction(true));
+            dispatch(setIsEditTransaction(_id));
             console.log("Id for editing transaction", _id);
           }}
         >

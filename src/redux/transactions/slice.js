@@ -66,8 +66,9 @@ const transactionsSlice = createSlice({
         );
       })
       .addCase(editTransaction.fulfilled, (state, { payload }) => {
+         const updated = payload.data;
         state.transactions = state.transactions.map(t =>
-          t._id === payload._id ? payload : t
+          t._id === updated._id ? payload : t
         );
         toast.success(`Transaction for ₴${payload.sum} has been updated`, toastParams);
       })
