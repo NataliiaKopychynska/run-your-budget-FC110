@@ -4,8 +4,35 @@
   height: 280px;
   margin: auto;
   margin-bottom: 32px;
-  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+  box-shadow: 0 4px 10px rgba(0, 0, 0, 0.2);
   border-radius: 50%;
+}
+
+.donutContainer::before {
+  content: "";
+  position: absolute;
+  top: 0;
+  left: 0;
+  width: 100%;
+  height: 100%;
+  border-radius: 50%;
+  box-shadow: inset 0 4px 10px rgba(0, 0, 0, 0.6);
+  pointer-events: none;
+  z-index: 10;
+}
+
+.donutContainer::after {
+  content: "";
+  position: absolute;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  width: 196px;
+  height: 196px;
+  border-radius: 50%;
+  box-shadow: 0 0 20px rgba(0, 0, 0, 0.5);
+  pointer-events: none;
+  z-index: 1;
 }
 
 .donutCenter {
@@ -25,8 +52,13 @@
   justify-content: center;
   align-items: center;
   text-align: center;
-  padding: 20px;
+  padding: 20px 0;
   height: 80%;
+}
+
+.noTransactionsText {
+  font-size: 18px;
+  font-weight: 500;
 }
 
 @media only screen and (min-width: 768px) {
@@ -36,6 +68,15 @@
     margin: 0;
     margin-right: 32px;
     margin-bottom: 32px;
+  }
+
+  .donutContainer::after {
+    width: 235px;
+    height: 235px;
+  }
+
+  .noTransactionsBox {
+    height: 40%;
   }
 }
 @media only screen and (min-width: 1280px) {
@@ -51,5 +92,14 @@
   .noTransactionsBox {
     max-width: 100%;
     height: auto;
+  }
+
+  .donutContainer::after {
+    width: 201px;
+    height: 201px;
+  }
+
+  .noTransactionsBox {
+    height: 50%;
   }
 }

@@ -21,6 +21,7 @@ export const hoverBackgroundColor = [
   "#ffe080",
   "#00c89b",
 ];
+
 export const options = {
   cutout: "70%",
   plugins: {

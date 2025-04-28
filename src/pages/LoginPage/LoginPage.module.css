@@ -8,6 +8,7 @@
     justify-content: center;
     align-items: center;
     height: 100vh;
+    width: 100%;
     position: relative;
     /* overflow: hidden; */
   }
@@ -20,21 +21,25 @@
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 374px;
-    height: 720px;
+    /* min-width: 374px; */
+    /* min-height: 720px; */
+    width: 700px;
+    height: 100vh;
     z-index: -1;
   }
 
   .next_bg_png {
     position: absolute;
     top: 350px;
-    left: 400px;
+    /* left: 400px; */
+    right: 0;
     background-image: url("/bg/closeup-golden-usd-coins2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 526px;
-    height: 720px;
+    /* height: 720px; */
+    height: 100vh;
   }
   .circle {
     /* display: inline; */
@@ -76,24 +81,58 @@
   .first_bg_png {
     position: absolute;
     top: 0;
-    left: -40px;
+    left: -10%;
     background-image: url("/bg/closeup-golden-usd-coins.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
-    width: 374px;
-    height: 720px;
+    /* width: 374px; */
+    width: 600px;
+    height: 100vh;
+    /* height: 720px; */
   }
 
   .next_bg_png {
     position: absolute;
     top: 0;
-    left: 60%;
+    /* left: 60%; */
+    right: -10%;
     background-image: url("/bg/closeup-golden-usd-coins2.png");
     background-size: cover;
     background-position: center;
     background-repeat: no-repeat;
     width: 526px;
-    height: 720px;
+    height: 100vh;
+    /* height: 720px; */
+  }
+}
+
+@media (min-width: 1480px) {
+  .first_bg_png {
+    position: fixed;
+    top: 0;
+    left: 0%;
+    background-image: url("/bg/closeup-golden-usd-coins.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    /* width: 374px; */
+    width: 800px;
+    height: 110vh;
+    /* height: 720px; */
+  }
+
+  .next_bg_png {
+    position: fixed;
+    top: 0;
+    /* left: 60%; */
+    right: 0;
+    background-image: url("/bg/closeup-golden-usd-coins2.png");
+    background-size: cover;
+    background-position: center;
+    background-repeat: no-repeat;
+    width: 626px;
+    height: 110vh;
+    /* height: 720px; */
   }
 }

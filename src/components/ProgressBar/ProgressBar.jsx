@@ -1,5 +1,5 @@
 import React from "react";
-import style from "./Progressbar.module.css";
+import s from "./Progressbar.module.css";
 
 function ProgressBar({ password, confirmPassword }) {
   function calculatePasswordStrength() {
@@ -52,8 +52,8 @@ function ProgressBar({ password, confirmPassword }) {
   };
 
   return (
-    <div className={style.passwordStrengthContainer}>
-      <div className={style.strengthBar} style={strengthBarStyles}></div>
+    <div className={s.passwordStrengthContainer}>
+      <div className={s.strengthBar} style={strengthBarStyles}></div>
     </div>
   );
 }
