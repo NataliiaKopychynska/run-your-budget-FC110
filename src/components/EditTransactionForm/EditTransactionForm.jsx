@@ -20,7 +20,9 @@ const EditTransactionForm = ({ transaction, onCancel }) => {
  const expenseEditSchema = schema
   .pick(["sum", "date", "comment", "category"])
   .shape({
-    category: yup.string().oneOf(validCategories, "Choose a valid category").required(),
+    category: yup.string().trim()                            
+      .transform(val => val.toLowerCase())
+      .oneOf(validCategories, "Choose a valid category").required(),
   });
 
 const incomeEditSchema = schema.pick(["sum", "date", "comment"]);
@@ -151,6 +153,3 @@ const editSchema = isIncome ? incomeEditSchema : expenseEditSchema;
 };
 
 export default EditTransactionForm;
-
-
- 
