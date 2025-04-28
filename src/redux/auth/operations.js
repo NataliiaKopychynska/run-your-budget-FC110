@@ -1,7 +1,8 @@
 import { createAsyncThunk } from "@reduxjs/toolkit";
 import axios from "axios";
 
-axios.defaults.baseURL = "https://moneyguard-group-06.onrender.com/";
+// axios.defaults.baseURL = "https://moneyguard-group-06.onrender.com/";
+axios.defaults.baseURL = "https://680363400a99cb7408ebd6c4.mockapi.io/";
 
 export const setAuthHeader = (token) => {
   axios.defaults.headers.common.Authorization = `Bearer ${token}`;
