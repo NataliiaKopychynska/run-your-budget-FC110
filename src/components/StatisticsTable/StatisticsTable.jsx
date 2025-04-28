@@ -8,8 +8,8 @@ import { backgroundColor } from '../../utils/statisticsColors';
 const StatisticsTable = () => {
   const {
     categoriesSummary = [],
-    incomeSummary = 0,
     expenseSummary = 0,
+    incomeSummary = 0,
   } = useSelector(selectPeriodTransactions);
 
   const expCategoriesSummary = categoriesSummary.filter(
@@ -37,7 +37,7 @@ const StatisticsTable = () => {
           <tbody className={s.tableBody}>
             {expCategoriesSummary.map((category, index) => (
               <tr key={index} className={s.tableRow}>
-                <td className={s.tableData}>
+                <td className={`${s.tableData} ${s.categoryCell}`}>
                   <span
                     className={s.legendColor}
                     style={{
@@ -45,9 +45,9 @@ const StatisticsTable = () => {
                         backgroundColor[index % backgroundColor.length],
                     }}
                   ></span>
-                  {category.name}
+                  <span className={s.categoryName}>{category.name}</span>
                 </td>
-                <td className={s.tableData}>{formatNumber(category.total)}</td>
+                <td className={`${s.tableData} ${s.amountCell}`}>{formatNumber(category.total)}</td>
               </tr>
             ))}
             <tr className={s.bottomTop}>

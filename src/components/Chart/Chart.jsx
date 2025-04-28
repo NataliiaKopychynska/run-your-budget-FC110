@@ -23,7 +23,7 @@ const Chart = () => {
   if (categoriesNames.length === 0) {
     return (
       <div className={s.noTransactionsBox}>
-        <p>There are no transactions for the selected period</p>
+        <p className={s.noTransactionsText}>There are no transactions added for the selected period</p>
       </div>
     );
   }

@@ -21,19 +21,9 @@ const statisticsSlice = createSlice({
     },
   },
   extraReducers: (builder) => {
-    builder
-      .addCase(getPeriodTransactions.pending, (state) => {
-        state.isLoading = true;
-        state.isError = false;
-      })
-      .addCase(getPeriodTransactions.fulfilled, (state, action) => {
-        state.isLoading = false;
-        state.periodTransactions = action.payload;
-      })
-      .addCase(getPeriodTransactions.rejected, (state, action) => {
-        state.isLoading = false;
-        state.isError = action.payload;
-      });
+    builder.addCase(getPeriodTransactions.fulfilled, (state, action) => {
+      state.periodTransactions = action.payload;
+    });
   },
 });
 
