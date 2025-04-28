@@ -50,7 +50,7 @@ const HeaderComponent = () => {
   };
 
   return (
-    <header>
+    <header className={s.header}>
       <div className={s.headerContainer}>
         <div className={s.logoContainer}>
           <Icon id="#icon-Money-Guard" className={s.logoIcon} />
@@ -72,17 +72,22 @@ const HeaderComponent = () => {
         onRequestClose={() => dispatch(closeModal())}
         contentLabel="Modal"
       >
-        <div className={s.logoutContainer}>
-          <Icon id="#icon-Money-Guard" className={s.logoutIcon} />
-          <p className={s.logoutText}>Money Guard</p>
+        <div>
+          <div className={s.logoutContainer}>
+            <Icon id="#icon-Money-Guard" className={s.logoutIcon} />
+            <p className={s.logoutText}>Money Guard</p>
+          </div>
+          <p className={s.modalText}>Are you sure you want to log out?</p>
+          <button className={s.btnLogout} onClick={confirmLogout}>
+            Logout
+          </button>
+          <button
+            className={s.btnCancel}
+            onClick={() => dispatch(closeModal())}
+          >
+            Cancel
+          </button>
         </div>
-        <p className={s.modalText}>Are you sure you want to log out?</p>
-        <button className={s.btnLogout} onClick={confirmLogout}>
-          Logout
-        </button>
-        <button className={s.btnCancel} onClick={() => dispatch(closeModal())}>
-          Cancel
-        </button>
       </Modal>
     </header>
   );

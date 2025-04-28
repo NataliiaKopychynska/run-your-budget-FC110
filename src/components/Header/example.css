@@ -1,0 +1,138 @@
+.modal {
+  top: 50%;
+  left: 50%;
+  width: 533px;
+  height: 447px;
+  transform: translate(-50%, -50%);
+  border-radius: 8px;
+}
+
+.modalText {
+  margin: 0 auto;
+  margin-bottom: 52px;
+  font-size: 18px;
+  font-weight: 500;
+}
+
+@media (max-width: 767px) {
+  .header {
+    position: fixed;
+    top: 0;
+    left: 0;
+    right: 0;
+    z-index: 1000;
+  }
+
+  .modal {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    transform: none;
+    border-radius: 0;
+    backdrop-filter: blur(100px);
+    box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
+    background: rgba(255, 255, 255, 0.1);
+    padding: 60px;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-between;
+    z-index: 1000;
+  }
+
+  .overlay {
+    position: fixed;
+    top: 0;
+    left: 0;
+    width: 100%;
+    height: 100%;
+    backdrop-filter: blur(7px);
+    background: rgba(34, 13, 91, 0.23);
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    z-index: 999;
+  }
+
+  .modalText {
+    font-size: 18px;
+    color: white;
+    text-align: center;
+    margin-bottom: 40px;
+  }
+
+  .btnLogout {
+    width: 80%;
+    padding: 15px;
+    margin-bottom: 20px;
+    border: none;
+    border-radius: 30px;
+    background: linear-gradient(90deg, #ffb347 0%, #ff5e62 100%);
+    color: white;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+
+  .btnCancel {
+    width: 80%;
+    padding: 15px;
+    border: none;
+    border-radius: 30px;
+    background: white;
+    color: #5b2b9b;
+    font-size: 16px;
+    font-weight: bold;
+    text-transform: uppercase;
+  }
+}
+
+@media (min-width: 768px) {
+  .headerContainer {
+    height: 80px;
+  }
+
+  .logoContainer {
+    width: 115px;
+    height: 48px;
+    margin-left: 32px;
+  }
+
+  .logoIcon {
+    width: 23px;
+    height: 22px;
+  }
+
+  .logoText {
+    font-size: 17px;
+  }
+
+  .exitContainer {
+    margin: 25px 32px 25px 0;
+  }
+
+  .exitText {
+    display: block;
+  }
+
+  .exitBtn {
+    width: 69px;
+    height: 30px;
+    border-left: 2px solid rgba(255, 255, 255, 0.6);
+  }
+
+  .exitIcon {
+    margin: 6px 8px 6px 12px;
+  }
+}
+
+@media (min-width: 1280px) {
+  .logoContainer {
+    margin-left: 16px;
+  }
+
+  .exitContainer {
+    margin-right: 16px;
+  }
+}
