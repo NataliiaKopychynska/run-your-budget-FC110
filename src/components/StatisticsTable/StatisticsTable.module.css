@@ -73,22 +73,35 @@
 
 .tableData {
   font-family: "Poppins", sans-serif;
-  padding: 16px;
+  padding: 16px 0;
   display: flex;
   align-items: center;
-  justify-content: space-between;
   font-weight: 400;
   font-size: 14px;
   color: #fbfbfb;
+  min-width: 0;
+}
+
+.categoryCell {
+  padding-left: 16px;
+  gap: 16px;
 }
 
 .legendColor {
   width: 24px;
   height: 24px;
-  display: inline-block;
-  margin-right: 16px;
   border-radius: 2px;
   flex-shrink: 0;
+}
+
+.categoryName {
+  white-space: normal;
+  word-break: break-word;
+}
+
+.amountCell {
+  padding-right: 17px;
+  justify-content: flex-end;
 }
 
 .legendColor:hover {
