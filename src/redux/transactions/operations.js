@@ -69,7 +69,8 @@ export const editTransaction = createAsyncThunk(
       thunkAPI.dispatch(fetchTransactions());
       return data;
     } catch (error) {
-      return thunkAPI.rejectWithValue(error.message);
+      const serverMsg = error.response?.data?.message || error.message;
+      return thunkAPI.rejectWithValue(serverMsg);
     }
   }
 );
