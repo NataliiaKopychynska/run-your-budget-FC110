@@ -107,7 +107,7 @@
     /* height: 720px; */
   }
 
-  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  /* @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
     .first_bg_png {
       background-image: url("/bg/closeup-golden-usd-coins@2x.png");
       background-size: 600px 100vh;
@@ -116,7 +116,7 @@
       background-image: url("/bg/closeup-golden-usd-coins2@2x.png");
       background-size: 526px 100vh;
     }
-  }
+  } */
 }
 
 @media (min-width: 1480px) {
@@ -154,19 +154,19 @@
       background-size: 800px 110vh;
     }
     .next_bg_png {
-      background-image: url("/bg/closeup-golden-usd-coins2@2x.png");
+      background-image: url("/bg/closeup-golden-usd-coins22@2x.png");
       background-size: 626px 110vh;
     }
   }
 }
 
-@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+/* @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
   .first_bg_png {
-    background-image: url("/bg/closeup-golden-usd-coins@2x.png");
-    background-size: 374px 720px;
+    background-image: url("/bg/closeup-golden-usd-coins.png");
+    background-size: 550px 720px;
   }
   .next_bg_png {
-    background-image: url("/bg/closeup-golden-usd-coins2@2x.png");
+    background-image: url("/bg/closeup-golden-usd-coins2.png");
     background-size: 526px 720px;
   }
-}
+} */
