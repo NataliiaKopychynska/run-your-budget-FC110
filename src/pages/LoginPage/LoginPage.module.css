@@ -137,3 +137,14 @@
     /* height: 720px; */
   }
 }
+
+@media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+  .first_bg_png {
+    background-image: url("/bg/closeup-golden-usd-coins@2x.png");
+    background-size: 374px 720px;
+  }
+  .next_bg_png {
+    background-image: url("/bg/closeup-golden-usd-coins2@2x.png");
+    background-size: 526px 720px;
+  }
+}
