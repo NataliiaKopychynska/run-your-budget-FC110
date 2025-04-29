@@ -12,8 +12,7 @@ const toastParams = {
   style: {
     textAlign: "left",
     background:
-      "linear-gradient(103deg,     #ffc727 0%,    #9e40ba 61.46%,    #7000ff 90.54%  )",
-
+      "linear-gradient(103deg,rgb(1, 1, 0) 0%,    #9e40ba 61.46%,    #7000ff 90.54%  )",
     color: "white",
   },
 };

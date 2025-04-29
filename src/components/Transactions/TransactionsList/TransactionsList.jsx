@@ -1,6 +1,5 @@
 import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
-import { Formik, Form, Field } from "formik";
 import clsx from "clsx";
 
 import { fetchTransactions } from "../../../redux/transactions/operations";
@@ -9,7 +8,6 @@ import { selectIsLoading } from "../../../redux/global/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
 
 import s from "../Transactions.module.css";
-import ButtonGradient from "../../Buttons/ButtonGradient";
 import TransactionFilterForm from "../TransactionFilterForm/TransactionFilterForm";
 import TransactionPaginationSection from "../TransactionPaginationSection/TransactionPaginationSection";
 
@@ -31,13 +29,16 @@ const TransactionsList = () => {
   const [sortBy, setSortBy] = useState("_id");
   const [sortOrder, setSortOrder] = useState("asc");
 
-  const reqParams = {
-    ...filters,
-    perPage: perPage,
-    page: page,
-    sortBy: sortBy,
-    sortOrder: sortOrder,
-  };
+  const reqParams = useMemo(
+    () => ({
+      ...filters,
+      perPage,
+      page,
+      sortBy,
+      sortOrder,
+    }),
+    [filters, perPage, page, sortBy, sortOrder]
+  );
 
   useEffect(() => {
     dispatch(fetchTransactions(reqParams));
@@ -48,17 +49,19 @@ const TransactionsList = () => {
   );
 
   const handleSortClick = (e) => {
-    setSortBy(e.target.name);
-    setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+    const clickedSortBy = e.target.name;
+    if (clickedSortBy === sortBy) {
+      setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+    } else {
+      setSortBy(clickedSortBy);
+      setSortOrder("asc");
+    }
   };
 
   return (
     <>
       <div>
-        <TransactionFilterForm
-          reqParams={reqParams}
-          setFilters={{ setFilters }}
-        />
+        <TransactionFilterForm reqParams={reqParams} setFilters={setFilters} />
       </div>
 
       <div className={s.transactionListHeader}>

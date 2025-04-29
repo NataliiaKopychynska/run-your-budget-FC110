@@ -1,12 +1,11 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
-import { useDispatch } from "react-redux";
-import { fetchTransactions } from "../../../redux/transactions/operations";
 import style from ".././../Buttons/Button.module.css";
 import { motion, AnimatePresence } from "framer-motion";
 import s from "../Transactions.module.css";
 import { Field, Form, Formik } from "formik";
 import ButtonGradient from "../../Buttons/ButtonGradient";
+import * as Yup from "yup";
 
 const toastParams = {
   position: "bottom-right",
@@ -20,12 +19,16 @@ const toastParams = {
 };
 
 const TransactionFilterForm = ({ setFilters }) => {
-  const dispatch = useDispatch();
   const [showFilters, setShowFilters] = useState(false);
 
   const toggleFilters = () => {
     setShowFilters((prev) => !prev);
   };
+
+  const validationSchema = Yup.object({
+    minSum: Yup.number().min(0, "Must be positive").nullable(),
+    maxSum: Yup.number().min(0, "Must be positive").nullable(),
+  });
 
   const initialValues = {
     type: "",
@@ -35,7 +38,7 @@ const TransactionFilterForm = ({ setFilters }) => {
     month: "",
   };
 
-  const handleApplyFilter = (values, resetForm) => {
+  const handleApplyFilter = (values, { resetForm }) => {
     if (values?.minSum > values?.maxSum) {
       return toast.error(
         "The minimum amount must be greater than the maximum amount.",
@@ -72,20 +75,19 @@ const TransactionFilterForm = ({ setFilters }) => {
             >
               <Formik
                 initialValues={initialValues}
-                onSubmit={(values, { resetForm }) => {
-                  handleApplyFilter(values, resetForm);
-                }}
+                validationSchema={validationSchema}
+                onSubmit={handleApplyFilter}
               >
                 <Form className={s.filterForm}>
                   <div className={s.filterFormModule}>
                     <Field as="select" name="type" className={s.select}>
-                      <option>Select type</option>
+                      <option value="">Select type</option>
                       <option value="income">Income</option>
                       <option value="expense">Expense</option>
                     </Field>
 
                     <Field as="select" name="category" className={s.select}>
-                      <option>Select category</option>
+                      <option value="">Select category</option>
                       <option value="mainExpenses">Main expenses</option>
                       <option value="products">Products</option>
                       <option value="car">Car</option>
