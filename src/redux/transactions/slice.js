@@ -71,8 +71,8 @@ const transactionsSlice = createSlice({
         );
       })
       .addCase(editTransaction.fulfilled, (state, { payload }) => {
-         const updated = payload.data;
-        state.transactions = state.transactions.map(t =>
+        const updated = payload.data;
+        state.transactions = state.transactions.map((t) =>
           t._id === updated._id ? updated : t
         );
         toast.success(`Transaction has been updated`, toastParams);
@@ -87,6 +87,5 @@ export const transactionsReducer = transactionsSlice.reducer;
 export const {
   setIsAddTransaction,
   setIsEditTransaction,
-
   setDeletingTransaction,
 } = transactionsSlice.actions;

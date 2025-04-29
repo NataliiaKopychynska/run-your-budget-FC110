@@ -77,7 +77,14 @@
 
 .filterApplyBtn {
   border-radius: 16px;
-  width: 200px;
   height: 40px;
+  width: 100px;
+  justify-content: center;
+}
+
+.filterResetBtn {
+  border-radius: 16px;
+  height: 40px;
+  width: 100px;
   justify-content: center;
 }

@@ -2,7 +2,6 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 
-import { fetchTransactions } from "../../../redux/transactions/operations";
 import { selectTransactions } from "../../../redux/transactions/selectors";
 import { selectIsLoading } from "../../../redux/global/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
@@ -10,6 +9,7 @@ import TransactionsItem from "../TransactionsItem/TransactionsItem";
 import s from "../Transactions.module.css";
 import TransactionFilterForm from "../TransactionFilterForm/TransactionFilterForm";
 import TransactionPaginationSection from "../TransactionPaginationSection/TransactionPaginationSection";
+import { fetchTransactions } from "../../../redux/transactions/operations";
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
@@ -61,7 +61,7 @@ const TransactionsList = () => {
   return (
     <>
       <div>
-        <TransactionFilterForm reqParams={reqParams} setFilters={setFilters} />
+        <TransactionFilterForm setFilters={setFilters} />
       </div>
 
       <div className={s.transactionListHeader}>
