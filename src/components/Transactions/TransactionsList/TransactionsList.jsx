@@ -40,6 +40,8 @@ const TransactionsList = () => {
     [filters, perPage, page, sortBy, sortOrder]
   );
 
+  console.log(filters);
+
   useEffect(() => {
     dispatch(fetchTransactions(reqParams));
   }, [dispatch, reqParams]);
