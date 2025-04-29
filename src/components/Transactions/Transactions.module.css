@@ -203,6 +203,12 @@
   margin-bottom: 20px;
 }
 
+.filterBtns {
+  display: flex;
+  gap: 12px;
+  justify-content: space-between;
+}
+
 .pagination {
   display: flex;
   position: relative;
