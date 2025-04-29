@@ -1,4 +1,4 @@
-import { Route, Routes } from "react-router-dom";
+import { Navigate, Route, Routes } from "react-router-dom";
 import "./App.css";
 import { useEffect } from "react";
 import { useDispatch } from "react-redux";
@@ -42,6 +42,7 @@ const App = () => {
       <DeleteModal />
 
       <Routes>
+        <Route path="/" element={<Navigate to="/home" />} />
         <Route
           path="register"
           element={
