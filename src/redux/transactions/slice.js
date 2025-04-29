@@ -13,8 +13,7 @@ const toastParams = {
   style: {
     textAlign: "left",
     background:
-      "linear-gradient(103deg,     #ffc727 0%,    #9e40ba 61.46%,    #7000ff 90.54%  )",
-
+      "linear-gradient(103deg,rgb(1, 1, 0) 0%,    #9e40ba 61.46%,    #7000ff 90.54%  )",
     color: "white",
   },
 };
@@ -24,6 +23,7 @@ const initialState = {
   isEditTransaction: false,
   isAddTransaction: false,
   deletingTransaction: null,
+  paginationData: {},
 };
 
 const transactionsSlice = createSlice({
@@ -44,7 +44,9 @@ const transactionsSlice = createSlice({
   extraReducers: (builder) => {
     builder
       .addCase(fetchTransactions.fulfilled, (state, action) => {
-        state.transactions = action.payload.data.data;
+        const { data, ...paginationData } = action.payload.data;
+        state.transactions = data;
+        state.paginationData = paginationData;
       })
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(

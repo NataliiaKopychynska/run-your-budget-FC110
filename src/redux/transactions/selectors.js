@@ -10,3 +10,6 @@ export const selectIsError = (state) => state.transactions.isError;
 
 export const selectDeletingTransaction = (state) =>
   state.transactions.deletingTransaction;
+
+export const selectPaginationData = (state) =>
+  state.transactions.paginationData;
