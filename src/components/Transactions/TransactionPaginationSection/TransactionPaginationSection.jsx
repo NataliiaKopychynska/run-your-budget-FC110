@@ -17,11 +17,8 @@ const TransactionPaginationSection = ({ setPage, setPerPage }) => {
     }
   }, [paginationData.page, paginationData.totalPages, setPage]);
 
-  console.log(paginationData);
-
   return (
     <div className={s.pagination}>
-      {/* Кнопки "назад/вперед" та лічильник сторінок — тільки якщо більше 1 сторінки */}
       {paginationData.totalPages > 1 && (
         <div className={s.paginationButtons}>
           {paginationData.hasPreviousPage && (
