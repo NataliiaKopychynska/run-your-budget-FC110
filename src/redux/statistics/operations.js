@@ -23,46 +23,39 @@ export const getPeriodTransactions = createAsyncThunk(
   async (period, thunkAPI) => {
     try {
       const { month, year } = period;
-      const { data } = await runBudgetApi.get("/transactions");
-
-      const filteredData = data.data.data.filter((transaction) => {
-        const transactionDate = new Date(transaction.date);
-        const transactionMonth = transactionDate.getMonth() + 1;
-        const transactionYear = transactionDate.getFullYear();
-
-        return transactionMonth === month && transactionYear === year;
-      });
+      const response = await runBudgetApi.get(
+        `/transactions/summary/${year}-${String(month).padStart(2, "0")}`
+      );
+      const { iSummary, eSummary } = response.data.data;
 
       const categoriesSummary = [];
-      let expenseSummary = 0;
-      let incomeSummary = 0;
 
-      filteredData.forEach((transaction) => {
-        const { sum, type, category } = transaction;
-        const amount = Number(sum);
-
-        if (type === "income") {
-          incomeSummary += amount;
-        } else if (type === "expenses") {
-          expenseSummary += amount;
+      if (iSummary?.income) {
+        for (const [category, total] of Object.entries(iSummary.income)) {
+          if (total > 0) {
+            categoriesSummary.push({
+              name: category,
+              type: "INCOME",
+              total,
+            });
+          }
         }
+      }
 
-        const transactionType = type === "income" ? "INCOME" : "EXPENSE";
-        const existingCategory = categoriesSummary.find(
-          (cat) => cat.name === category && cat.type === transactionType
-        );
-
-        if (existingCategory) {
-          existingCategory.total += amount;
-        } else {
-          categoriesSummary.push({
-            name: category,
-            type: transactionType,
-            total: amount,
-          });
+      if (eSummary?.expenses) {
+        for (const [category, total] of Object.entries(eSummary.expenses)) {
+          if (total > 0) {
+            categoriesSummary.push({
+              name: category,
+              type: "EXPENSE",
+              total,
+            });
+          }
         }
-      });
+      }
 
+      const incomeSummary = iSummary?.totalIncome || 0;
+      const expenseSummary = eSummary?.totalExpenses || 0;
       const periodTotal = incomeSummary - expenseSummary;
 
       return {
