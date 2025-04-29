@@ -24,7 +24,8 @@
     /* min-width: 374px; */
     /* min-height: 720px; */
     width: 700px;
-    height: 100vh;
+    width: 374px;
+    height: 720px;
     z-index: -1;
   }
 
@@ -38,8 +39,8 @@
     background-position: center;
     background-repeat: no-repeat;
     width: 526px;
-    /* height: 720px; */
-    height: 100vh;
+    height: 720px;
+    /* height: 100vh; */
   }
   .circle {
     /* display: inline; */
