@@ -57,3 +57,20 @@ export const addTransaction = createAsyncThunk(
     }
   }
 );
+
+export const editTransaction = createAsyncThunk(
+  "transactions/editTransaction",
+  async (transaction, thunkAPI) => {
+    try {
+      const { _id, ...body } = transaction; 
+      const { data } = await runBudgetApi.patch(
+        `/transactions/${_id}`,body                                  
+      );
+      thunkAPI.dispatch(fetchTransactions());
+      return data;
+    } catch (error) {
+      const serverMsg = error.response?.data?.message || error.message;
+      return thunkAPI.rejectWithValue(serverMsg);
+    }
+  }
+);

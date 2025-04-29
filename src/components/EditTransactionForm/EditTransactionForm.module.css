@@ -1,0 +1,245 @@
+.form {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+    width: 100%;
+
+}
+
+.incomeForm {
+    padding: 32px 20px 32px;
+
+}
+
+.expenseForm {
+padding: 20px 20px 64px;
+     
+}
+.row {
+    display: flex;
+    flex-direction: column;
+    gap: 33px;
+    
+}
+
+.field {
+    width: 100%;
+}
+
+
+
+.title {
+    font-weight: 400;
+    font-size: 24px;
+    color: #ffffff;
+    text-align: center;
+}
+
+
+.switcher {
+    display: flex;
+    justify-content: center;
+    gap: 15px;
+    user-select: none;
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+
+.activeIncome {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ffc727;
+}
+
+.activeExpense {
+    font-size: 16px;
+    font-weight: 600;
+    color: #ff868d;
+}
+
+.inactive {
+    font-size: 16px;
+    font-weight: 600;
+    color: rgba(255, 255, 255, 0.6);
+}
+
+
+.form label {
+    display: flex;
+    flex-direction: column;
+    position: relative;
+    color: #ffffff;
+}
+
+
+.form input,
+.form .react-datepicker__input-container input {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    width: 100%;
+}
+
+
+
+
+.inputDate {
+    padding: 8px 20px;
+    
+}
+
+.calendarIcon {
+    position: absolute;
+    top: 50%;
+    right: 16px;
+    transform: translateY(-50%);
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    cursor: pointer;
+}
+
+.inputComment {
+    padding: 8px 16px 32px;
+    margin-bottom: 0;
+}
+
+
+.error {
+    font-size: 12px;
+    color: #ff6b6b;
+    margin-top: 4px;
+}
+
+
+.buttons {
+    display: flex;
+    flex-direction: column;
+    gap: 14px;
+    align-items: center;
+}
+
+
+.saveBtn,
+.cancelBtn {
+    width: 100%;
+    max-width: 280px;
+    height: 50px;
+    border-radius: 20px;
+    font-size: 16px;
+    font-weight: 500;
+    cursor: pointer;
+    transition: opacity 0.2s;
+    text-transform: uppercase;
+
+}
+
+
+.saveBtn {
+background: linear-gradient(167deg,
+#ffc727 0%,
+#9e40ba 61.46%,
+#7000ff 90.54%);
+color: #ffffff;
+border: none;
+}
+
+.saveBtn:hover {
+    opacity: 0.9;
+}
+
+
+.cancelBtn {
+    background: #ffffff;
+    color: #7000ff;
+    border: none;
+}
+
+.cancelBtn:hover {
+    opacity: 0.8;
+}
+
+.inputCategory {
+    background: transparent;
+    border: none;
+    border-bottom: 1px solid rgba(255, 255, 255, 0.4);
+    padding: 8px 20px;
+    font-size: 16px;
+    color: #ffffff;
+    width: 100%;
+}
+
+
+
+@media (min-width: 768px) {
+.form {
+    display: flex;
+    flex-wrap: wrap;
+    flex-direction: row;
+    gap: 40px;
+    justify-content: center;
+    padding: 0;
+    max-width: none;
+    
+    }
+
+
+ .row {
+    flex-direction: row;
+    gap: 32px;
+    }
+ 
+
+.form>label {
+    flex: none;
+    width: 100%;
+    }
+
+
+
+.buttons {
+    width: 100%;
+    gap: 20px;
+          }
+    
+.saveBtn,
+.cancelBtn {
+     max-width:  300px;
+        }
+
+        
+.title {
+    font-size: 30px;
+     
+        }
+
+.inputSum {
+    text-align: center;
+    
+}
+    
+ 
+.inputCategory {
+    width: 100%;
+    padding-left: 8px;
+    padding-bottom: 8px;
+         }
+    
+.calendarIcon {
+    right: 8px;
+    top: 19px;
+         }
+    
+.inputComment {
+    width: 100%;
+    padding-left: 8px;
+    padding-bottom: 8px;
+         }
+           
+}
