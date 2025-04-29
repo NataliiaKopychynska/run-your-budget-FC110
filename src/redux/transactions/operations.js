@@ -17,13 +17,23 @@ runBudgetApi.interceptors.request.use(
     return Promise.reject(error);
   }
 );
+
 export const fetchTransactions = createAsyncThunk(
   "transaction/fetchAll",
   async (body, thunkApi) => {
     try {
-      const { data } = await runBudgetApi.get(
-        `/transactions?sortBy=${body.sortBy}&sortOrder=${body.sortOrder}&type=${body.type}&category=${body.category}&minSum=${body.minSum}&maxSum=${body.maxSum}&page=${body.page}&perPage=${body.perPage}`
-      );
+      const { data } = await runBudgetApi.get("/transactions", {
+        params: {
+          sortBy: body.sortBy,
+          sortOrder: body.sortOrder,
+          type: body.type,
+          category: body.category,
+          minSum: body.minSum,
+          maxSum: body.maxSum,
+          page: body.page,
+          perPage: body.perPage,
+        },
+      });
       console.log("Filtered data:", data);
       return data;
     } catch (error) {
@@ -32,26 +42,24 @@ export const fetchTransactions = createAsyncThunk(
   }
 );
 
-export const fetchTransactionsAll = createAsyncThunk(
-  "transaction/fetchAllAll",
-  async (_, thunkApi) => {
-    try {
-      const { data } = await runBudgetApi.get(`/transactions`);
-      console.log("Full data:", data);
-      return data;
-    } catch (error) {
-      return thunkApi.rejectWithValue(error.message);
-    }
-  }
-);
+// export const fetchTransactionsAll = createAsyncThunk(
+//   "transaction/fetchAllAll",
+//   async (_, thunkApi) => {
+//     try {
+//       const { data } = await runBudgetApi.get(`/transactions`);
+//       console.log("Full data:", data);
+//       return data;
+//     } catch (error) {
+//       return thunkApi.rejectWithValue(error.message);
+//     }
+//   }
+// );
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransactions",
   async (id, thunkApi) => {
     try {
       const { data } = await runBudgetApi.delete(`transactions/${id}`);
-      thunkApi.dispatch(fetchTransactions());
-      thunkApi.dispatch(fetchTransactionsAll());
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

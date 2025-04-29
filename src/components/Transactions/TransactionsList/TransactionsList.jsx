@@ -2,10 +2,7 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 
-import {
-  fetchTransactions,
-  fetchTransactionsAll,
-} from "../../../redux/transactions/operations";
+import { fetchTransactions } from "../../../redux/transactions/operations";
 import { selectTransactions } from "../../../redux/transactions/selectors";
 import { selectIsLoading } from "../../../redux/global/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
@@ -45,7 +42,6 @@ const TransactionsList = () => {
 
   useEffect(() => {
     dispatch(fetchTransactions(reqParams));
-    dispatch(fetchTransactionsAll());
   }, [dispatch, reqParams]);
 
   const filteredTransactions = transactionsList.filter(
