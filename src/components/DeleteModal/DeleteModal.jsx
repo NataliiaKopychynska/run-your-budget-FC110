@@ -3,14 +3,17 @@ import { selectDeletingTransaction } from "../../redux/transactions/selectors";
 import s from "./DeleteModal.module.css";
 import styles from "../Buttons/Button.module.css";
 import { setDeletingTransaction } from "../../redux/transactions/slice";
-import { deleteTransaction } from "../../redux/transactions/operations";
+import {
+  deleteTransaction,
+  fetchTransactions,
+} from "../../redux/transactions/operations";
 import clsx from "clsx";
 
 import { useEffect, useRef } from "react";
 import ButtonGradient from "../Buttons/ButtonGradient";
 import Button from "../Buttons/Button";
 
-const DeleteModal = () => {
+const DeleteModal = ({ sortBy, sortOrder, filters }) => {
   const deletingTransaction = useSelector(selectDeletingTransaction);
   const dispatch = useDispatch();
   const modalRef = useRef(null);
@@ -18,6 +21,7 @@ const DeleteModal = () => {
   const handleYesClick = () => {
     dispatch(deleteTransaction(deletingTransaction._id));
     dispatch(setDeletingTransaction(null));
+    dispatch(fetchTransactions({ sortBy, sortOrder, ...filters }));
     modalRef.current?.close();
     document.body.classList.remove("no-scroll");
   };
