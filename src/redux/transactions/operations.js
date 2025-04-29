@@ -34,26 +34,12 @@ export const fetchTransactions = createAsyncThunk(
           perPage: body.perPage,
         },
       });
-      console.log("Filtered data:", data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
     }
   }
 );
-
-// export const fetchTransactionsAll = createAsyncThunk(
-//   "transaction/fetchAllAll",
-//   async (_, thunkApi) => {
-//     try {
-//       const { data } = await runBudgetApi.get(`/transactions`);
-//       console.log("Full data:", data);
-//       return data;
-//     } catch (error) {
-//       return thunkApi.rejectWithValue(error.message);
-//     }
-//   }
-// );
 
 export const deleteTransaction = createAsyncThunk(
   "transactions/deleteTransactions",
@@ -72,8 +58,6 @@ export const addTransaction = createAsyncThunk(
   async (transaction, thunkApi) => {
     try {
       const { data } = await runBudgetApi.post("/transactions", transaction);
-      thunkApi.dispatch(fetchTransactions());
-
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

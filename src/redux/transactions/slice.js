@@ -49,14 +49,17 @@ const transactionsSlice = createSlice({
       })
       .addCase(deleteTransaction.fulfilled, (state, action) => {
         state.transactions = state.transactions.filter(
-          (transaction) => transaction._id !== action.payload._id
+          (transaction) => transaction._id !== action.payload.data._id
         );
-        toast.error(`Transaction has been deleted`, toastParams);
+        toast.error(
+          `Transaction for ₴${action.payload.data.sum}\nhas been deleted`,
+          toastParams
+        );
       })
       .addCase(addTransaction.fulfilled, (state, action) => {
-        state.transactions.push(action.payload);
+        state.transactions.push(action.payload.data);
         toast.success(
-          `Transaction for ₴${action.payload.sum} has been added`,
+          `Transaction for ₴${action.payload.data.sum}\nhas been added`,
           toastParams
         );
       })
