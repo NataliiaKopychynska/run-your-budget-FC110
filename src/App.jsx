@@ -1,15 +1,16 @@
 import { Route, Routes } from "react-router-dom";
 import "./App.css";
-import { useEffect } from "react";
+import { useEffect, useState, lazy, Suspense } from "react";
 import { useDispatch } from "react-redux";
-import { useState } from "react";
 
-import LoginPage from "./pages/LoginPage/LoginPage";
-import RegisterPage from "./pages/RegisterPage/RegisterPage";
-import HomePage from "./pages/HomePage/HomePage";
-import CurrencyPage from "./pages/CurrencyPage/CurrencyPage";
-import DashboardPage from "./pages/DashboardPage/DashboardPage";
-import StatisticsTab from "./pages/StatisticsPage/StatisticsTab";
+const LoginPage = lazy(() => import("./pages/LoginPage/LoginPage"));
+const RegisterPage = lazy(() => import("./pages/RegisterPage/RegisterPage"));
+const HomePage = lazy(() => import("./pages/HomePage/HomePage"));
+const CurrencyPage = lazy(() => import("./pages/CurrencyPage/CurrencyPage"));
+const DashboardPage = lazy(() => import("./pages/DashboardPage/DashboardPage"));
+const StatisticsTab = lazy(() =>
+  import("./pages/StatisticsPage/StatisticsTab")
+);
 
 import BackgroundGradientTablet from "./components/BackgroundGradient/BackgroundGradient";
 import DeleteModal from "./components/DeleteModal/DeleteModal";
@@ -39,7 +40,6 @@ const App = () => {
       <BackgroundGradientTablet />
       <Loader />
       <DeleteModal />
-
       <Routes>
         <Route
           path="register"
