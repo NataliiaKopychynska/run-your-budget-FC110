@@ -32,6 +32,8 @@ export const fetchTransactions = createAsyncThunk(
           maxSum: body.maxSum,
           page: body.page,
           perPage: body.perPage,
+          startDate: body.startDate,
+          endDate: body.endDate,
         },
       });
       return data;
@@ -69,10 +71,8 @@ export const editTransaction = createAsyncThunk(
   "transactions/editTransaction",
   async (transaction, thunkAPI) => {
     try {
-      const { _id, ...body } = transaction; 
-      const { data } = await runBudgetApi.patch(
-        `/transactions/${_id}`,body                                  
-      );
+      const { _id, ...body } = transaction;
+      const { data } = await runBudgetApi.patch(`/transactions/${_id}`, body);
       thunkAPI.dispatch(fetchTransactions());
       return data;
     } catch (error) {

@@ -205,16 +205,18 @@
 
 .filterBtns {
   display: flex;
+  align-items: center;
   gap: 12px;
   justify-content: space-between;
 }
 
 .pagination {
   display: flex;
-  position: relative;
+  flex-direction: column;
+  justify-content: center;
   align-items: center;
+  gap: 8px;
   margin-bottom: 20px;
-  margin-top: 20px;
 }
 
 .paginationButtons {
@@ -224,6 +226,12 @@
   margin-top: 12px;
   flex-grow: 1;
   align-items: center;
+}
+
+.selectPerPage {
+  width: 200px;
+  height: 40px;
+  margin-left: 10px;
 }
 
 .prevBtn,
@@ -253,12 +261,16 @@
   transform: translate(5px) scale(1.1);
 }
 
-.selectPerPage {
-  width: auto;
-  height: 40px;
-  position: absolute;
-  right: 0;
-  margin-left: 10px;
+.datePickerWrapper {
+  width: 100%;
+}
+
+.datePicker {
+  width: 100%;
+}
+
+.datePicker::placeholder {
+  color: white;
 }
 
 @media (min-width: 768px) {
@@ -339,8 +351,21 @@
     justify-content: space-between;
     margin-bottom: 20px;
   }
+
+  .pagination {
+    position: relative;
+    align-items: center;
+    margin-bottom: 20px;
+    margin-top: 20px;
+  }
+
+  .selectPerPage {
+    position: absolute;
+    right: 0;
+    width: 200px;
+  }
 }
-@media (min-width: 768px) {
+@media (min-width: 1280px) {
   .transactions {
     margin: 20px 32px 0 32px;
   }
