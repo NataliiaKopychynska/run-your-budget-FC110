@@ -106,6 +106,17 @@
     height: 100vh;
     /* height: 720px; */
   }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .first_bg_png {
+      background-image: url("/bg/closeup-golden-usd-coins@2x.png");
+      background-size: 600px 100vh;
+    }
+    .next_bg_png {
+      background-image: url("/bg/closeup-golden-usd-coins2@2x.png");
+      background-size: 526px 100vh;
+    }
+  }
 }
 
 @media (min-width: 1480px) {
@@ -135,6 +146,17 @@
     width: 626px;
     height: 110vh;
     /* height: 720px; */
+  }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .first_bg_png {
+      background-image: url("/bg/closeup-golden-usd-coins@2x.png");
+      background-size: 800px 110vh;
+    }
+    .next_bg_png {
+      background-image: url("/bg/closeup-golden-usd-coins2@2x.png");
+      background-size: 626px 110vh;
+    }
   }
 }
 
