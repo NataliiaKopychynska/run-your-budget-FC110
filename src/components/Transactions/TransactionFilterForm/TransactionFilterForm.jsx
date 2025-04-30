@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import style from ".././../Buttons/Button.module.css";
-import { motion, AnimatePresence } from "framer-motion";
+import { AnimatePresence } from "framer-motion";
 import s from "../Transactions.module.css";
 import { Field, Form, Formik } from "formik";
 import ButtonGradient from "../../Buttons/ButtonGradient";
