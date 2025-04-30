@@ -1,18 +1,20 @@
-import React from "react";
+import React, { useEffect } from "react";
 import s from "./Balance.module.css";
-import { useSelector } from "react-redux";
-import { selectTransactions } from "../../redux/transactions/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import { balanceSelector } from "../../redux/balance/selectors";
+import { getBalance } from "../../redux/balance/operations";
 
 export default function Balance() {
-  const transactionList = useSelector(selectTransactions);
-  const total = transactionList.reduce((acc, transaction) => {
-    const sign = transaction.type === "income" ? 1 : -1;
-    return acc + sign * Number(transaction.sum);
-  }, 0);
+  const dispatch = useDispatch();
+  const total = useSelector(balanceSelector);
+  useEffect(() => {
+    dispatch(getBalance());
+  }, [dispatch]);
+  console.log(total);
   return (
     <div className={s.container}>
       <p className={s.title}>Your balance</p>
-      <h2 className={s.sum}>₴ {total.toFixed(2)}</h2>
+      <h2 className={s.sum}>₴ {total}</h2>
     </div>
   );
 }

@@ -1,5 +1,6 @@
 import axios from "axios";
 import { createAsyncThunk } from "@reduxjs/toolkit";
+import { getBalance } from "../balance/operations";
 
 export const runBudgetApi = axios.create({
   baseURL: "https://moneyguard-group-06.onrender.com/",
@@ -48,6 +49,7 @@ export const deleteTransaction = createAsyncThunk(
   async (id, thunkApi) => {
     try {
       const { data } = await runBudgetApi.delete(`transactions/${id}`);
+      thunkApi.dispatch(getBalance());
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -60,6 +62,7 @@ export const addTransaction = createAsyncThunk(
   async (transaction, thunkApi) => {
     try {
       const { data } = await runBudgetApi.post("/transactions", transaction);
+      thunkApi.dispatch(getBalance());
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);
@@ -74,6 +77,7 @@ export const editTransaction = createAsyncThunk(
       const { _id, ...body } = transaction;
       const { data } = await runBudgetApi.patch(`/transactions/${_id}`, body);
       thunkAPI.dispatch(fetchTransactions());
+      thunkAPI.dispatch(getBalance());
       return data;
     } catch (error) {
       const serverMsg = error.response?.data?.message || error.message;

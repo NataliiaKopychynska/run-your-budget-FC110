@@ -8,6 +8,7 @@ import { modalReducer } from "./modal/slice";
 import { globalReducer } from "./global/slice";
 import { currencyReducer } from "./currency/slice";
 import { statisticsReducer } from "./statistics/slice";
+import { balanceReducer } from "./balance/slice";
 
 const persistConfig = {
   key: "root",
@@ -22,6 +23,7 @@ const rootReducer = combineReducers({
   modal: modalReducer,
   global: globalReducer,
   currency: currencyReducer,
+  balance: balanceReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);
