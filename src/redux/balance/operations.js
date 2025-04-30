@@ -13,7 +13,6 @@ export const getBalance = createAsyncThunk(
           Authorization: `Bearer ${token}`,
         },
       });
-      console.log("Fetched user data:", data);
       return data;
     } catch (error) {
       return thunkApi.rejectWithValue(error.message);

@@ -10,7 +10,6 @@ export default function Balance() {
   useEffect(() => {
     dispatch(getBalance());
   }, [dispatch]);
-  console.log(total);
   return (
     <div className={s.container}>
       <p className={s.title}>Your balance</p>
