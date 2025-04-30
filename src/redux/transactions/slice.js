@@ -70,7 +70,7 @@ const transactionsSlice = createSlice({
         state.transactions = state.transactions.filter(
           (transaction) => transaction._id !== action.payload.data._id
         );
-        toast.error(
+        toast.success(
           `Transaction for ₴${action.payload.data.sum}\nhas been deleted`,
           toastParams
         );
