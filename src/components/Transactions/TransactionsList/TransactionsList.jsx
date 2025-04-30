@@ -124,11 +124,9 @@ const TransactionsList = () => {
         <>
           {filteredTransactions.length === 0 ? (
             <div className={s.withoutTransaction}>
-              <p className={s.withoutTransactionMain}>
-                You don't have any transaction.
-              </p>
+              <p className={s.withoutTransactionMain}>No transactions found.</p>
               <p className={s.withoutTransactionSecondary}>
-                Let's start to use this awesome application.
+                You can add a new transaction by clicking the "+" button.
               </p>
             </div>
           ) : (
