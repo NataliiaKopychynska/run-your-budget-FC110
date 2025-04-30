@@ -11,6 +11,9 @@ import ReactDatePicker from "react-datepicker";
 import clsx from "clsx";
 import "react-datepicker/dist/react-datepicker.css";
 import "../datePickerStyles.css";
+import { useDispatch } from "react-redux";
+import { selectFilterData } from "../../../redux/transactions/selectors";
+import { setFilterData } from "../../../redux/transactions/slice";
 
 const toastParams = {
   position: "bottom-right",
@@ -23,7 +26,8 @@ const toastParams = {
   },
 };
 
-const TransactionFilterForm = ({ setFilters }) => {
+const TransactionFilterForm = () => {
+  const dispatch = useDispatch();
   const [showFilters, setShowFilters] = useState(false);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
@@ -51,11 +55,13 @@ const TransactionFilterForm = ({ setFilters }) => {
         toastParams
       );
     } else {
-      setFilters({
-        ...values,
-        startDate: startDate ? startDate.toISOString() : null,
-        endDate: endDate ? endDate.toISOString() : null,
-      });
+      dispatch(
+        setFilterData({
+          ...values,
+          startDate: startDate ? startDate.toLocaleDateString("en-CA") : null,
+          endDate: endDate ? endDate.toLocaleDateString("en-CA") : null,
+        })
+      );
     }
   };
 
@@ -158,7 +164,8 @@ const TransactionFilterForm = ({ setFilters }) => {
                           type="button"
                           text="Reset"
                           onClickFn={() => {
-                            setFilters(initialValues);
+                            dispatch(setFilterData(initialValues));
+
                             setDateRange([null, null]);
                             resetForm();
                           }}
