@@ -48,4 +48,10 @@
   .reg_page {
     padding: 48px;
   }
+
+  @media (-webkit-min-device-pixel-ratio: 2), (min-resolution: 192dpi) {
+    .reg_bg {
+      background-image: url(../../../public/img/registerPage/bg-register-desktop-2x.webp);
+    }
+  }
 }
