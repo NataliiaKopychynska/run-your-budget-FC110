@@ -2,7 +2,10 @@ import { useDispatch, useSelector } from "react-redux";
 import { useEffect, useMemo, useState } from "react";
 import clsx from "clsx";
 
-import { selectTransactions } from "../../../redux/transactions/selectors";
+import {
+  selectFilterData,
+  selectTransactions,
+} from "../../../redux/transactions/selectors";
 import { selectIsLoading } from "../../../redux/global/selectors";
 import TransactionsItem from "../TransactionsItem/TransactionsItem";
 
@@ -10,41 +13,17 @@ import s from "../Transactions.module.css";
 import TransactionFilterForm from "../TransactionFilterForm/TransactionFilterForm";
 import TransactionPaginationSection from "../TransactionPaginationSection/TransactionPaginationSection";
 import { fetchTransactions } from "../../../redux/transactions/operations";
+import { setFilterData } from "../../../redux/transactions/slice";
 
 const TransactionsList = () => {
   const dispatch = useDispatch();
   const transactionsList = useSelector(selectTransactions);
   const isLoading = useSelector(selectIsLoading);
-
-  const [page, setPage] = useState(1);
-  const [perPage, setPerPage] = useState(10);
-  const [filters, setFilters] = useState({
-    type: "",
-    category: "",
-    minSum: "",
-    maxSum: "",
-    month: "",
-  });
-
-  const [sortBy, setSortBy] = useState("_id");
-  const [sortOrder, setSortOrder] = useState("asc");
-
-  const reqParams = useMemo(
-    () => ({
-      ...filters,
-      perPage,
-      page,
-      sortBy,
-      sortOrder,
-    }),
-    [filters, perPage, page, sortBy, sortOrder]
-  );
-
-  console.log(filters);
+  const filterData = useSelector(selectFilterData);
 
   useEffect(() => {
-    dispatch(fetchTransactions(reqParams));
-  }, [dispatch, reqParams]);
+    dispatch(fetchTransactions(filterData));
+  }, [dispatch, filterData]);
 
   const filteredTransactions = transactionsList.filter(
     (transaction) => transaction && transaction._id
@@ -52,25 +31,34 @@ const TransactionsList = () => {
 
   const handleSortClick = (e) => {
     const clickedSortBy = e.target.name;
-    if (clickedSortBy === sortBy) {
-      setSortOrder((prevOrder) => (prevOrder === "asc" ? "desc" : "asc"));
+
+    if (clickedSortBy === filterData.sortBy) {
+      dispatch(
+        setFilterData({
+          sortOrder: filterData.sortOrder === "asc" ? "desc" : "asc",
+        })
+      );
     } else {
-      setSortBy(clickedSortBy);
-      setSortOrder("asc");
+      dispatch(
+        setFilterData({
+          sortBy: clickedSortBy,
+          sortOrder: "asc",
+        })
+      );
     }
   };
 
   return (
     <>
       <div>
-        <TransactionFilterForm setFilters={setFilters} />
+        <TransactionFilterForm />
       </div>
 
       <div className={s.transactionListHeader}>
         <input
           className={clsx(
             s.transactionsListHeaderItem,
-            sortBy === "date" && s.sorting
+            filterData.sortBy === "date" && s.sorting
           )}
           type="button"
           name="date"
@@ -80,7 +68,7 @@ const TransactionsList = () => {
         <input
           className={clsx(
             s.transactionsListHeaderItem,
-            sortBy === "type" && s.sorting
+            filterData.sortBy === "type" && s.sorting
           )}
           type="button"
           name="type"
@@ -90,7 +78,7 @@ const TransactionsList = () => {
         <input
           className={clsx(
             s.transactionsListHeaderItem,
-            sortBy === "category" && s.sorting
+            filterData.sortBy === "category" && s.sorting
           )}
           type="button"
           name="category"
@@ -100,7 +88,7 @@ const TransactionsList = () => {
         <input
           className={clsx(
             s.transactionsListHeaderItem,
-            sortBy === "comment" && s.sorting
+            filterData.sortBy === "comment" && s.sorting
           )}
           type="button"
           name="comment"
@@ -110,7 +98,7 @@ const TransactionsList = () => {
         <input
           className={clsx(
             s.transactionsListHeaderItem,
-            sortBy === "sum" && s.sorting
+            filterData.sortBy === "sum" && s.sorting
           )}
           type="button"
           name="sum"
@@ -141,7 +129,7 @@ const TransactionsList = () => {
         </>
       )}
 
-      <TransactionPaginationSection setPage={setPage} setPerPage={setPerPage} />
+      <TransactionPaginationSection />
     </>
   );
 };

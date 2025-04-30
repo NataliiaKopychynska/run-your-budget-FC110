@@ -13,3 +13,5 @@ export const selectDeletingTransaction = (state) =>
 
 export const selectPaginationData = (state) =>
   state.transactions.paginationData;
+
+export const selectFilterData = (state) => state.transactions.filterData;

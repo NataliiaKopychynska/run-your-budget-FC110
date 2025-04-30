@@ -1,10 +1,13 @@
 import { forwardRef, useRef, useState } from "react";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import DatePicker from "react-datepicker";
 import Select from "react-select";
 
-import { addTransaction } from "../../redux/transactions/operations";
+import {
+  addTransaction,
+  fetchTransactions,
+} from "../../redux/transactions/operations";
 import { expenseCategories } from "../../constants/transactionCategories";
 
 import Switcher from "./Switcher";
@@ -17,10 +20,12 @@ import schema from "../../schemas/transactionValidation";
 import s from "./AddTransactionForm.module.css";
 import "react-datepicker/dist/react-datepicker.css";
 import { closeModal } from "../../redux/modal/slice";
+import { selectFilterData } from "../../redux/transactions/selectors";
 
 const AddTransactionForm = ({ onCancel }) => {
   const dispatch = useDispatch();
   const datepickerRef = useRef(null);
+  const filterData = useSelector(selectFilterData);
   const [selectedDate, setSelectedDate] = useState(new Date());
 
   const CustomInput = forwardRef(({ value, onClick }, ref) => (
@@ -48,6 +53,7 @@ const AddTransactionForm = ({ onCancel }) => {
       await dispatch(addTransaction(dataToSend)).unwrap();
       resetForm();
       dispatch(closeModal());
+      dispatch(fetchTransactions(filterData));
     } catch (error) {
       console.error("Error adding transaction:", error);
     }

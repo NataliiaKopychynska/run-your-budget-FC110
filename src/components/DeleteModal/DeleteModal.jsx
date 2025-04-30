@@ -1,5 +1,8 @@
 import { useDispatch, useSelector } from "react-redux";
-import { selectDeletingTransaction } from "../../redux/transactions/selectors";
+import {
+  selectDeletingTransaction,
+  selectFilterData,
+} from "../../redux/transactions/selectors";
 import s from "./DeleteModal.module.css";
 import styles from "../Buttons/Button.module.css";
 import { setDeletingTransaction } from "../../redux/transactions/slice";
@@ -13,15 +16,16 @@ import { useEffect, useRef } from "react";
 import ButtonGradient from "../Buttons/ButtonGradient";
 import Button from "../Buttons/Button";
 
-const DeleteModal = ({ sortBy, sortOrder, filters }) => {
+const DeleteModal = () => {
   const deletingTransaction = useSelector(selectDeletingTransaction);
+  const filterData = useSelector(selectFilterData);
   const dispatch = useDispatch();
   const modalRef = useRef(null);
 
   const handleYesClick = () => {
     dispatch(deleteTransaction(deletingTransaction._id));
     dispatch(setDeletingTransaction(null));
-    dispatch(fetchTransactions({ sortBy, sortOrder, ...filters }));
+    dispatch(fetchTransactions(filterData));
     modalRef.current?.close();
     document.body.classList.remove("no-scroll");
   };

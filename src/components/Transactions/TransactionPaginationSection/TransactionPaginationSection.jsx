@@ -1,21 +1,31 @@
 import clsx from "clsx";
 import s from "../Transactions.module.css";
-import { useSelector } from "react-redux";
-import { selectPaginationData } from "../../../redux/transactions/selectors";
+import { useDispatch, useSelector } from "react-redux";
+import {
+  selectFilterData,
+  selectPaginationData,
+} from "../../../redux/transactions/selectors";
 import { RxThickArrowRight, RxThickArrowLeft } from "react-icons/rx";
 import { useEffect } from "react";
+import { setFilterData } from "../../../redux/transactions/slice";
 
-const TransactionPaginationSection = ({ setPage, setPerPage }) => {
+const TransactionPaginationSection = () => {
   const paginationData = useSelector(selectPaginationData);
+  const filterData = useSelector(selectFilterData);
+  const dispatch = useDispatch();
 
   useEffect(() => {
     if (
       paginationData.page > paginationData.totalPages &&
       paginationData.totalPages > 0
     ) {
-      setPage(paginationData.totalPages);
+      dispatch(
+        setFilterData({
+          page: paginationData.totalPages,
+        })
+      );
     }
-  }, [paginationData.page, paginationData.totalPages, setPage]);
+  }, [dispatch, paginationData.page, paginationData.totalPages, filterData]);
 
   return (
     <div className={s.pagination}>
@@ -26,12 +36,13 @@ const TransactionPaginationSection = ({ setPage, setPerPage }) => {
               type="button"
               className={s.prevBtn}
               onClick={() => {
-                setPage((prevPage) => {
-                  if (prevPage > 1) {
-                    return prevPage - 1;
-                  }
-                  return prevPage;
-                });
+                if (filterData.page > 1) {
+                  dispatch(
+                    setFilterData({
+                      page: filterData.page - 1,
+                    })
+                  );
+                }
               }}
             >
               <RxThickArrowLeft />
@@ -47,12 +58,13 @@ const TransactionPaginationSection = ({ setPage, setPerPage }) => {
               type="button"
               className={s.nextBtn}
               onClick={() => {
-                setPage((prevPage) => {
-                  if (prevPage < paginationData.totalPages) {
-                    return prevPage + 1;
-                  }
-                  return prevPage;
-                });
+                if (paginationData.page < paginationData.totalPages) {
+                  dispatch(
+                    setFilterData({
+                      page: filterData.page + 1,
+                    })
+                  );
+                }
               }}
             >
               <RxThickArrowRight />
@@ -67,7 +79,7 @@ const TransactionPaginationSection = ({ setPage, setPerPage }) => {
         onChange={(e) => {
           const selectedValue = e.target.value;
           if (selectedValue !== "") {
-            setPerPage(Number(selectedValue));
+            dispatch(setFilterData({ perPage: Number(selectedValue) }));
           }
         }}
       >

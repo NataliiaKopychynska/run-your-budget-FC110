@@ -24,6 +24,18 @@ const initialState = {
   isAddTransaction: false,
   deletingTransaction: null,
   paginationData: {},
+  filterData: {
+    sortBy: "_id",
+    sortOrder: null,
+    type: null,
+    category: null,
+    minSum: null,
+    maxSum: null,
+    page: 1,
+    perPage: 10,
+    startDate: null,
+    endDate: null,
+  },
 };
 
 const transactionsSlice = createSlice({
@@ -39,6 +51,12 @@ const transactionsSlice = createSlice({
 
     setDeletingTransaction: (state, action) => {
       state.deletingTransaction = action.payload;
+    },
+    setFilterData: (state, action) => {
+      state.filterData = {
+        ...state.filterData,
+        ...action.payload,
+      };
     },
   },
   extraReducers: (builder) => {
@@ -88,4 +106,5 @@ export const {
   setIsAddTransaction,
   setIsEditTransaction,
   setDeletingTransaction,
+  setFilterData,
 } = transactionsSlice.actions;
