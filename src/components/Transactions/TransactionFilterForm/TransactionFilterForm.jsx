@@ -1,7 +1,7 @@
 import { useState } from "react";
 import toast from "react-hot-toast";
 import style from ".././../Buttons/Button.module.css";
-import { AnimatePresence } from "framer-motion";
+import { motion, AnimatePresence } from "framer-motion";
 import s from "../Transactions.module.css";
 import { Field, Form, Formik } from "formik";
 import ButtonGradient from "../../Buttons/ButtonGradient";
@@ -45,7 +45,7 @@ const TransactionFilterForm = ({ setFilters }) => {
   };
 
   const handleApplyFilter = (values) => {
-    if (values?.minSum > values?.maxSum) {
+    if (values?.maxSum > 0 && values?.minSum > values?.maxSum) {
       return toast.error(
         "The minimum amount must be less than the maximum amount.",
         toastParams
