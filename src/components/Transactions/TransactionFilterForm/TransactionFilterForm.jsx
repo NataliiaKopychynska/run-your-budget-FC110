@@ -42,10 +42,10 @@ const TransactionFilterForm = () => {
   });
 
   const initialValues = {
-    type: null,
-    category: null,
-    minSum: null,
-    maxSum: null,
+    type: "",
+    category: "",
+    minSum: "",
+    maxSum: "",
   };
 
   const handleApplyFilter = (values) => {
@@ -92,6 +92,7 @@ const TransactionFilterForm = () => {
                 initialValues={initialValues}
                 validationSchema={validationSchema}
                 onSubmit={handleApplyFilter}
+                enableReinitialize={true}
               >
                 {({ resetForm }) => (
                   <Form className={s.filterForm}>
@@ -173,7 +174,7 @@ const TransactionFilterForm = () => {
                             dispatch(setFilterData(clearedFilters));
                             dispatch(fetchTransactions(clearedFilters));
                             setDateRange([null, null]);
-                            resetForm({ values: initialValues });
+                            resetForm({ initialValues });
                           }}
                           newClass={style.filterResetBtn}
                         />
