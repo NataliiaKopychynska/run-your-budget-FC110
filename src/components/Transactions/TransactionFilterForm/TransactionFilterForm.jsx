@@ -166,8 +166,14 @@ const TransactionFilterForm = () => {
                           type="button"
                           text="Reset"
                           onClickFn={() => {
-                            dispatch(setFilterData(initialValues));
-                            dispatch(fetchTransactions(filterData));
+                            const clearedFilters = {
+                              ...initialValues,
+                              startDate: null,
+                              endDate: null,
+                            };
+
+                            dispatch(setFilterData(clearedFilters));
+                            dispatch(fetchTransactions(clearedFilters));
                             setDateRange([null, null]);
                             resetForm();
                           }}
