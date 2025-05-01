@@ -11,8 +11,10 @@ import ReactDatePicker from "react-datepicker";
 import clsx from "clsx";
 import "react-datepicker/dist/react-datepicker.css";
 import "../datePickerStyles.css";
-import { useDispatch } from "react-redux";
+import { useDispatch, useSelector } from "react-redux";
 import { setFilterData } from "../../../redux/transactions/slice";
+import { selectFilterData } from "../../../redux/transactions/selectors";
+import { fetchTransactions } from "../../../redux/transactions/operations";
 
 const toastParams = {
   position: "bottom-right",
@@ -30,6 +32,7 @@ const TransactionFilterForm = () => {
   const [showFilters, setShowFilters] = useState(false);
   const [dateRange, setDateRange] = useState([null, null]);
   const [startDate, endDate] = dateRange;
+  const filterData = useSelector(selectFilterData);
 
   const toggleFilters = () => {
     setShowFilters((prev) => !prev);
@@ -164,7 +167,7 @@ const TransactionFilterForm = () => {
                           text="Reset"
                           onClickFn={() => {
                             dispatch(setFilterData({ initialValues }));
-
+                            dispatch(fetchTransactions(filterData));
                             setDateRange([null, null]);
                             resetForm();
                           }}
