@@ -100,7 +100,7 @@ const TransactionFilterForm = () => {
                       <Field as="select" name="type" className={s.select}>
                         <option value="">Select type</option>
                         <option value="income">Income</option>
-                        <option value="expense">Expense</option>
+                        <option value="expenses">Expense</option>
                       </Field>
 
                       <Field as="select" name="category" className={s.select}>
