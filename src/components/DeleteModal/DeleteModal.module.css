@@ -8,8 +8,8 @@
 }
 
 .modalContainer::backdrop {
-  background-color: rgba(0, 0, 0, 0.5);
-  backdrop-filter: blur(2px);
+  backdrop-filter: blur(7px);
+  background: #220d5b3b;
 }
 
 .modal {
@@ -23,13 +23,9 @@
   border-radius: 8px;
   width: 280px;
   height: 293px;
-  backdrop-filter: blur(100px);
+  backdrop-filter: blur(2px);
   box-shadow: 0 4px 60px 0 rgba(0, 0, 0, 0.25);
-  background: radial-gradient(
-    rgba(47, 21, 176, 0.73),
-    rgba(47, 21, 176, 0),
-    rgba(255, 255, 255, 0.1)
-  );
+  background: rgba(255, 255, 255, 0.1);
 }
 
 .modalQuestion {
