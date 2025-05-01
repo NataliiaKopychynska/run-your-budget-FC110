@@ -72,24 +72,25 @@ const TransactionPaginationSection = () => {
           )}
         </div>
       )}
-
-      <select
-        name="perPage"
-        className={clsx(s.select, s.selectPerPage)}
-        onChange={(e) => {
-          const selectedValue = e.target.value;
-          if (selectedValue !== "") {
-            dispatch(setFilterData({ perPage: Number(selectedValue) }));
-          }
-        }}
-      >
-        <option value="">Items per page</option>
-        <option value="10">10</option>
-        <option value="20">20</option>
-        <option value="30">30</option>
-        <option value="40">40</option>
-        <option value="50">50</option>
-      </select>
+      {paginationData.totalItems > 0 && (
+        <select
+          name="perPage"
+          className={clsx(s.select, s.selectPerPage)}
+          onChange={(e) => {
+            const selectedValue = e.target.value;
+            if (selectedValue !== "") {
+              dispatch(setFilterData({ perPage: Number(selectedValue) }));
+            }
+          }}
+        >
+          <option value="">Items per page</option>
+          <option value="10">10</option>
+          <option value="20">20</option>
+          <option value="30">30</option>
+          <option value="40">40</option>
+          <option value="50">50</option>
+        </select>
+      )}
     </div>
   );
 };
