@@ -25,7 +25,13 @@ const TransactionPaginationSection = () => {
         })
       );
     }
-  }, [dispatch, paginationData.page, paginationData.totalPages, filterData]);
+  }, [
+    dispatch,
+    paginationData.page,
+    paginationData.totalPages,
+    paginationData.totalItems,
+    filterData,
+  ]);
 
   return (
     <div className={s.pagination}>
