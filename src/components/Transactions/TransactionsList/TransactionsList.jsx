@@ -48,8 +48,6 @@ const TransactionsList = () => {
     }
   };
 
-  console.log(filterData);
-
   return (
     <>
       <div>
