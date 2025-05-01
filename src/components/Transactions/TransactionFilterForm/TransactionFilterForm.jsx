@@ -12,7 +12,6 @@ import clsx from "clsx";
 import "react-datepicker/dist/react-datepicker.css";
 import "../datePickerStyles.css";
 import { useDispatch } from "react-redux";
-import { selectFilterData } from "../../../redux/transactions/selectors";
 import { setFilterData } from "../../../redux/transactions/slice";
 
 const toastParams = {
@@ -42,10 +41,10 @@ const TransactionFilterForm = () => {
   });
 
   const initialValues = {
-    type: "",
-    category: "",
-    minSum: "",
-    maxSum: "",
+    type: null,
+    category: null,
+    minSum: null,
+    maxSum: null,
   };
 
   const handleApplyFilter = (values) => {
@@ -164,7 +163,7 @@ const TransactionFilterForm = () => {
                           type="button"
                           text="Reset"
                           onClickFn={() => {
-                            dispatch(setFilterData(initialValues));
+                            dispatch(setFilterData({ initialValues }));
 
                             setDateRange([null, null]);
                             resetForm();
