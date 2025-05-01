@@ -12,13 +12,7 @@ const initialState = {
 const authSlice = createSlice({
   name: "auth",
   initialState,
-  reducers: {
-    logout(state) {
-      state.user = null;
-      state.token = null;
-      state.isAuthenticated = false;
-    },
-  },
+  reducers: {},
   extraReducers: (builder) => {
     builder
       .addCase(register.pending, (state) => {
@@ -48,7 +42,13 @@ const authSlice = createSlice({
         state.error = action.payload;
         state.isLoading = false;
       })
-      .addCase(logout.fulfilled, () => initialState)
+      .addCase(logout.fulfilled, (state) => {
+        state.user = { name: "", email: "" };
+        state.token = "";
+        state.isLoggedIn = false;
+        localStorage.removeItem("user");
+        localStorage.removeItem("token");
+      })
       .addCase(refresh.fulfilled, (state, action) => {
         state.user.email = action.payload.email;
         state.user.name = action.payload.name;
