@@ -9,6 +9,7 @@ import { globalReducer } from "./global/slice";
 import { currencyReducer } from "./currency/slice";
 import { statisticsReducer } from "./statistics/slice";
 import { balanceReducer } from "./balance/slice";
+import { userReducer } from "./user/slice";
 
 const persistConfig = {
   key: "root",
@@ -24,6 +25,7 @@ const rootReducer = combineReducers({
   global: globalReducer,
   currency: currencyReducer,
   balance: balanceReducer,
+  user: userReducer,
 });
 
 const persistedReducer = persistReducer(persistConfig, rootReducer);

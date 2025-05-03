@@ -2,12 +2,13 @@ import { useDispatch, useSelector } from "react-redux";
 import { useNavigate } from "react-router-dom";
 import Modal from "react-modal";
 import { selectIsModalOpen } from "../../redux/modal/selectors";
-import { selectUserEmail } from "../../redux/auth/selectors";
 import { closeModal, openModal } from "../../redux/modal/slice";
 import { logout } from "../../redux/auth/operations";
 import { toast } from "react-toastify";
 import { Icon } from "../../Icon";
 import s from "./Header.module.css";
+import { setIsUserModalOpen } from "../../redux/user/slice";
+import { selectUser } from "../../redux/user/selectors";
 
 Modal.setAppElement("#root");
 
@@ -15,9 +16,7 @@ const HeaderComponent = () => {
   const dispatch = useDispatch();
   const navigate = useNavigate();
   const isModalOpen = useSelector(selectIsModalOpen);
-  const email = useSelector(selectUserEmail);
-
-  const username = email ? email.split("@")[0] : "User";
+  const user = useSelector(selectUser);
 
   const handleLogoutClick = () => {
     dispatch(openModal("logoutConfirm"));
@@ -57,7 +56,19 @@ const HeaderComponent = () => {
           <p className={s.logoText}>Money Guard</p>
         </div>
         <div className={s.exitContainer}>
-          <p className={s.name}>{username}</p>
+          <button
+            type="button"
+            className={s.name}
+            onClick={() => {
+              dispatch(setIsUserModalOpen(true));
+            }}
+          >
+            {user.photo ? (
+              <img src={user.photo} alt={user.name} className={s.userImage} />
+            ) : (
+              <p className={s.noPhoto}>{user.name?.charAt(0).toUpperCase()}</p>
+            )}
+          </button>
           <button className={s.exitBtn} onClick={handleLogoutClick}>
             <Icon id="#icon-exit-1" className={s.exitIcon} />
             <p className={s.exitText}>Exit</p>

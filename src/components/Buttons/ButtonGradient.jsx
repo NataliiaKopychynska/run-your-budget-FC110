@@ -2,7 +2,13 @@ import React from "react";
 import styles from "./Button.module.css";
 import clsx from "clsx";
 
-function ButtonGradient({ type = "button", text, onClickFn, newClass }) {
+function ButtonGradient({
+  type = "button",
+  text,
+  onClickFn,
+  newClass,
+  disabled,
+}) {
   return (
     <button
       type={type}
