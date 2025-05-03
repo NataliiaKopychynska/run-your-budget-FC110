@@ -157,14 +157,15 @@ const UserInfoEdit = () => {
           {({ errors, touched }) => (
             <Form className={s.userInfo}>
               <div className={clsx(s.userInfoRow, s.inputRow)}>
-                <p className={s.userInfoRowTitle}>Name: </p>
                 <div className={s.inputWrapper}>
                   <Field
                     name="name"
+                    autoFocus
                     className={clsx(s.input, {
                       [s.inputError]: errors.name && touched.name,
                     })}
                   />
+                  <LuPencil className={s.editMark} />
                   <ErrorMessage name="name">
                     {(msg) => <div className={s.error}>{msg}</div>}
                   </ErrorMessage>
