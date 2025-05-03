@@ -9,6 +9,8 @@ import { Icon } from "../../Icon";
 import s from "./Header.module.css";
 import { setIsUserModalOpen } from "../../redux/user/slice";
 import { selectUser } from "../../redux/user/selectors";
+import { useEffect } from "react";
+import { fetchUserThunk } from "../../redux/user/operations";
 
 Modal.setAppElement("#root");
 
@@ -17,6 +19,10 @@ const HeaderComponent = () => {
   const navigate = useNavigate();
   const isModalOpen = useSelector(selectIsModalOpen);
   const user = useSelector(selectUser);
+
+  useEffect(() => {
+    dispatch(fetchUserThunk());
+  }, [dispatch]);
 
   const handleLogoutClick = () => {
     dispatch(openModal("logoutConfirm"));

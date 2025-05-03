@@ -86,11 +86,9 @@
 }
 
 .input {
-  display: flex;
-  justify-content: end;
-  align-items: center;
-  text-align: end;
-  font-size: 14px;
+  width: 100%;
+  text-align: center;
+  font-size: 20px;
 }
 
 .userInfoRow {
@@ -113,7 +111,6 @@
 .userEditNameForm {
   text-align: right;
   font-size: 16px;
-  width: 100%;
 }
 
 .hiddenInput {
@@ -180,8 +177,18 @@
 .inputWrapper {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  width: 100%;
+  position: relative;
+  margin-top: 20px;
 }
 
 .inputError {
   color: #f00000;
+}
+
+.editMark {
+  position: absolute;
+  right: 0;
 }
