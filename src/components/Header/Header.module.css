@@ -1,6 +1,3 @@
-.header {
-}
-
 .headerContainer {
   display: flex;
   justify-content: space-between;
@@ -40,13 +37,22 @@
   gap: 8px;
 }
 
-.name {
+.name,
+.userImage {
   margin: 0;
   font-family: "Circe", sans-serif;
-  font-weight: 400;
-  font-size: 18px;
+  font-weight: 600;
+  font-size: 24px;
   text-align: right;
   color: rgba(255, 255, 255, 0.6);
+  width: 32px;
+  height: 32px;
+  background-color: #7000ff;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  border-radius: 8px;
+  object-fit: cover;
 }
 
 .exitBtn {

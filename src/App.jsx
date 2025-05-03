@@ -20,6 +20,8 @@ import { RestrictedRoute } from "./components/Routes/RestrictedRoute";
 import { PrivateRoute } from "./components/Routes/PrivateRoute";
 import { fetchTransactions } from "./redux/transactions/operations";
 import NotFoundPage from "./pages/NotFoundPage/NotFoundPage";
+import UserInfo from "./components/User/UserInfo/UserInfo";
+import UserInfoEdit from "./components/User/UserInfo/UserInfoEdit";
 
 const App = () => {
   const dispatch = useDispatch();
@@ -38,6 +40,8 @@ const App = () => {
   }
   return (
     <>
+      <UserInfo />
+      <UserInfoEdit />
       <BackgroundGradientTablet />
       <Loader />
       <DeleteModal />

@@ -9,7 +9,7 @@
 
 .modalContainer::backdrop {
   backdrop-filter: blur(7px);
-  background: #220d5b3b;
+  background: rgba(34, 13, 91, 0.231);
 }
 
 .modal {
