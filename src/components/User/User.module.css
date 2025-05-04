@@ -26,6 +26,17 @@
   z-index: 1000;
 }
 
+.modalXBtn {
+  position: absolute;
+  right: 20px;
+  top: 20px;
+  transition: all 1500ms;
+}
+
+.modalXBtn:hover {
+  transform: rotate(360deg);
+}
+
 .user {
   display: flex;
   flex-direction: column;

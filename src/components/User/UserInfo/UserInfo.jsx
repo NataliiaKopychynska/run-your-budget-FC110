@@ -21,6 +21,14 @@ const UserInfo = () => {
   const dispatch = useDispatch();
 
   useEffect(() => {
+    if (isUserModalOpen) {
+      document.body.classList.add("no-scroll");
+    } else {
+      document.body.classList.remove("no-scroll");
+    }
+  }, [isUserModalOpen]);
+
+  useEffect(() => {
     dispatch(fetchUserThunk());
   }, [dispatch]);
 
@@ -33,59 +41,69 @@ const UserInfo = () => {
   }
 
   return (
-    <Modal
-      className={s.modalContainer}
-      overlayClassName={s.overlay}
-      isOpen={isUserModalOpen}
-      onRequestClose={() => {
-        dispatch(setIsUserModalOpen(false));
-      }}
-      contentLabel="UserModal"
-    >
-      <div className={s.user}>
-        <div className={s.userProfile}>
-          <div className={s.userTitle}>My profile</div>
+    isUserModalOpen && (
+      <Modal
+        className={s.modalContainer}
+        overlayClassName={s.overlay}
+        isOpen={isUserModalOpen}
+        onRequestClose={() => {
+          dispatch(setIsUserModalOpen(false));
+        }}
+        contentLabel="UserModal"
+      >
+        <div className={s.user}>
           <button
             onClick={() => {
               dispatch(setIsUserModalOpen(false));
-              dispatch(setIsEditModalOpen(true));
             }}
-            className={s.editUserBtn}
+            className={s.modalXBtn}
           >
-            <LuPencil />
+            ✕
           </button>
-        </div>
-        <div className={s.userPhoto}>
-          {user.photo ? (
-            <img src={user.photo} alt={user.name} className={s.userImage} />
-          ) : (
-            <div className={s.noPhoto}>
-              {user.name?.charAt(0).toUpperCase()}
+          <div className={s.userProfile}>
+            <div className={s.userTitle}>My profile</div>
+            <button
+              onClick={() => {
+                dispatch(setIsUserModalOpen(false));
+                dispatch(setIsEditModalOpen(true));
+              }}
+              className={s.editUserBtn}
+            >
+              <LuPencil />
+            </button>
+          </div>
+          <div className={s.userPhoto}>
+            {user.photo ? (
+              <img src={user.photo} alt={user.name} className={s.userImage} />
+            ) : (
+              <div className={s.noPhoto}>
+                {user.name?.charAt(0).toUpperCase()}
+              </div>
+            )}
+          </div>
+          <div className={s.userInfo}>
+            <div className={s.userInfoRow}>
+              <p className={s.userInfoRowTitle}>Name: </p>
+              <p className={s.userInfoRowText}>{user.name}</p>
             </div>
-          )}
-        </div>
-        <div className={s.userInfo}>
-          <div className={s.userInfoRow}>
-            <p className={s.userInfoRowTitle}>Name: </p>
-            <p className={s.userInfoRowText}>{user.name}</p>
-          </div>
-          <div className={s.userInfoRow}>
-            <p className={s.userInfoRowTitle}>E-mail: </p>
-            <p className={s.userInfoRowText}>{user.email}</p>
-          </div>
-          <div className={s.userInfoRow}>
-            <p className={s.userInfoRowTitle}>Balance: </p>
-            <p className={s.userInfoRowText}>{user.balance} UAH</p>
-          </div>
-          <div className={s.userInfoRow}>
-            <p className={s.userInfoRowTitle}>Registration: </p>
-            <p className={s.userInfoRowText}>
-              {formatIsoToDate(user.createdAt)}
-            </p>
+            <div className={s.userInfoRow}>
+              <p className={s.userInfoRowTitle}>E-mail: </p>
+              <p className={s.userInfoRowText}>{user.email}</p>
+            </div>
+            <div className={s.userInfoRow}>
+              <p className={s.userInfoRowTitle}>Balance: </p>
+              <p className={s.userInfoRowText}>{user.balance} UAH</p>
+            </div>
+            <div className={s.userInfoRow}>
+              <p className={s.userInfoRowTitle}>Registration: </p>
+              <p className={s.userInfoRowText}>
+                {formatIsoToDate(user.createdAt)}
+              </p>
+            </div>
           </div>
         </div>
-      </div>
-    </Modal>
+      </Modal>
+    )
   );
 };
 export default UserInfo;
