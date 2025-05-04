@@ -36,6 +36,12 @@ const UserInfoEdit = () => {
   const [isPhotoRemoved, setIsPhotoRemoved] = useState(false);
 
   useEffect(() => {
+    if (isEditModalOpen) {
+      document.body.classList.add("no-scroll");
+    }
+  }, [isEditModalOpen]);
+
+  useEffect(() => {
     dispatch(fetchUserThunk());
   }, [dispatch]);
 
@@ -82,134 +88,145 @@ const UserInfoEdit = () => {
   };
 
   return (
-    <Modal
-      className={s.modalContainer}
-      overlayClassName={s.overlay}
-      isOpen={isEditModalOpen}
-      onRequestClose={() => {
-        dispatch(setIsEditModalOpen(false));
-        dispatch(setIsUserModalOpen(true));
-      }}
-      contentLabel="EditModal"
-    >
-      <div className={s.user}>
-        <div className={s.userProfile}>
-          <div className={s.userTitle}>Edit profile</div>
-        </div>
+    isEditModalOpen && (
+      <Modal
+        className={s.modalContainer}
+        overlayClassName={s.overlay}
+        isOpen={isEditModalOpen}
+        onRequestClose={() => {
+          dispatch(setIsEditModalOpen(false));
+          dispatch(setIsUserModalOpen(true));
+        }}
+        contentLabel="EditModal"
+      >
+        <div className={s.user}>
+          <button
+            onClick={() => {
+              dispatch(setIsEditModalOpen(false));
+              dispatch(setIsUserModalOpen(true));
+            }}
+            className={s.modalXBtn}
+          >
+            ✕
+          </button>
+          <div className={s.userProfile}>
+            <div className={s.userTitle}>Edit profile</div>
+          </div>
 
-        <div className={s.userPhoto}>
-          {preview ? (
-            <img src={preview} alt="Preview" className={s.previewImage} />
-          ) : user.photo && !isPhotoRemoved ? (
-            <img src={user.photo} alt={user.name} className={s.userImage} />
-          ) : (
-            <div className={s.noPhoto}>
-              {user.name?.charAt(0).toUpperCase()}
-            </div>
-          )}
-          <div className={s.buttons}>
-            {!user.photo || isPhotoRemoved ? (
-              <label htmlFor="photo-upload" className={s.customBtn}>
-                +
-                <input
-                  id="photo-upload"
-                  type="file"
-                  accept="image/*"
-                  onChange={handlePhotoChange}
-                  className={s.hiddenInput}
-                />
-              </label>
+          <div className={s.userPhoto}>
+            {preview ? (
+              <img src={preview} alt="Preview" className={s.previewImage} />
+            ) : user.photo && !isPhotoRemoved ? (
+              <img src={user.photo} alt={user.name} className={s.userImage} />
             ) : (
-              <>
-                <label htmlFor="photo-edit" className={s.customBtn}>
-                  <LuPencil />
+              <div className={s.noPhoto}>
+                {user.name?.charAt(0).toUpperCase()}
+              </div>
+            )}
+            <div className={s.buttons}>
+              {!user.photo || isPhotoRemoved ? (
+                <label htmlFor="photo-upload" className={s.customBtn}>
+                  +
                   <input
-                    id="photo-edit"
+                    id="photo-upload"
                     type="file"
                     accept="image/*"
                     onChange={handlePhotoChange}
                     className={s.hiddenInput}
                   />
                 </label>
+              ) : (
+                <>
+                  <label htmlFor="photo-edit" className={s.customBtn}>
+                    <LuPencil />
+                    <input
+                      id="photo-edit"
+                      type="file"
+                      accept="image/*"
+                      onChange={handlePhotoChange}
+                      className={s.hiddenInput}
+                    />
+                  </label>
 
-                <button
-                  type="button"
-                  className={s.customBtn}
-                  onClick={() => {
-                    setPhoto(null);
-                    setPreview(null);
-                    setIsPhotoRemoved(true);
-                  }}
-                >
-                  -
-                </button>
-              </>
-            )}
+                  <button
+                    type="button"
+                    className={s.customBtn}
+                    onClick={() => {
+                      setPhoto(null);
+                      setPreview(null);
+                      setIsPhotoRemoved(true);
+                    }}
+                  >
+                    -
+                  </button>
+                </>
+              )}
+            </div>
           </div>
-        </div>
 
-        <Formik
-          initialValues={{ name: user.name }}
-          enableReinitialize
-          validationSchema={validationSchema}
-          onSubmit={handleSave}
-        >
-          {({ errors, touched }) => (
-            <Form className={s.userInfo}>
-              <div className={clsx(s.userInfoRow, s.inputRow)}>
-                <div className={s.inputWrapper}>
-                  <Field
-                    name="name"
-                    autoFocus
-                    className={clsx(s.input, {
-                      [s.inputError]: errors.name && touched.name,
-                    })}
+          <Formik
+            initialValues={{ name: user.name }}
+            enableReinitialize
+            validationSchema={validationSchema}
+            onSubmit={handleSave}
+          >
+            {({ errors, touched }) => (
+              <Form className={s.userInfo}>
+                <div className={clsx(s.userInfoRow, s.inputRow)}>
+                  <div className={s.inputWrapper}>
+                    <Field
+                      name="name"
+                      autoFocus
+                      className={clsx(s.input, {
+                        [s.inputError]: errors.name && touched.name,
+                      })}
+                    />
+                    <LuPencil className={s.editMark} />
+                    <ErrorMessage name="name">
+                      {(msg) => <div className={s.error}>{msg}</div>}
+                    </ErrorMessage>
+                  </div>
+                </div>
+
+                <div className={s.userInfoEdit}>
+                  <div className={s.userInfoRow}>
+                    <p className={s.userInfoRowTitle}>E-mail: </p>
+                    <p className={s.userInfoRowText}>{user.email}</p>
+                  </div>
+                  <div className={s.userInfoRow}>
+                    <p className={s.userInfoRowTitle}>Balance: </p>
+                    <p className={s.userInfoRowText}>{user.balance} UAH</p>
+                  </div>
+                  <div className={s.userInfoRow}>
+                    <p className={s.userInfoRowTitle}>Registration: </p>
+                    <p className={s.userInfoRowText}>
+                      {formatIsoToDate(user.createdAt)}
+                    </p>
+                  </div>
+                </div>
+
+                <div className={s.editBtns}>
+                  <ButtonGradient
+                    text="Save"
+                    type="submit"
+                    newClass={style.deleteModalBtns}
                   />
-                  <LuPencil className={s.editMark} />
-                  <ErrorMessage name="name">
-                    {(msg) => <div className={s.error}>{msg}</div>}
-                  </ErrorMessage>
+                  <Button
+                    text="Cancel"
+                    type="button"
+                    newClass={style.deleteModalBtns}
+                    onClickFn={() => {
+                      dispatch(setIsEditModalOpen(false));
+                      dispatch(setIsUserModalOpen(true));
+                    }}
+                  />
                 </div>
-              </div>
-
-              <div className={s.userInfoEdit}>
-                <div className={s.userInfoRow}>
-                  <p className={s.userInfoRowTitle}>E-mail: </p>
-                  <p className={s.userInfoRowText}>{user.email}</p>
-                </div>
-                <div className={s.userInfoRow}>
-                  <p className={s.userInfoRowTitle}>Balance: </p>
-                  <p className={s.userInfoRowText}>{user.balance} UAH</p>
-                </div>
-                <div className={s.userInfoRow}>
-                  <p className={s.userInfoRowTitle}>Registration: </p>
-                  <p className={s.userInfoRowText}>
-                    {formatIsoToDate(user.createdAt)}
-                  </p>
-                </div>
-              </div>
-
-              <div className={s.editBtns}>
-                <ButtonGradient
-                  text="Save"
-                  type="submit"
-                  newClass={style.deleteModalBtns}
-                />
-                <Button
-                  text="Cancel"
-                  type="button"
-                  newClass={style.deleteModalBtns}
-                  onClickFn={() => {
-                    dispatch(setIsEditModalOpen(false));
-                    dispatch(setIsUserModalOpen(true));
-                  }}
-                />
-              </div>
-            </Form>
-          )}
-        </Formik>
-      </div>
-    </Modal>
+              </Form>
+            )}
+          </Formik>
+        </div>
+      </Modal>
+    )
   );
 };
 
